@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		Licensed to the Apache Software Foundation (ASF) under one or more
+		contributor license agreements. See the NOTICE file distributed with
+		this work for additional information regarding copyright ownership.
+		The ASF licenses this file to You under the Apache License, Version
+		2.0 (the "License"); you may not use this file except in compliance
+		with the License. You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+		applicable law or agreed to in writing, software distributed under the
+		License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+		CONDITIONS OF ANY KIND, either express or implied. See the License for
+		the specific language governing permissions and limitations under the
+		License.
+	-->
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
+	xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
+	default-activation="lazy">
+
+	<bean id="userDao"
+		class="jason.app.ibook.security.jpa.UserDaoImpl">
+		<tx:transaction method="*" value="Required" />
+		<jpa:context property="entityManager" unitname="ibookSecurityPU" />
+	</bean>
+  
+    <bean id="aclDao"
+    class="jason.app.ibook.security.jpa.AclDaoImpl">
+    <tx:transaction method="*" value="Required" />
+    <jpa:context property="entityManager" unitname="ibookSecurityPU" />
+  </bean>
+  
+      <bean id="contactDao"
+    class="jason.app.ibook.security.jpa.ContactDaoImpl">
+    <tx:transaction method="*" value="Required" />
+    <jpa:context property="entityManager" unitname="ibookSecurityPU" />
+  </bean>
+
+	<service ref="userDao"
+		interface="jason.app.ibook.api.dao.IUserDao">
+	</service>
+    <service ref="aclDao"
+    interface="jason.app.ibook.api.dao.IAclDao">
+  </service>
+  
+      <service ref="contactDao"
+    interface="jason.app.ibook.api.dao.IContactDao">
+  </service>
+
+</blueprint>
