@@ -13,9 +13,11 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity(name = "USER")
+@Entity
+@Table(name="USER")
 public class UserImpl implements IUser {
     /** The author's email address */
     @Id

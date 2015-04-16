@@ -35,8 +35,6 @@ import org.springframework.security.acls.model.ObjectIdentity;
 import org.springframework.security.acls.model.Sid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.Assert;
 
@@ -124,9 +122,6 @@ public class MutableAclServiceImpl implements MutableAclService {
 
     @Override
     public MutableAcl createAcl(ObjectIdentity objectIdentity) throws AlreadyExistsException {
-        return null;
-    }
-    public MutableAcl createAcl2(ObjectIdentity objectIdentity) throws AlreadyExistsException {
         Assert.notNull(objectIdentity, "Object Identity required");
 
         // Check this object identity hasn't already been persisted
@@ -145,9 +140,10 @@ public class MutableAclServiceImpl implements MutableAclService {
         
         Acl acl = readAclById(objectIdentity);
         Assert.isInstanceOf(MutableAcl.class, acl, "MutableAcl should be been returned");
-        
+/**        
         return (MutableAcl) acl;
-       
+ */
+        return null;
     }
     
     /**

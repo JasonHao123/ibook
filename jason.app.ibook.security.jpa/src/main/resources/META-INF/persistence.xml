@@ -43,8 +43,7 @@
           See also the create=true line in the blog-datasource blueprint meta data -->
      <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
      <property name="openjpa.jdbc.DBDictionary" value="mysql"/>
-     <property name="openjpa.Log" value="File=c:\\jason\\org.apache.openjpa.log, DefaultLevel=DEBUG, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
-        <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.MySQLDictionary"/>
+<!--         <property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.MySQLDictionary"/> -->
     </properties>
    
   </persistence-unit>

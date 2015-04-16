@@ -26,6 +26,7 @@ public class ContactDaoImpl implements IContactDao {
         // TODO Auto-generated method stub
         ContactImpl contactImpl = BeanUtil.toContactImpl(contact);
          em.persist(contactImpl);
+         em.flush();
          return BeanUtil.toContact(contactImpl);
     }
 
@@ -42,18 +43,6 @@ public class ContactDaoImpl implements IContactDao {
         Query query = em.createQuery("select u from ContactImpl u");
                                                                
         return BeanUtil.toContactList(query.getResultList());
-    }
-
-    @Override
-    public List<String> findAllPrincipals() {
-        Query query = em.createQuery("select u.username from UserImpl u", String.class);
-        return query.getResultList();
-    }
-
-    @Override
-    public List<String> findAllRoles() {
-        Query query = em.createQuery("select u.name from RoleImpl u", String.class);
-        return query.getResultList();
     }
 
     @Override

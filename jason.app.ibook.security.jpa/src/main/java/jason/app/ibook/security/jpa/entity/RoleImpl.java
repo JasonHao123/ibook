@@ -3,10 +3,12 @@ package jason.app.ibook.security.jpa.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import jason.app.ibook.api.model.IRole;
 
-@Entity(name = "ROLE")
+@Entity
+@Table(name="ROLE")
 public class RoleImpl implements IRole {
     @Id
     @Column(nullable = false)

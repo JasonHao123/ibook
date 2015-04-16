@@ -1,12 +1,15 @@
 package jason.app.ibook.api.dao;
 
+import jason.app.ibook.api.model.AclInfo;
 import jason.app.ibook.api.model.IAclClass;
 import jason.app.ibook.api.model.IAclEntry;
 import jason.app.ibook.api.model.IAclObjectIdentity;
 import jason.app.ibook.api.model.IAclSid;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.acls.model.ObjectIdentity;
 
@@ -35,5 +38,9 @@ public interface IAclDao {
     boolean updateObjectIdentity(IAclObjectIdentity aclObject);
 
     IAclSid findAclSid(String principal);
+
+    List<AclInfo> findParentsToLookup(Set<Long> findNow);
+
+    List<AclInfo> findParentsToLookup(Collection<ObjectIdentity> objectIdentities);
 
 }

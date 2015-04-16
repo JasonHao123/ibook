@@ -9,4 +9,7 @@ public interface IUserDao {
     IUser findByUsername(String username);
     public IUser createUser(String username,String password,List<String> roles);
 
+    public List<String> findAllPrincipals();
+
+    public List<String> findAllRoles();
 }

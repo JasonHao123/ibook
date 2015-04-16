@@ -35,10 +35,6 @@ public interface IContactDao {
 
     public List<IContact> findAll();
 
-    public List<String> findAllPrincipals();
-
-    public List<String> findAllRoles();
-
     public IContact getById(Long id);
 
     public void update(IContact contact);

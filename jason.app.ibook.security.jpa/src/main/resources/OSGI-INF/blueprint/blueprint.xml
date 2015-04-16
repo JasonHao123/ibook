@@ -23,19 +23,20 @@
 
 	<bean id="userDao"
 		class="jason.app.ibook.security.jpa.UserDaoImpl">
-		<tx:transaction method="*" value="Required" />
+		<tx:transaction method="create*" value="Required" />
 		<jpa:context property="entityManager" unitname="ibookSecurityPU" />
 	</bean>
   
     <bean id="aclDao"
     class="jason.app.ibook.security.jpa.AclDaoImpl">
-    <tx:transaction method="*" value="Required" />
+    <tx:transaction method="create*" value="Required" />
+    <tx:transaction method="update*" value="Required" />
     <jpa:context property="entityManager" unitname="ibookSecurityPU" />
   </bean>
   
       <bean id="contactDao"
     class="jason.app.ibook.security.jpa.ContactDaoImpl">
-    <tx:transaction method="*" value="Required" />
+    <tx:transaction method="create*" value="Required" />
     <jpa:context property="entityManager" unitname="ibookSecurityPU" />
   </bean>
 

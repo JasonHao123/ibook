@@ -7,11 +7,13 @@ import jason.app.ibook.api.model.Role;
 import jason.app.ibook.api.model.User;
 import jason.app.ibook.security.jpa.entity.RoleImpl;
 import jason.app.ibook.security.jpa.entity.UserImpl;
+import jason.app.ibook.security.jpa.util.BeanUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public class UserDaoImpl implements IUserDao {
     private EntityManager em;
@@ -69,4 +71,19 @@ public class UserDaoImpl implements IUserDao {
         return null;
     }
 
+    
+    @Override
+    public List<String> findAllPrincipals() {
+
+        Query query = em.createQuery("select u.username from UserImpl u", String.class);
+        return query.getResultList();
+    }
+
+
+
+    @Override
+    public List<String> findAllRoles() {
+        Query query = em.createQuery("select u.name from RoleImpl u", String.class);
+        return query.getResultList();
+    }
 }

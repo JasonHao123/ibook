@@ -199,6 +199,7 @@
                           org.springframework.web.filter, 
                           org.springframework.web.servlet.tags,
                           org.springframework.transaction.jta,
+                          org.springframework.transaction.annotation,
                           org.springframework.aop,        
                           org.springframework.aop.framework,   
                           org.aopalliance.aop,          
