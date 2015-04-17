@@ -1,11 +1,11 @@
 package jason.app.ibook.security.jpa;
 
-import jason.app.ibook.api.dao.IAclDao;
-import jason.app.ibook.api.model.AclInfo;
-import jason.app.ibook.api.model.IAclClass;
-import jason.app.ibook.api.model.IAclEntry;
-import jason.app.ibook.api.model.IAclObjectIdentity;
-import jason.app.ibook.api.model.IAclSid;
+import jason.app.ibook.security.api.dao.IAclDao;
+import jason.app.ibook.security.api.model.AclInfo;
+import jason.app.ibook.security.api.model.IAclClass;
+import jason.app.ibook.security.api.model.IAclEntry;
+import jason.app.ibook.security.api.model.IAclObjectIdentity;
+import jason.app.ibook.security.api.model.IAclSid;
 import jason.app.ibook.security.jpa.entity.AclClassImpl;
 import jason.app.ibook.security.jpa.entity.AclEntryImpl;
 import jason.app.ibook.security.jpa.entity.AclObjectIdentityImpl;
@@ -13,7 +13,6 @@ import jason.app.ibook.security.jpa.entity.AclSidImpl;
 import jason.app.ibook.security.jpa.util.BeanUtil;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +22,6 @@ import javax.persistence.Query;
 
 import org.springframework.security.acls.model.ObjectIdentity;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class AclDaoImpl implements IAclDao {

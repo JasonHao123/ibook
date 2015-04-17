@@ -1,16 +1,14 @@
 package org.ops4j.pax.web.samples.spring.web.controller;
 
-import jason.app.ibook.api.service.ISecurityService;
+
+import jason.app.ibook.security.api.service.ISecurityService;
 
 import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.osgi.context.support.OsgiBundleXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,16 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloWorldController {
-    
+    @Autowired
     private ISecurityService service;
-    
 
-    public ISecurityService getService() {
-        return service;
-    }
-    public void setService(ISecurityService service) {
-        this.service = service;
-    }
 
     @RequestMapping(value = "/helloWorld", method = RequestMethod.GET)
 	public ModelAndView handleRequest(HttpServletRequest request,

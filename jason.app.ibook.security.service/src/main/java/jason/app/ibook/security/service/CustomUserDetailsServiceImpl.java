@@ -1,15 +1,11 @@
 package jason.app.ibook.security.service;
 
-import jason.app.ibook.api.dao.IUserDao;
-import jason.app.ibook.api.model.IRole;
-import jason.app.ibook.api.model.IUser;
+import jason.app.ibook.security.api.dao.IUserDao;
+import jason.app.ibook.security.api.model.IRole;
+import jason.app.ibook.security.api.model.IUser;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import net.sf.ehcache.CacheException;
-import net.sf.ehcache.CacheManager;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

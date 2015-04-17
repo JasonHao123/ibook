@@ -1,12 +1,13 @@
 package org.ops4j.pax.web.samples.spring.web.controller;
 
-import jason.app.ibook.api.model.Contact;
-import jason.app.ibook.api.model.IContact;
+import jason.app.ibook.filesystem.api.model.Contact;
+import jason.app.ibook.filesystem.api.model.IContact;
+import jason.app.ibook.filesystem.api.service.IContactService;
 
-import org.ops4j.pax.web.samples.spring.service.ContactManager;
 import org.ops4j.pax.web.samples.spring.web.model.WebContact;
 import org.ops4j.pax.web.samples.spring.web.validator.WebContactValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
@@ -25,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AddDeleteContactController {
     @Autowired
-    private ContactManager contactManager;
+    private IContactService contactManager;
     private final Validator validator = new WebContactValidator();
 
     /**
@@ -56,7 +57,7 @@ public class AddDeleteContactController {
         Contact contact = new Contact();
         contact.setName(form.getName());
         contact.setEmail(form.getEmail());
-        contactManager.create(contact);
+        contactManager.create(contact,SecurityContextHolder.getContext().getAuthentication().getName());
 
         return "redirect:/index.htm";
     }

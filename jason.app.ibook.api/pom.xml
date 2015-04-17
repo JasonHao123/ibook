@@ -25,17 +25,7 @@
       jason.app.ibook.api.provider
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
-    <aries.osgi.import.pkg>
-      org.springframework.security.acls.model,
-      org.springframework.security.acls.domain
-    </aries.osgi.import.pkg>
+    <aries.osgi.import.pkg />
   </properties>
-  <dependencies>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-acl</artifactId>
-        <version>${spring.security.version}</version>
-        <scope>compile</scope>
-      </dependency>
-  </dependencies>
+
 </project>

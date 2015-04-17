@@ -22,7 +22,6 @@
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>jason.app.ibook.security</groupId>
   <artifactId>jason.app.ibook.security.jpa</artifactId>
   <name>jason.app.ibook.security.jpa</name>
 	<packaging>bundle</packaging>
@@ -39,10 +38,11 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Private-Package>jason.app.ibook.security.jpa.*</Private-Package>
                         <Export-Package>!jason.app.ibook.security.jpa.*</Export-Package>
-                        <Import-Package>jason.app.ibook.api.service,jason.app.ibook.api.dao,jason.app.ibook.api.model,*</Import-Package>
+                        <Import-Package>jason.app.ibook.security.api.service,jason.app.ibook.security.api.dao,jason.app.ibook.security.api.model,*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>
+      <!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -53,8 +53,12 @@
 							<tasks>
 								<path id="enhance.path.ref">
 									<fileset dir="${project.build.outputDirectory}">
-										<include name="AuthorImpl.class" />
-										<include name="EntryImpl.class" /> 
+										<include name="AclClassImpl.class" />
+										<include name="AclEntryImpl.class" /> 
+                                        <include name="AclObjectIdentityImpl.class" />
+                                        <include name="AclSidImpl.class" /> 
+                                        <include name="RoleImpl.class" />
+                                        <include name="UserImpl.class" /> 
 									</fileset>
 								</path>
 								<pathconvert property="enhance.files" refid="enhance.path.ref" pathsep=" " />
@@ -74,7 +78,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
+ -->
 		</plugins>
 	</build>
 
@@ -116,11 +120,12 @@
 		</dependency>
 		<!-- end OpenJPA PCEnhancer depends -->
 
+
 		<dependency>
 		  <groupId>jason.app.ibook</groupId>
-		  <artifactId>jason.app.ibook.api</artifactId>
+		  <artifactId>jason.app.ibook.security.api</artifactId>
 		  <version>0.0.1-SNAPSHOT</version>
-		  <type>jar</type>
+		  <type>bundle</type>
 		</dependency>
 	</dependencies>
 

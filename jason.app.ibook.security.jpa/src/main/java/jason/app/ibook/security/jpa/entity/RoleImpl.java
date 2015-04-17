@@ -1,11 +1,11 @@
 package jason.app.ibook.security.jpa.entity;
 
+import jason.app.ibook.security.api.model.IRole;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import jason.app.ibook.api.model.IRole;
 
 @Entity
 @Table(name="ROLE")

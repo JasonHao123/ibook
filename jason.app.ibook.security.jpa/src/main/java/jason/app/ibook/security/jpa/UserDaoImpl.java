@@ -1,13 +1,12 @@
 package jason.app.ibook.security.jpa;
 
-import jason.app.ibook.api.dao.IUserDao;
-import jason.app.ibook.api.model.IRole;
-import jason.app.ibook.api.model.IUser;
-import jason.app.ibook.api.model.Role;
-import jason.app.ibook.api.model.User;
+import jason.app.ibook.security.api.dao.IUserDao;
+import jason.app.ibook.security.api.model.IRole;
+import jason.app.ibook.security.api.model.IUser;
+import jason.app.ibook.security.api.model.Role;
+import jason.app.ibook.security.api.model.User;
 import jason.app.ibook.security.jpa.entity.RoleImpl;
 import jason.app.ibook.security.jpa.entity.UserImpl;
-import jason.app.ibook.security.jpa.util.BeanUtil;
 
 import java.util.ArrayList;
 import java.util.List;

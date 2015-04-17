@@ -23,7 +23,9 @@
 
 	<bean id="userDao"
 		class="jason.app.ibook.security.jpa.UserDaoImpl">
-		<tx:transaction method="create*" value="Required" />
+    <tx:transaction method="create*" value="Required" />
+    <tx:transaction method="update*" value="Required" />
+    <tx:transaction method="delete*" value="Required" />
 		<jpa:context property="entityManager" unitname="ibookSecurityPU" />
 	</bean>
   
@@ -31,24 +33,18 @@
     class="jason.app.ibook.security.jpa.AclDaoImpl">
     <tx:transaction method="create*" value="Required" />
     <tx:transaction method="update*" value="Required" />
-    <jpa:context property="entityManager" unitname="ibookSecurityPU" />
-  </bean>
-  
-      <bean id="contactDao"
-    class="jason.app.ibook.security.jpa.ContactDaoImpl">
-    <tx:transaction method="create*" value="Required" />
+    <tx:transaction method="delete*" value="Required" />
+    
     <jpa:context property="entityManager" unitname="ibookSecurityPU" />
   </bean>
 
+
 	<service ref="userDao"
-		interface="jason.app.ibook.api.dao.IUserDao">
+		interface="jason.app.ibook.security.api.dao.IUserDao">
 	</service>
     <service ref="aclDao"
-    interface="jason.app.ibook.api.dao.IAclDao">
+    interface="jason.app.ibook.security.api.dao.IAclDao">
   </service>
-  
-      <service ref="contactDao"
-    interface="jason.app.ibook.api.dao.IContactDao">
-  </service>
+
 
 </blueprint>

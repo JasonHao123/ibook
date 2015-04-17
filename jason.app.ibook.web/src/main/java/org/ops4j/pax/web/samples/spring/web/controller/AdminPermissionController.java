@@ -1,13 +1,13 @@
 package org.ops4j.pax.web.samples.spring.web.controller;
 
-import jason.app.ibook.api.model.Contact;
-import jason.app.ibook.api.model.IContact;
+import jason.app.ibook.filesystem.api.model.IContact;
+import jason.app.ibook.filesystem.api.service.IContactService;
+import jason.app.ibook.security.api.service.ISecurityService;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.ops4j.pax.web.samples.spring.service.ContactManager;
 import org.ops4j.pax.web.samples.spring.web.model.AddPermission;
 import org.ops4j.pax.web.samples.spring.web.validator.AddPermissionValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,11 @@ public final class AdminPermissionController implements MessageSourceAware{
     @Autowired
     private AclService aclService;
     @Autowired
-    private ContactManager contactManager;
+    private IContactService contactManager;
+    
+    @Autowired
+    private ISecurityService securityService;
+    
     private MessageSourceAccessor messages;
     private final Validator addPermissionValidator = new AddPermissionValidator();
     private final PermissionFactory permissionFactory = new DefaultPermissionFactory();
@@ -107,11 +111,11 @@ public final class AdminPermissionController implements MessageSourceAware{
             return "addPermission";
         }
 
-        PrincipalSid sid = new PrincipalSid(addPermission.getRecipient());
-        Permission permission = permissionFactory.buildFromMask(addPermission.getPermission());
+//        PrincipalSid sid = new PrincipalSid(addPermission.getRecipient());
+//        Permission permission = permissionFactory.buildFromMask(addPermission.getPermission());
 
         try {
-            contactManager.addPermission(addPermission.getContact(), sid, permission);
+            contactManager.addPermission(addPermission.getContact(), addPermission.getRecipient(), addPermission.getPermission());
         } catch (DataAccessException existingPermission) {
             existingPermission.printStackTrace();
             result.rejectValue("recipient", "err.recipientExistsForContact", "Addition failure.");
@@ -138,7 +142,7 @@ public final class AdminPermissionController implements MessageSourceAware{
         Sid sidObject = new PrincipalSid(sid);
         Permission permission = permissionFactory.buildFromMask(mask);
 
-        contactManager.deletePermission(contact, sidObject, permission);
+        contactManager.deletePermission(contact, sid, mask);
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("contact", contact);
@@ -161,7 +165,7 @@ public final class AdminPermissionController implements MessageSourceAware{
         Map<String, String> map = new LinkedHashMap<String, String>();
         map.put("", messages.getMessage("select.pleaseSelect", "-- please select --"));
 
-        for (String recipient : contactManager.getAllRecipients()) {
+        for (String recipient : securityService.getAllUsernames()) {
             map.put(recipient, recipient);
         }
 

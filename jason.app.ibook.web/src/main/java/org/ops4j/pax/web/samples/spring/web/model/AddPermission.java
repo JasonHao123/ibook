@@ -14,8 +14,7 @@
  */
 package org.ops4j.pax.web.samples.spring.web.model;
 
-import jason.app.ibook.api.model.Contact;
-import jason.app.ibook.api.model.IContact;
+import jason.app.ibook.filesystem.api.model.IContact;
 
 import org.springframework.security.acls.domain.BasePermission;
 

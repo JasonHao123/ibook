@@ -1,8 +1,8 @@
 package jason.app.ibook.security.jpa.entity;
 
-import jason.app.ibook.api.model.IRole;
-import jason.app.ibook.api.model.IUser;
-import jason.app.ibook.api.model.Role;
+import jason.app.ibook.security.api.model.IRole;
+import jason.app.ibook.security.api.model.IUser;
+import jason.app.ibook.security.api.model.Role;
 
 import java.util.ArrayList;
 import java.util.List;

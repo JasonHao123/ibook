@@ -1,21 +1,18 @@
 package jason.app.ibook.security.jpa.util;
 
-import jason.app.ibook.api.model.AclClass;
-import jason.app.ibook.api.model.AclEntry;
-import jason.app.ibook.api.model.AclInfo;
-import jason.app.ibook.api.model.AclObjectIdentity;
-import jason.app.ibook.api.model.AclSid;
-import jason.app.ibook.api.model.Contact;
-import jason.app.ibook.api.model.IAclClass;
-import jason.app.ibook.api.model.IAclEntry;
-import jason.app.ibook.api.model.IAclObjectIdentity;
-import jason.app.ibook.api.model.IAclSid;
-import jason.app.ibook.api.model.IContact;
+import jason.app.ibook.security.api.model.AclClass;
+import jason.app.ibook.security.api.model.AclEntry;
+import jason.app.ibook.security.api.model.AclInfo;
+import jason.app.ibook.security.api.model.AclObjectIdentity;
+import jason.app.ibook.security.api.model.AclSid;
+import jason.app.ibook.security.api.model.IAclClass;
+import jason.app.ibook.security.api.model.IAclEntry;
+import jason.app.ibook.security.api.model.IAclObjectIdentity;
+import jason.app.ibook.security.api.model.IAclSid;
 import jason.app.ibook.security.jpa.entity.AclClassImpl;
 import jason.app.ibook.security.jpa.entity.AclEntryImpl;
 import jason.app.ibook.security.jpa.entity.AclObjectIdentityImpl;
 import jason.app.ibook.security.jpa.entity.AclSidImpl;
-import jason.app.ibook.security.jpa.entity.ContactImpl;
 import jason.app.ibook.security.jpa.entity.RoleImpl;
 import jason.app.ibook.security.jpa.entity.UserImpl;
 
@@ -162,32 +159,7 @@ public class BeanUtil {
         return entry;
     }
 
-    public static ContactImpl toContactImpl(IContact contact) {
-        // TODO Auto-generated method stub
-        ContactImpl contactImpl = new ContactImpl();
-        contactImpl.setId(contact.getId());
-        contactImpl.setEmail(contact.getEmail());
-        contactImpl.setName(contact.getName());
-        return contactImpl;
-    }
 
-    public static IContact toContact(ContactImpl contact) {
-        Contact contactImpl = new Contact();
-        contactImpl.setId(contact.getId());
-        contactImpl.setEmail(contact.getEmail());
-        contactImpl.setName(contact.getName());
-        return contactImpl;
-    }
-
-    public static List<IContact> toContactList(List<ContactImpl> resultList) {
-        List<IContact> result = new ArrayList<IContact>();
-        if(resultList!=null) {
-            for(ContactImpl aclObject:resultList) {
-                result.add(toContact(aclObject));
-            }
-        }
-        return result;
-    }
 
     public static List<AclInfo> toAclInfoList(List<Object[]> result) {
         // TODO Auto-generated method stub

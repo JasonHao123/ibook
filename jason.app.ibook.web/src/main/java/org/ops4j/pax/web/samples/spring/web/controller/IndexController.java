@@ -1,13 +1,12 @@
 package org.ops4j.pax.web.samples.spring.web.controller;
 
-import jason.app.ibook.api.model.Contact;
-import jason.app.ibook.api.model.IContact;
+import jason.app.ibook.filesystem.api.model.IContact;
+import jason.app.ibook.filesystem.api.service.IContactService;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ops4j.pax.web.samples.spring.service.ContactManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.acls.AclPermissionEvaluator;
@@ -34,7 +33,7 @@ public class IndexController {
     //~ Instance fields ================================================================================================
 
     @Autowired
-    private ContactManager contactManager;
+    private IContactService contactManager;
     @Autowired
     private PermissionEvaluator permissionEvaluator;
 

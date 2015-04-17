@@ -13,8 +13,9 @@
   <packaging>bundle</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-          
+    <spring.version>3.2.11.RELEASE</spring.version>      
          <osgi-import-package>
+         org.springframework.instrument.classloading,
                                        org.springframework.security.web,
                             org.springframework.security.crypto.bcrypt,
                             org.springframework.security.crypto.password,
@@ -30,6 +31,7 @@
                           org.springframework.transaction.jta,
                           org.springframework.aop,        
                           org.springframework.aop.framework,   
+                          org.springframework.transaction.aspectj,
                           org.aopalliance.aop,          
                           javax.transaction,                      
            *
@@ -52,6 +54,16 @@
           <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+              <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+                  <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-instrument</artifactId>
       <version>${spring.version}</version>
     </dependency>
   <!-- Spring security -->
@@ -94,7 +106,7 @@
     </dependency>
     <dependency>
       <groupId>jason.app.ibook</groupId>
-      <artifactId>jason.app.ibook.api</artifactId>
+      <artifactId>jason.app.ibook.security.api</artifactId>
       <version>0.0.1-SNAPSHOT</version>
       <type>bundle</type>
       <scope>provided</scope>

@@ -12,6 +12,11 @@ import org.springframework.security.acls.model.Sid;
 @Entity
 @Table(name="ACL_SID")
 public class AclSidImpl implements Sid{
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -422644020769237533L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

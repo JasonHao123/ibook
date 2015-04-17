@@ -585,11 +585,15 @@
   <modules>
     <module>jason.app.ibook.api</module>
     <module>jason.app.ibook.datasource</module>
+    <module>jason.app.ibook.security.api</module>
     <module>jason.app.ibook.security.jpa</module>
+    <module>jason.app.ibook.security.service</module>
+    <module>jason.app.ibook.filesystem.api</module>
     <module>jason.app.ibook.filesystem.jpa</module>
     <module>jason.app.ibook.filesystem.service</module>
-    <module>jason.app.ibook.security.service</module>
     <module>jason.app.ibook.web</module>
+
+
   </modules>
   <build>
     <plugins>

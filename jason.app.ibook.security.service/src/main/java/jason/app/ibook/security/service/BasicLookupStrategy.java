@@ -14,13 +14,11 @@ package jason.app.ibook.security.service;
 * limitations under the License.
 */
 
-import jason.app.ibook.api.dao.IAclDao;
-import jason.app.ibook.api.model.AclInfo;
+import jason.app.ibook.security.api.dao.IAclDao;
+import jason.app.ibook.security.api.model.AclInfo;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -29,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.security.acls.domain.AccessControlEntryImpl;
 import org.springframework.security.acls.domain.AclAuthorizationStrategy;
 import org.springframework.security.acls.domain.AclImpl;
