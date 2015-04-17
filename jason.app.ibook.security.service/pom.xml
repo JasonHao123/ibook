@@ -33,7 +33,9 @@
                           org.springframework.aop.framework,   
                           org.springframework.transaction.aspectj,
                           org.aopalliance.aop,          
-                          javax.transaction,                      
+                          javax.transaction,  
+                          org.springframework.security.access,
+                          org.springframework.security.access.expression.method,                    
            *
          </osgi-import-package>
          

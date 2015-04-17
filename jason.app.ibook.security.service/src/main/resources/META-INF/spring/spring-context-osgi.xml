@@ -32,5 +32,7 @@
      <osgi:service ref="userDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
     <osgi:service ref="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
     <osgi:service ref="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
+    <osgi:service ref="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
+    <osgi:service ref="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
    
 </beans>
