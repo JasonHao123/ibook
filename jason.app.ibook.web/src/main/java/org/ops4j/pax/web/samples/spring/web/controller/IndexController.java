@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ops4j.pax.web.samples.spring.web.service.IEcho;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.acls.AclPermissionEvaluator;
 import org.springframework.security.acls.domain.BasePermission;
 import org.springframework.security.acls.model.Permission;
@@ -32,6 +34,8 @@ public class IndexController {
 
     //~ Instance fields ================================================================================================
 
+    @Autowired
+    private IEcho echo;
     @Autowired
     private IContactService contactManager;
     @Autowired
@@ -64,6 +68,7 @@ public class IndexController {
      */
     @RequestMapping(value="/index.htm", method=RequestMethod.GET)
     public ModelAndView displayUserContacts() {
+        System.out.println(echo.echo("hello"));
         List<IContact> myContactsList = contactManager.getAll();
         Map<IContact, Boolean> hasDelete = new HashMap<IContact, Boolean>(myContactsList.size());
         Map<IContact, Boolean> hasAdmin = new HashMap<IContact, Boolean>(myContactsList.size());

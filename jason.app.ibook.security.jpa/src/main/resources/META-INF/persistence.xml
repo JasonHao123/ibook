@@ -25,8 +25,8 @@
     <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 
     <jta-data-source>osgi:service/jdbc/ibookdb</jta-data-source>
-    <non-jta-data-source>osgi:service/jdbc/ibookdbnojta</non-jta-data-source>
-
+<!--     <non-jta-data-source>osgi:service/jdbc/ibookdbnojta</non-jta-data-source>
+ -->
     <class>jason.app.ibook.security.jpa.entity.UserImpl</class>
     <class>jason.app.ibook.security.jpa.entity.RoleImpl</class>
     <class>jason.app.ibook.security.jpa.entity.AclClassImpl</class>

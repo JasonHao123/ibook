@@ -12,8 +12,9 @@ xmlns:context="http://www.springframework.org/schema/context"
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       ">
+        <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+<context:component-scan base-package="jason.app.ibook.filesystem.service" />
 
- <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
       <constructor-arg ref="userTransaction"/>
       <constructor-arg ref="transactionManager"/>
@@ -22,12 +23,12 @@ xmlns:context="http://www.springframework.org/schema/context"
     <property name="transactionManager" ref="jtaTransactionManager"/>
 </bean> 
 <tx:annotation-driven transaction-manager="jtaTransactionManager" mode="aspectj" />
-
+<!-- 
   <bean id="contactService" class="jason.app.ibook.filesystem.service.ContactServiceImpl">
     <property name="contactDao" ref="contactDao" />
     <property name="mutableAclService" ref="aclService" />
     <property name="securityService" ref="securityService" />
   </bean>
-
+ -->
  
 </beans>

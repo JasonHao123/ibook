@@ -19,7 +19,7 @@ xmlns:tx="http://www.springframework.org/schema/tx"
    
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
-  <context:component-scan base-package="org.ops4j.pax.web.samples.spring" />
+  <context:component-scan base-package="org.ops4j.pax.web.samples.spring.web.controller" />
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
       <constructor-arg ref="userTransaction"/>
       <constructor-arg ref="transactionManager"/>

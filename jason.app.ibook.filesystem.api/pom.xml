@@ -24,7 +24,16 @@
       jason.app.ibook.filesystem.api.service
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
-    <aries.osgi.import.pkg />
+    <aries.osgi.import.pkg >
+     org.springframework.security.access.prepost
+    </aries.osgi.import.pkg>
   </properties>
-
+<dependencies>
+            <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+</dependencies>
 </project>

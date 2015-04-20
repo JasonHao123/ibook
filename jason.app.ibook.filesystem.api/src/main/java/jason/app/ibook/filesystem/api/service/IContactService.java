@@ -18,6 +18,8 @@ import jason.app.ibook.filesystem.api.model.IContact;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 
 /**
  * Interface for the application's services layer.
@@ -32,7 +34,7 @@ public interface IContactService {
  
     public void deletePermission(IContact contact, String recipient, int permission);
 
-
+    @PreAuthorize("hasRole(supervisor)")
     public void create(IContact contact,String username);
 
     public void delete(IContact contact);

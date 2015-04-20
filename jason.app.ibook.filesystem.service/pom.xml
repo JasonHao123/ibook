@@ -30,19 +30,31 @@
                                org.springframework.security.web.servletapi,
                             org.springframework.security.web.authentication,
                             org.springframework.security.acls.jdbc,
-                            org.springframework.security.acls.domain,    
+                            org.springframework.security.acls.domain,
+                            org.springframework.security.access,
+                            org.springframework.security.access.expression.method,
+                            org.springframework.security.access.prepost, 
+                            org.springframework.security.access.intercept.aspectj.aspect,   
                             org.springframework.jdbc.core,    
                           org.springframework.transaction.jta,
                           org.springframework.aop,        
                           org.springframework.aop.framework,   
                           org.springframework.transaction.aspectj,
                           org.aopalliance.aop,          
-                          javax.transaction,                      
+                          javax.transaction,        
+                          org.slf4j,
+                          org.slf4j.helper,              
            *
          </osgi-import-package>
          
   </properties>
   <dependencies>
+  <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.5.11</version>
+</dependency>
+
                   <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache-core</artifactId>
@@ -101,7 +113,11 @@
       <version>${spring.security.version}</version>
       <scope>compile</scope>
     </dependency>
-    
+                  <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-aspects</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

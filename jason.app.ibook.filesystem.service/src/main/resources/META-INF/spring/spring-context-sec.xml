@@ -19,18 +19,13 @@
      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
       http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-   <osgi:reference id="customUserDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
-  <osgi:reference id="encoder" interface="org.springframework.security.crypto.password.PasswordEncoder"/>
-    <osgi:reference id="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
-    <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
-    <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
-  <beans:bean class="org.ops4j.pax.web.samples.spring.web.service.EchoService" /> <!--  -->
+  <beans:bean class="jason.app.ibook.filesystem.service.ContactServiceImpl" /> <!--  -->
     <debug />
-<!--  -->    
+    
    <beans:bean id="attributeFactory" class="org.springframework.security.access.expression.method.ExpressionBasedAnnotationAttributeFactory" >
     <beans:constructor-arg ref="expressionHandler" />
   </beans:bean>
-  <beans:bean id="prePostAnnotationSecurityMetadataSource" class="org.springframework.security.access.prepost.PrePostAnnotationSecurityMetadataSource">
+  <beans:bean id="prePostAnnotationSecurityMetadataSource" class="org.ops4j.pax.web.samples.spring.web.controller.PrePostAnnotationSecurityMetadataSource">
     <beans:constructor-arg ref="attributeFactory" />
   </beans:bean>
   <beans:bean class="org.springframework.security.access.intercept.aopalliance.MethodSecurityMetadataSourceAdvisor" >
@@ -38,29 +33,13 @@
     <beans:constructor-arg ref="prePostAnnotationSecurityMetadataSource" />
     <beans:constructor-arg value="prePostAnnotationSecurityMetadataSource" />
   </beans:bean>
-      <global-method-security pre-post-annotations="enabled" metadata-source-ref="prePostAnnotationSecurityMetadataSource"  />
+      <global-method-security pre-post-annotations="enabled" metadata-source-ref="prePostAnnotationSecurityMetadataSource" mode="aspectj"  />
       
   <beans:bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
     <beans:property name="permissionEvaluator" ref="permissionEvaluator" />
     <beans:property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
   </beans:bean> 
 
-    <http pattern="/static/**" security="none"/>
-    <http pattern="/loggedout.jsp" security="none"/>
-
-    <http realm="Contacts Realm"  use-expressions="true">
-        <intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')"/>
-        <intercept-url pattern="/secure/**" access="isAuthenticated()" />
-        <intercept-url pattern="/index.htm" access="isAuthenticated()" />
-        <!--
-             Allow all other requests. In a real application you should
-             adopt a whitelisting approach where access is not allowed by default
-          -->
-        <intercept-url pattern="/**" access="permitAll" />
-        <form-login login-page="/login.jsp"  default-target-url="/index.htm"/>
-        <logout logout-success-url="/loggedout.jsp" delete-cookies="JSESSIONID"/>
-        <remember-me />
-    </http>
 
     <authentication-manager>
        <authentication-provider user-service-ref="customUserDetailService">

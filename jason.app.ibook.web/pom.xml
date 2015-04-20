@@ -39,6 +39,13 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
+        
+                        <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-instrument</artifactId>
+      <version>${spring.version}</version>
+      <scope>provided</scope>
+    </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -189,6 +196,7 @@
                         org.springframework.beans,
                         org.springframework.beans.factory.xml,
                         org.springframework.web.context,
+                         org.springframework.security.access.intercept.aopalliance,
                         	org.springframework.osgi.web.context.support,
                             org.springframework.security.web,
                             org.springframework.security.crypto.bcrypt,
@@ -200,7 +208,10 @@
                                org.springframework.security.web.servletapi,
                             org.springframework.security.web.authentication,
                             org.springframework.security.core.userdetails,
-                            org.springframework.security.access.expression.method,
+ org.springframework.security.access.expression.method,
+ org.springframework.security.access.vote,
+                            org.springframework.security.access.prepost, 
+                            org.springframework.security.access.intercept.aspectj.aspect,   
                             org.springframework.security.acls,
                         	org.springframework.web.servlet.view,
                           org.springframework.security.acls.model,
@@ -211,6 +222,7 @@
                           org.springframework.transaction.annotation,
                           org.springframework.aop,        
                           org.springframework.aop.framework,   
+                          org.springframework.instrument.classloading,
                           org.aopalliance.aop,          
                           javax.transaction,   
                             *; resolution:=optional
