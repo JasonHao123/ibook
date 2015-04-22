@@ -82,7 +82,7 @@ public class RememberMeAuthentication implements Authentication{
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
         // TODO Auto-generated method stub
-        this.authenticated = authenticated;
+        this.authenticated = isAuthenticated;
     }
 
 }
