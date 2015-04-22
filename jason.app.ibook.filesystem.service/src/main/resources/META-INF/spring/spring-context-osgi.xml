@@ -26,16 +26,18 @@
 			http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
-    <osgi:reference id="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
     <osgi:reference id="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
 
     <osgi:reference id="contactDao" interface="jason.app.ibook.filesystem.api.dao.IContactDao" />
     <osgi:service ref="contactService" interface="jason.app.ibook.filesystem.api.service.IContactService" />
     
+       <osgi:reference id="customUserDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
+       <osgi:reference id="aclService" interface="org.springframework.security.acls.model.MutableAclService" />   
+ <!-- 
+
     <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
     <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
-   <osgi:reference id="customUserDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
   <osgi:reference id="encoder" interface="org.springframework.security.crypto.password.PasswordEncoder"/>
-
+ -->
    
 </beans>

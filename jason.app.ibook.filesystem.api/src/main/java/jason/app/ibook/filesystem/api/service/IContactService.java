@@ -34,11 +34,11 @@ public interface IContactService {
  
     public void deletePermission(IContact contact, String recipient, int permission);
 
-    @PreAuthorize("hasRole(supervisor)")
+    @PreAuthorize("hasRole('supervisor')")
     public void create(IContact contact,String username);
 
     public void delete(IContact contact);
-
+    @PreAuthorize("hasRole('supervisor')")
     public List<IContact> getAll();
 
     public IContact getById(Long id);

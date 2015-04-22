@@ -67,6 +67,7 @@ public class IndexController {
      * Security's ACL module.
      */
     @RequestMapping(value="/index.htm", method=RequestMethod.GET)
+    @PreAuthorize("hasRole('supervisor')")
     public ModelAndView displayUserContacts() {
         System.out.println(echo.echo("hello"));
         List<IContact> myContactsList = contactManager.getAll();

@@ -8,12 +8,9 @@ import jason.app.ibook.security.api.service.ISecurityService;
 
 import java.util.List;
 
-import org.springframework.beans.BeansException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.security.access.intercept.aspectj.aspect.AnnotationSecurityAspect;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.acls.domain.AclImpl;
 import org.springframework.security.acls.domain.BasePermission;
 import org.springframework.security.acls.domain.DefaultPermissionFactory;
@@ -22,13 +19,14 @@ import org.springframework.security.acls.domain.PermissionFactory;
 import org.springframework.security.acls.domain.PrincipalSid;
 import org.springframework.security.acls.model.MutableAclService;
 import org.springframework.security.acls.model.ObjectIdentity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("contactService")
-public class ContactServiceImpl implements IContactService,ApplicationContextAware {
+public class ContactServiceImpl implements IContactService {
+    
+    private Logger logger = LoggerFactory.getLogger(ContactServiceImpl.class);
     private PermissionFactory factory = new DefaultPermissionFactory();
 
     @Autowired 
@@ -36,12 +34,10 @@ public class ContactServiceImpl implements IContactService,ApplicationContextAwa
     
     @Autowired
     private ISecurityService securityService;
-    
 
     @Autowired
     private MutableAclService mutableAclService;
 
-    private ApplicationContext context;
     
     public ISecurityService getSecurityService() {
         return securityService;
@@ -70,11 +66,10 @@ public class ContactServiceImpl implements IContactService,ApplicationContextAwa
 
     @Override
     @Transactional
-    @PreAuthorize("hasPermission(#contact, admin)")
     public void addPermission(IContact contact, String recipient, int permission) {
         AclImpl acl = (AclImpl) mutableAclService.readAclById(new ObjectIdentityImpl(Contact.class,
                                                                                      contact.getId()));
-        System.out.println(AnnotationSecurityAspect.class.toString());
+
      //   acl.insertAce(acl.getEntries().size(), factory.buildFromMask(permission), new PrincipalSid(recipient), true);
         securityService.insertAce(acl,factory.buildFromMask(permission),new PrincipalSid(recipient),true);
 
@@ -106,7 +101,6 @@ public class ContactServiceImpl implements IContactService,ApplicationContextAwa
 
     @Override
     @Transactional
-    @PreAuthorize("hasRole(supervisor)")
     public void create(IContact contact,String user) {
         // TODO Auto-generated method stub
         contact = contactDao.create(contact);
@@ -117,7 +111,7 @@ public class ContactServiceImpl implements IContactService,ApplicationContextAwa
 
         AclImpl acl = (AclImpl) mutableAclService.readAclById(new ObjectIdentityImpl(Contact.class,
                                                                                      contact.getId()));
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+//        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         securityService.insertAce(acl,BasePermission.ADMINISTRATION,new PrincipalSid(user),true);
        // acl.insertAce(acl.getEntries().size(),BasePermission.ADMINISTRATION , new PrincipalSid(SecurityContextHolder.getContext().getAuthentication().getName()), true);
 
@@ -134,10 +128,7 @@ public class ContactServiceImpl implements IContactService,ApplicationContextAwa
 
     @Override
     public List<IContact> getAll() {
-
-        if(context!=null) {
-        //   System.out.println(context.getBean(PrePostInvocationAttributeFactory.class));
-        }
+        logger.info("loading all contacts!");
         return contactDao.findAll();
     }
 
@@ -152,11 +143,5 @@ public class ContactServiceImpl implements IContactService,ApplicationContextAwa
         // TODO Auto-generated method stub
         return null;
     }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        // TODO Auto-generated method stub
-        this.context =applicationContext;
-    } 
 
 }

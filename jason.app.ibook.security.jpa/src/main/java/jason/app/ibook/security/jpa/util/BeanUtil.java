@@ -13,13 +13,16 @@ import jason.app.ibook.security.jpa.entity.AclClassImpl;
 import jason.app.ibook.security.jpa.entity.AclEntryImpl;
 import jason.app.ibook.security.jpa.entity.AclObjectIdentityImpl;
 import jason.app.ibook.security.jpa.entity.AclSidImpl;
+import jason.app.ibook.security.jpa.entity.RememberMeTokenImpl;
 import jason.app.ibook.security.jpa.entity.RoleImpl;
 import jason.app.ibook.security.jpa.entity.UserImpl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.security.acls.model.ObjectIdentity;
+import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 
 public class BeanUtil {
 
@@ -203,6 +206,21 @@ public class BeanUtil {
             users.add(usr.getName());
         }
         return users;
+    }
+
+    public static RememberMeTokenImpl toRemberMeTokenImpl(PersistentRememberMeToken token) {
+        // TODO Auto-generated method stub
+        RememberMeTokenImpl token2 = new RememberMeTokenImpl();
+        token2.setDate(token.getDate());
+        token2.setSeries(token.getSeries());
+        token2.setTokenValue(token.getTokenValue());
+        
+        return token2;
+    }
+
+    public static PersistentRememberMeToken toPersistentRememberMeToken(RememberMeTokenImpl token) {
+        if(token==null) return null;
+        return new PersistentRememberMeToken(token.getUser()==null?null:token.getUser().getUsername(), token.getSeries(), token.getTokenValue(), token.getDate());
     }
 
 }

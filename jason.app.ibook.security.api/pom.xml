@@ -21,12 +21,25 @@
     <aries.osgi.export.pkg>
       jason.app.ibook.security.api.dao,
       jason.app.ibook.security.api.model,
-      jason.app.ibook.security.api.service
+      jason.app.ibook.security.api.service,
+      jason.app.ibook.security.api.util
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
     <aries.osgi.import.pkg>
       org.springframework.security.acls.model,
-      org.springframework.security.acls.domain
+      org.springframework.security.acls.domain,
+      javax.servlet,
+      javax.servlet.http, 
+      org.slf4j, 
+      org.springframework.security.web.authentication.logout,
+      org.springframework.security.core,
+       org.springframework.security.web.authentication.rememberme,
+        org.springframework.web.context,
+        org.springframework.security.authentication, org.springframework.security.authentication.dao,
+        org.springframework.security.web,
+        org.springframework.security.core.context, 
+         org.springframework.web.context.support,
+         org.springframework.security.core.userdetails, org.springframework.security.crypto.codec
     </aries.osgi.import.pkg>
   </properties>
   <dependencies>
@@ -36,5 +49,33 @@
         <version>${spring.security.version}</version>
         <scope>compile</scope>
       </dependency>
+            <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-core</artifactId>
+        <version>${spring.security.version}</version>
+        <scope>compile</scope>
+      </dependency>
+            <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+        <version>${spring.security.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>3.2.11.RELEASE</version>
+      </dependency>
+        <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+
+     <scope>provided</scope>
+</dependency>
   </dependencies>
 </project>

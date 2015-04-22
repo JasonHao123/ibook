@@ -23,7 +23,10 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  
+         <listener>
+
+        <listener-class>jason.app.ibook.security.api.service.SpringSecurityHttpSessionListener</listener-class>
+    </listener> 
       <filter>
         <filter-name>encoding-filter</filter-name>
         <filter-class>
@@ -53,6 +56,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
+
 
     <filter-mapping>
       <filter-name>springSecurityFilterChain</filter-name>

@@ -15,4 +15,6 @@ public interface ISecurityService {
     public List<String> getAllUsernames();
 
     public void insertAce(AclImpl acl, Permission permission, PrincipalSid principalSid, boolean b);
+
+    public void removePersistenceAuthenticationByKey(String key);
 }

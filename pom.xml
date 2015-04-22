@@ -592,8 +592,6 @@
     <module>jason.app.ibook.filesystem.jpa</module>
     <module>jason.app.ibook.filesystem.service</module>
     <module>jason.app.ibook.web</module>
-
-
   </modules>
   <build>
     <plugins>

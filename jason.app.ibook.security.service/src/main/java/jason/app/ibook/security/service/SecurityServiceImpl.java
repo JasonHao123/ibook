@@ -1,5 +1,6 @@
 package jason.app.ibook.security.service;
 
+import jason.app.ibook.security.api.dao.IRememberMeTokenDao;
 import jason.app.ibook.security.api.dao.IUserDao;
 import jason.app.ibook.security.api.model.IUser;
 import jason.app.ibook.security.api.service.ISecurityService;
@@ -15,7 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class SecurityServiceImpl implements ISecurityService {
     private IUserDao userDao;
     private PasswordEncoder encoder;
+    private IRememberMeTokenDao rememberMeDao;
     
+    public IRememberMeTokenDao getRememberMeDao() {
+        return rememberMeDao;
+    }
+    public void setRememberMeDao(IRememberMeTokenDao rememberMeDao) {
+        this.rememberMeDao = rememberMeDao;
+    }
     public PasswordEncoder getEncoder() {
         return encoder;
     }
@@ -44,6 +52,11 @@ public class SecurityServiceImpl implements ISecurityService {
     public void insertAce(AclImpl acl, Permission permission, PrincipalSid principalSid, boolean granting) {
         // TODO Auto-generated method stub
         acl.insertAce(acl.getEntries().size(), permission, principalSid, granting);
+    }
+    @Override
+    public void removePersistenceAuthenticationByKey(String key) {
+        // TODO Auto-generated method stub
+        rememberMeDao.removeUserTokens(key);
     }
 
 }

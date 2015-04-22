@@ -38,6 +38,14 @@
     <jpa:context property="entityManager" unitname="ibookSecurityPU" />
   </bean>
 
+    <bean id="rememberMeDao"
+    class="jason.app.ibook.security.jpa.RememberMeTokenDaoImpl">
+    <tx:transaction method="create*" value="Required" />
+    <tx:transaction method="update*" value="Required" />
+    <tx:transaction method="delete*" value="Required" />
+    <tx:transaction method="remove*" value="Required" />
+    <jpa:context property="entityManager" unitname="ibookSecurityPU" />
+  </bean>
 
 	<service ref="userDao"
 		interface="jason.app.ibook.security.api.dao.IUserDao">
@@ -45,6 +53,8 @@
     <service ref="aclDao"
     interface="jason.app.ibook.security.api.dao.IAclDao">
   </service>
-
+    <service ref="rememberMeDao"
+    interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao">
+  </service>
 
 </blueprint>

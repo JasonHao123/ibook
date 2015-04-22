@@ -193,6 +193,7 @@
                         jason.app.ibook.filesystem.api.service,
                         jason.app.ibook.security.api.dao,
                         jason.app.ibook.security.api.service,
+                         org.springframework.security.web.context,
                         org.springframework.beans,
                         org.springframework.beans.factory.xml,
                         org.springframework.web.context,

@@ -33,6 +33,7 @@
     <class>jason.app.ibook.security.jpa.entity.AclEntryImpl</class>
     <class>jason.app.ibook.security.jpa.entity.AclObjectIdentityImpl</class>
     <class>jason.app.ibook.security.jpa.entity.AclSidImpl</class>
+    <class>jason.app.ibook.security.jpa.entity.RememberMeTokenImpl</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     
     
