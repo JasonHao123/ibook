@@ -22,7 +22,7 @@ public class SpringSecurityHttpSessionListener  implements HttpSessionListener{
     protected String generateSeriesData() {
         byte[] newSeries = new byte[seriesLength];
         random.nextBytes(newSeries);
-        return new String(Base64.encode(newSeries)).replace(" ", "");
+        return new String(Base64.encode(newSeries)).replace(" ", "").replace("+", "").replace("?", "");
     }
     
     @Override

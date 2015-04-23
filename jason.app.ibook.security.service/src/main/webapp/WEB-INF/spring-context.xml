@@ -82,12 +82,12 @@
   <constructor-arg  ref="userDetailService" />
   <constructor-arg  ref="rememberMeDao" />
 </bean>
-<!-- 
-<bean id="authenticationProvider" class="jason.app.ibook.security.service.web.SSOAuthenticationProvider" >
+
+<bean id="authenticationProvider" class="jason.app.ibook.security.api.service.SSOAuthenticationProvider" >
   <property name="passwordEncoder" ref="encoder" />
   <property name="userDetailsService" ref="userDetailService" />  
 </bean>
- -->
+
 <bean id="contextRepository" class="jason.app.ibook.security.service.web.AdvancedHttpSessionSecurityContextRepository" >
   <property name="authDao" ref="rememberMeDao" />
   <property name="userDetailService" ref="userDetailService" />

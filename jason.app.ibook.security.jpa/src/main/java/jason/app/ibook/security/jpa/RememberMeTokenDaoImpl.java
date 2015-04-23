@@ -6,8 +6,10 @@ import jason.app.ibook.security.jpa.entity.UserImpl;
 import jason.app.ibook.security.jpa.util.BeanUtil;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 
@@ -51,9 +53,18 @@ public class RememberMeTokenDaoImpl implements IRememberMeTokenDao {
     @Override
     public void removeUserTokens(String series) {
         // TODO Auto-generated method stub
-        RememberMeTokenImpl token = em.find(RememberMeTokenImpl.class, series);
-        if(token!=null) {
-            em.remove(token);
+        if(series.endsWith("==")) {
+            RememberMeTokenImpl token = em.find(RememberMeTokenImpl.class, series);
+            if(token!=null) {
+                em.remove(token);
+            }
+        }else {
+            Query query = em.createQuery("select t from RememberMeTokenImpl t where t.user.username = :user and t.tokenValue is not null");
+            query.setParameter("user", series);
+            List<RememberMeTokenImpl> result = query.getResultList();
+            for(RememberMeTokenImpl token:result) {
+                em.remove(token);
+            }
         }
     }
 

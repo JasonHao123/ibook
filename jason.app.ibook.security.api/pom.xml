@@ -22,7 +22,8 @@
       jason.app.ibook.security.api.dao,
       jason.app.ibook.security.api.model,
       jason.app.ibook.security.api.service,
-      jason.app.ibook.security.api.util
+      jason.app.ibook.security.api.util,
+      jason.app.ibook.security.api.exception
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
     <aries.osgi.import.pkg>

@@ -46,9 +46,11 @@
     </http>
 
     <authentication-manager alias="authenticationManager">
-       <authentication-provider user-service-ref="userDetailService">
+    <authentication-provider ref="authenticationProvider" />
+<!--       <authentication-provider user-service-ref="userDetailService">
             <password-encoder ref="encoder"/>    
-        </authentication-provider>          
+        </authentication-provider>   
+         -->        
     </authentication-manager>
 
 </beans:beans>

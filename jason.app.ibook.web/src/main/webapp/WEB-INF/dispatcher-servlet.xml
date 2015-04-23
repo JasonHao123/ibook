@@ -27,10 +27,7 @@ xmlns:tx="http://www.springframework.org/schema/tx"
   <tx:annotation-driven transaction-manager="jtaTransactionManager" />
 
   <mvc:annotation-driven/>
- <!--  <bean name="/helloWorld.do" class="org.ops4j.pax.web.samples.spring.controller.HelloWorldController"> 
-   <property name="service" ref="bookingProcessors" /> 
-    </bean>
--->
+
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
