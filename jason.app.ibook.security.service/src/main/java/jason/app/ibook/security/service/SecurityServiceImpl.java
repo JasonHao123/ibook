@@ -57,7 +57,7 @@ public class SecurityServiceImpl implements ISecurityService {
     @Transactional
     public IUser createUser(String username, String password, List<String> roles) throws UserAlreadyExistException{
         // TODO Auto-generated method stub
-        return userDao.createUser(username, encoder.encode(password), roles);
+        return userDao.createUser(username, encoder.encode(password), roles,true);
     }
     @Override
     public List<String> getAllUsernames() {

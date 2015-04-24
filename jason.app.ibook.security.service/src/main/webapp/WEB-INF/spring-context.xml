@@ -30,6 +30,7 @@
     <property name="userDao" ref="userDao" />
     <property name="encoder" ref="encoder" />
     <property name="rememberMeDao" ref="rememberMeDao" />
+    <property name="authenticationProvider" ref="authenticationProvider" />
   </bean>
 
   <bean id="aclCache" class="jason.app.ibook.security.service.EhCacheBasedAclCache">

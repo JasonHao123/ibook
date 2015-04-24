@@ -25,10 +25,11 @@ public class UserDaoImpl implements IUserDao {
         em = e;
     }
     
-    public IUser createUser(String username,String password,List<String> roles) {
+    public IUser createUser(String username,String password,List<String> roles,boolean enabled) {
         UserImpl a = new UserImpl();
         a.setUsername(username);
         a.setPassword(password);
+        a.setEnabled(enabled);
         if(roles!=null) {
             List<RoleImpl> roles2 = new ArrayList<RoleImpl>();
             for(String role:roles) {
@@ -43,6 +44,7 @@ public class UserDaoImpl implements IUserDao {
             a.setRoles(roles2);
         }
         em.persist(a);
+        em.flush();
         return a;
     }
 
@@ -55,7 +57,7 @@ public class UserDaoImpl implements IUserDao {
             User usr = new User();
             usr.setUsername(user.getUsername());
             usr.setPassword(user.getPassword());
-            usr.setEnabled(true);
+            usr.setEnabled(user.isEnabled());
             if(user.getRoles()!=null) {
                 List<IRole> roles = new ArrayList<IRole>();
                 for(IRole role:user.getRoles()) {

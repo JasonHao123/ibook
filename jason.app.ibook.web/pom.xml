@@ -11,7 +11,7 @@
   <url>http://maven.apache.org</url>
   
       <properties>
-        <bundle.symbolicName>org.ops4j.pax.web.samples.spring</bundle.symbolicName>
+        <bundle.symbolicName>jason.app.ibook.web</bundle.symbolicName>
         <bundle.namespace>org.ops4j.pax.web.samples</bundle.namespace>
         <spring.version>3.2.11.RELEASE</spring.version>
         <spring.security.version>3.1.7.RELEASE</spring.security.version>
@@ -154,6 +154,13 @@
       <version>1.1.2</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.tiles</groupId>
+      <artifactId>tiles-jsp</artifactId>
+      <version>2.2.2</version>
+      <scope>provided</scope>
+    </dependency>
     </dependencies>
 
     <build>
@@ -193,7 +200,15 @@
                         jason.app.ibook.filesystem.api.service,
                         jason.app.ibook.security.api.dao,
                         jason.app.ibook.security.api.service,
+                        jason.app.ibook.security.api.tiles2,
+                        org.apache.tiles.evaluator,
+                        org.apache.tiles.jsp.taglib,
+                        org.apache.tiles.jsp.context,
+                        org.apache.tiles.servlet.context,
+                        org.apache.tiles,
+                        org.springframework.web.servlet.view.tiles2,
                          org.springframework.security.web.context,
+                          org.springframework.security.access,
                         org.springframework.beans,
                         org.springframework.beans.factory.xml,
                         org.springframework.web.context,

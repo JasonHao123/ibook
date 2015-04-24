@@ -8,7 +8,7 @@ import java.util.List;
 public interface IUserDao {
 
     IUser findByUsername(String username);
-    public IUser createUser(String username,String password,List<String> roles);
+    public IUser createUser(String username,String password,List<String> roles,boolean enabled);
 
     public List<String> findAllPrincipals();
 

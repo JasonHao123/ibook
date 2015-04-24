@@ -27,6 +27,18 @@ public class UserImpl implements IUser {
     @Column
     private String password;
     
+    @Column
+    private boolean enabled;
+    
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
     /** The blog entries posted by this user */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="USER_ROLES")
@@ -53,12 +65,6 @@ public class UserImpl implements IUser {
         this.password = password;
     }
 
-    @Override
-    @Transient
-    public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        return true;
-    }
 
     @Override
     public List<IRole> getRoles() {

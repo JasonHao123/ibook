@@ -9,7 +9,7 @@
   <head>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" href="<c:url value='/static/css/tutorial.css'/>" type="text/css" />
-      <title>Home Page</title>
+      <title>User desktop</title>
   </head>
 <body>
 <div id="content">

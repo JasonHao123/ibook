@@ -34,7 +34,7 @@
   <beans:property name="passwordEncoder" ref="encoder" />
   <beans:property name="userDetailsService" ref="customUserDetailService" />  
 </beans:bean>
-  <beans:bean class="org.ops4j.pax.web.samples.spring.web.service.EchoService" /> <!--  -->
+  
     <debug />
 
       <global-method-security pre-post-annotations="enabled"   />
@@ -44,28 +44,21 @@
     <beans:property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
   </beans:bean> 
 
-    <http pattern="/static/**" security="none"/>
-    <http pattern="/loggedout.jsp" security="none"/>
+    <http pattern="/resources/**" security="none"/>
 
     <http realm="Contacts Realm"  use-expressions="true" entry-point-ref="entryPoint" security-context-repository-ref="contextRepo" >
-        <intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')"/>
-        <intercept-url pattern="/secure/**" access="isAuthenticated()" />
-        <intercept-url pattern="/index.htm" access="isAuthenticated()" />
+
         <!--
              Allow all other requests. In a real application you should
              adopt a whitelisting approach where access is not allowed by default
           -->
         <intercept-url pattern="/**" access="permitAll" />
-<!--       <form-login login-page="../security/login.jsp"  default-target-url="/index.htm"/> -->  
-        <logout logout-url="" delete-cookies="JSESSIONID" success-handler-ref="logoutHandler"/>
+
+        <logout delete-cookies="JSESSIONID" success-handler-ref="logoutHandler"/>
         <remember-me  token-repository-ref="rememberMeDao"/>
     </http>
     <authentication-manager>
-    <!--  
-       <authentication-provider user-service-ref="customUserDetailService">
-            <password-encoder ref="encoder"/>    
-        </authentication-provider>
-        -->
+
         <authentication-provider ref="authenticationProvider" />
         
     </authentication-manager>

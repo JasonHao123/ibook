@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -63,31 +64,28 @@ public class SignUpController {
             return "signup";
         }
 
-        if(userDetailsService.loadUserByUsername(signupForm.getUsername())==null) {
-            User user = new User();
-            user.setUsername(signupForm.getUsername());
-            user.setPassword(signupForm.getPassword());
-//            user.setNickname(signupForm.getNickname());
-            user.setEnabled(true);
+        try {
+            userDetailsService.loadUserByUsername(signupForm.getUsername());
+            result.rejectValue("username", "validate.err.username", "User is already exist!");
+            signupForm.setPassword("");
+            signupForm.setPasswordAgain("");         
+            return "signup";
+        }catch(UsernameNotFoundException e) {
+
             try {
                 facade.createUser(signupForm.getUsername(), signupForm.getPassword(), Arrays.asList(new String[]{"ROLE_USER"}));
                 // password encoded in signup, need to reset again
                 //user.setPassword(signupForm.getPassword());
                 facade.login(request,response,signupForm.getUsername(), signupForm.getPassword());
-            } catch (UserAlreadyExistException e) {
+            } catch (UserAlreadyExistException ee) {
                 result.rejectValue("username", "validate.err.username", "User is already exist!");
                 signupForm.setPassword("");
                 signupForm.setPasswordAgain("");         
                 return "signup";
             }
 
-        }else {
-            result.rejectValue("username", "validate.err.username", "User is already exist!");
-            signupForm.setPassword("");
-            signupForm.setPasswordAgain("");         
-            return "signup";
         }
         
-        return "redirect:/spring/";
+        return "redirect:/";
     }
 }
