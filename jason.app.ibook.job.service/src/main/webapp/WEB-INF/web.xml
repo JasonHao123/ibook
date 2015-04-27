@@ -68,19 +68,19 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		 <url-pattern>/*</url-pattern>
+		 <url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-  
-  
-    <jsp-config>
-  <taglib>
-  <taglib-uri>
-    http://tiles.apache.org/tags-tiles
-  </taglib-uri>
-  <taglib-location>
-    /WEB-INF/tiles-jsp.tld
-  </taglib-location>
-</taglib>
-</jsp-config>
 
+
+
+  <servlet>
+    <servlet-name>CamelServlet</servlet-name>
+    <servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CamelServlet</servlet-name>
+    <url-pattern>/camel/*</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -34,13 +34,9 @@
     <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
      <osgi:reference id="rememberMeDao" interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao" />
           <osgi:reference id="contextRepo" interface="org.springframework.security.web.context.SecurityContextRepository" />
-
-
-<osgi:reference id="locationDao"
-    interface="jason.app.ibook.commons.api.dao.ICategoryDao" />
-    
- <osgi:service ref="locationService"
-    interface="jason.app.ibook.commons.api.service.ILocationService" />
-    
+ <!--  
+ <osgi:service ref="companyService"
+    interface="jason.app.ibook.commons.api.service.ICompanyService" />
+ -->     
    
 </beans>
