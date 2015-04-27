@@ -40,6 +40,9 @@ public class SSOAuthenticationEntryPoint implements AuthenticationEntryPoint {
 //                        SecurityContextHolder.getContext().setAuthentication(auth2);
 //                    }else {
                         String appUrl = request.getRequestURL().toString();
+                        if(request.getQueryString()!=null) {
+                            appUrl = appUrl+"?"+request.getQueryString();
+                        }
                         response.sendRedirect("http://localhost:8181/security/check.do?token="+contextKey+"&redirect="+URLEncoder.encode(appUrl));
  
 //                    }

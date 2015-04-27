@@ -140,13 +140,6 @@
       <version>${spring.security.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>jason.app.ibook</groupId>
-      <artifactId>jason.app.ibook.filesystem.api</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <type>bundle</type>
-      <scope>provided</scope>
-    </dependency>
         <dependency>
       <groupId>jason.app.ibook</groupId>
       <artifactId>jason.app.ibook.security.api</artifactId>

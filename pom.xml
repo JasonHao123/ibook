@@ -583,15 +583,24 @@
     </dependencyManagement>
 
   <modules>
-    <module>jason.app.ibook.api</module>
-    <module>jason.app.ibook.datasource</module>
+    <module>jason.app.ibook.commons.api</module>
+    <module>jason.app.ibook.commons.jpa</module>
+    <module>jason.app.ibook.commons.service</module>
+    
     <module>jason.app.ibook.security.api</module>
     <module>jason.app.ibook.security.jpa</module>
     <module>jason.app.ibook.security.service</module>
-    <module>jason.app.ibook.filesystem.api</module>
-    <module>jason.app.ibook.filesystem.jpa</module>
-    <module>jason.app.ibook.filesystem.service</module>
+
     <module>jason.app.ibook.web</module>
+    
+    <module>jason.app.ibook.job.api</module>
+    <module>jason.app.ibook.job.jpa</module>
+    <module>jason.app.ibook.job.service</module>
+    
+    <module>jason.app.ibook.user.api</module>
+    <module>jason.app.ibook.user.jpa</module>
+    <module>jason.app.ibook.user.service</module>
+
   </modules>
   <build>
     <plugins>

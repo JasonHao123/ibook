@@ -128,13 +128,6 @@
       <version>${spring.security.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>jason.app.ibook</groupId>
-      <artifactId>jason.app.ibook.filesystem.api</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <type>bundle</type>
-      <scope>provided</scope>
-    </dependency>
         <dependency>
       <groupId>jason.app.ibook</groupId>
       <artifactId>jason.app.ibook.security.api</artifactId>
@@ -196,8 +189,6 @@
                         <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Import-Package>
-                        jason.app.ibook.filesystem.api.dao,
-                        jason.app.ibook.filesystem.api.service,
                         jason.app.ibook.security.api.dao,
                         jason.app.ibook.security.api.service,
                         jason.app.ibook.security.api.tiles2,

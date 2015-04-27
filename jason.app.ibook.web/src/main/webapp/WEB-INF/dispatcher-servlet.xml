@@ -15,8 +15,7 @@ xmlns:tx="http://www.springframework.org/schema/tx"
                          http://www.springframework.org/schema/context
                          http://www.springframework.org/schema/context/spring-context-3.0.xsd">
    <osgi:reference id="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
-      <osgi:reference id="contactService" interface="jason.app.ibook.filesystem.api.service.IContactService" />
-   
+
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
   <context:component-scan base-package="jason.app.ibook.web.controller" />
@@ -31,6 +30,9 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 
 
   <mvc:view-controller path="/index.htm" view-name="index"/>
+  <mvc:view-controller path="/user/home.htm" view-name="user.portal"/>
+  <mvc:view-controller path="/user/company/register.htm" view-name="company.register"/>
+  
   <bean id="tilesConfigurer" class="jason.app.ibook.security.api.tiles2.TilesConfigurer">
     <property name="definitions">
       <list>

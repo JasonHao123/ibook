@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://jsp.apache.org/dtds/jsp-config_2_0.dtd">
+<tiles-definitions>
+  <definition name="job.detail" extends="base.definition">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/job/content.jsp" />
+  </definition>
+
+
+</tiles-definitions>
