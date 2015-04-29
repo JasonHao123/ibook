@@ -43,7 +43,7 @@ public class SSOLogoutSuccessHandler implements LogoutSuccessHandler {
         String context = request.getContextPath();
         String redirect2 = appUrl.substring(0,appUrl.indexOf(context)+context.length())+redirectUrl;
         
-        response.sendRedirect("http://localhost:8181/security/logout.do?redirect="+URLEncoder.encode(redirect2));
+        response.sendRedirect("http://localhost:8181/security/logout.do?redirect="+URLEncoder.encode(redirect2,"UTF-8"));
     }
 
 }

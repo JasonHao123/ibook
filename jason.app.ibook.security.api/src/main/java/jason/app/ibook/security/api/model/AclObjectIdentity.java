@@ -5,7 +5,12 @@ import java.util.List;
 
 public class AclObjectIdentity implements IAclObjectIdentity{
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7409196152221551188L;
+
+	private Long id;
 
     private IAclClass objIdClass;
 

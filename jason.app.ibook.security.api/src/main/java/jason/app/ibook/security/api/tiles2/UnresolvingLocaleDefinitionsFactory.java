@@ -66,6 +66,7 @@ import org.apache.tiles.locale.LocaleResolver;
  * @version $Rev: 822631 $ $Date: 2009-10-07 11:21:12 +0200 (mer, 07 ott 2009) $
  * @since 2.2.1
  */
+@SuppressWarnings("deprecation")
 public class UnresolvingLocaleDefinitionsFactory implements DefinitionsFactory,
         TilesApplicationContextAware {
 
@@ -118,12 +119,14 @@ public class UnresolvingLocaleDefinitionsFactory implements DefinitionsFactory,
     /** {@inheritDoc} */
     public Definition getDefinition(String name,
             TilesRequestContext tilesContext) {
-        Locale locale = null;
+/**
+ * TODO there was bug related to locale, it will try to locate definition files with locale name
+    	Locale locale = null;
 
         if (tilesContext != null) {
             locale = localeResolver.resolveLocale(tilesContext);
         }
-
+*/
         return definitionDao.getDefinition(name, null);
     }
 
