@@ -18,7 +18,38 @@
     <dependency.bndlib.version>2.3.0</dependency.bndlib.version>
   </properties>
   <dependencies>
-
+  <dependency>
+    <groupId>org.apache.servicemix.bundles</groupId>
+    <artifactId>org.apache.servicemix.bundles.noggit</artifactId>
+    <version>0.5_1</version>
+    <scope>provided</scope>
+</dependency>
+  <dependency>
+  <groupId>org.apache.httpcomponents</groupId>
+  <artifactId>httpclient-osgi</artifactId>
+  <version>4.3.3</version>
+  <scope>provided</scope>
+</dependency>
+  
+  <dependency>
+    <groupId>org.apache.servicemix.bundles</groupId>
+    <artifactId>org.apache.servicemix.bundles.solr-solrj</artifactId>
+    <version>4.10.3_1</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.camel</groupId>
+    <artifactId>camel-solr</artifactId>
+    <version>2.14.1</version>
+    <!-- use the same version as your Camel core version -->
+    <exclusions>
+      <exclusion>
+        <artifactId>jaxb-impl</artifactId>
+        <groupId>com.sun.xml.bind</groupId>
+      </exclusion>
+    </exclusions>
+    <scope>provided</scope>
+</dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring</artifactId>
@@ -224,6 +255,8 @@
               jason.app.ibook.security.api.dao,
               jason.app.ibook.security.api.service,
               org.apache.camel,
+              org.noggit,
+              org.apache.camel.component.solr,
 org.apache.camel.component.spring.security,
 org.apache.camel.component.servlet,
 org.apache.camel.spring,

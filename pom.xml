@@ -600,7 +600,7 @@
     <module>jason.app.ibook.user.api</module>
     <module>jason.app.ibook.user.jpa</module>
     <module>jason.app.ibook.user.service</module>
-
+    <module>jason.app.ibook.feature</module>
   </modules>
   <build>
     <plugins>

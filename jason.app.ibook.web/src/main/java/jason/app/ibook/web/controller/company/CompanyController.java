@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/company")
 public class CompanyController {
 
+    @RequestMapping("/list")
     public String list(Model model, @RequestParam(value = "location", required = false) Long location,
             @RequestParam(value = "industry", required = false) Long industry, 
             @RequestParam(value = "type", required = false) Long type,

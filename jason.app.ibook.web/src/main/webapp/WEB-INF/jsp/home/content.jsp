@@ -13,7 +13,7 @@
 </form>
  <div class="j_myOperating">
     <div id="newfeed" class="j_boxe">
-        <a onclick="CorporateIntent();">
+        <a href="<c:url value="/company/list.htm" />">
             <img src="<c:url value="/resources/img/4.2_homeIcon_1.png"/>">
             <span>企业名录</span>
         </a>

@@ -1,0 +1,125 @@
+karaf@root> list
+START LEVEL 100 , List Threshold: 50
+   ID   State         Blueprint      Spring    Level  Name
+[  81] [Active     ] [            ] [       ] [   50] geronimo-annotation_1.0_sp
+ec (1.1.1)
+[  82] [Active     ] [            ] [       ] [   50] geronimo-jms_1.1_spec (1.1
+.1)
+[  83] [Active     ] [            ] [       ] [   50] geronimo-j2ee-management_1
+.1_spec (1.0.1)
+[  84] [Active     ] [            ] [       ] [   50] JAXB2 Basics - Runtime (0.
+6.4)
+[  85] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Bundl
+es :: jaxb-impl (2.2.1.1_2)
+[  86] [Active     ] [            ] [       ] [   50] Commons Pool (1.6.0)
+[  87] [Active     ] [            ] [       ] [   50] Commons Net (3.3.0)
+[  88] [Active     ] [            ] [       ] [   50] ZooKeeper Bundle (3.4.5)
+[  89] [Active     ] [            ] [       ] [   50] Apache XBean :: Spring (3.
+16.0)
+[  90] [Active     ] [Created     ] [       ] [   50] activemq-osgi (5.10.0)
+[  91] [Active     ] [Created     ] [       ] [   50] activemq-karaf (5.10.0)
+[  92] [Active     ] [            ] [       ] [   50] Commons Collections (3.2.1
+)
+[  93] [Active     ] [            ] [       ] [   50] Commons Lang (2.6)
+[  94] [Active     ] [            ] [       ] [   50] Commons Codec (1.4)
+[  95] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Bundl
+es :: velocity (1.7.0.6)
+[  96] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Bundl
+es :: jasypt (1.9.1.1)
+[  97] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Specs
+ :: Stax API 1.0 (1.9.0)
+[  98] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Bundl
+es :: xpp3 (1.1.0.4c_5)
+[  99] [Active     ] [            ] [       ] [   50] Joda-Time (1.6.2)
+[ 100] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Bundl
+es :: xstream (1.4.7.1)
+[ 101] [Active     ] [            ] [       ] [   50] Apache Aries Transaction M
+anager (1.0.0)
+[ 102] [Active     ] [            ] [       ] [   50] geronimo-j2ee-connector_1.
+5_spec (2.0.0)
+[ 103] [Active     ] [            ] [       ] [   50] Apache Aries Util (1.0.0)
+[ 104] [Active     ] [            ] [       ] [   50] activeio-core (3.1.4)
+[ 105] [Active     ] [            ] [       ] [   50] jettison (1.3.5)
+[ 106] [Active     ] [            ] [       ] [   50] Jackson JSON processor (1.
+9.12)
+[ 107] [Active     ] [            ] [       ] [   50] Data mapper for Jackson JS
+ON processor (1.9.12)
+[ 108] [Active     ] [            ] [       ] [   50] Scala Standard Library (2.
+11.0.v20140415-163722-cac6383e66)
+[ 116] [Active     ] [            ] [       ] [   50] camel-core (2.14.1)
+[ 117] [Active     ] [Created     ] [       ] [   50] camel-karaf-commands (2.14
+.1)
+[ 118] [Active     ] [            ] [       ] [   50] camel-jms (2.14.1)
+[ 124] [Active     ] [            ] [       ] [   50] camel-spring (2.14.1)
+[ 125] [Active     ] [Created     ] [       ] [   50] camel-blueprint (2.14.1)
+[ 126] [Active     ] [            ] [       ] [   50] activemq-camel (5.10.0)
+[ 197] [Active     ] [Created     ] [       ] [   50] camel-cxf-transport (2.14.
+1)
+[ 198] [Active     ] [Created     ] [       ] [   50] camel-cxf (2.14.1)
+[ 199] [Active     ] [Created     ] [       ] [   50] Apache ServiceMix :: Activ
+eMQ :: Service (5.4.0)
+[ 200] [Active     ] [Created     ] [       ] [   50] Apache ServiceMix :: Activ
+eMQ :: Camel (5.4.0)
+[ 219] [Active     ] [Created     ] [       ] [   80] Apache Karaf :: JNDI :: Co
+mmand (2.4.1)
+[ 253] [Active     ] [            ] [       ] [   80] Oracle Corporation's JDBC
+Driver for MySQL (5.1.35)
+[ 256] [Active     ] [            ] [       ] [   80] Apache ServiceMix :: Bundl
+es :: aspectj (1.7.4.1)
+[ 357] [Active     ] [            ] [       ] [   80] Apache ServiceMix :: Bundl
+es :: commons-dbcp (1.4.0.3)
+[ 358] [Active     ] [            ] [       ] [   80] Apache XBean :: ASM 4 shad
+ed (repackaged) (3.16.0)
+[ 359] [Active     ] [            ] [       ] [   80] Apache ServiceMix :: Bundl
+es :: serp (1.14.1.1)
+[ 360] [Active     ] [            ] [       ] [   80] Apache ServiceMix :: Bundl
+es :: ant (1.7.0.6)
+[ 370] [Active     ] [            ] [       ] [   80] Spring Security Aspects (3
+.1.4.RELEASE)
+[ 373] [Active     ] [            ] [       ] [   80] OPS4J Pax JDBC org.osgi.se
+rvice.jdbc (0.5.0)
+[ 382] [Active     ] [            ] [       ] [   80] OPS4J Pax JDBC MySQL Drive
+r Adapter (0.5.0)
+[ 383] [Active     ] [            ] [       ] [   80] OPS4J Pax JDBC Config (0.5
+.0)
+[ 384] [Active     ] [            ] [       ] [   80] Apache Aries Transaction E
+nlisting JDBC Datasource (2.1.0)
+[ 385] [Active     ] [            ] [       ] [   80] Apache Geronimo JSR-303 Be
+an Validation Spec API (1.1)
+[ 386] [Active     ] [            ] [       ] [   80] Geronimo TxManager :: Conn
+ector (3.1.1)
+[ 387] [Active     ] [            ] [       ] [   80] J2EE Connector 1.6 (1.0)
+[ 388] [Active     ] [            ] [       ] [   80] OPS4J Pax JDBC Pooling sup
+port using Aries Transaction JDBC (0.5.0)
+[ 412] [Active     ] [            ] [       ] [   50] camel-spring-security (2.1
+4.1)
+[ 415] [Active     ] [            ] [       ] [   50] Apache ServiceMix :: Bundl
+es :: commons-httpclient (3.1.0.7)
+[ 416] [Active     ] [            ] [       ] [   50] camel-http (2.14.1)
+[ 417] [Active     ] [            ] [       ] [   50] camel-servlet (2.14.1)
+[ 434] [Active     ] [            ] [       ] [   80] Tiles - API (2.2.2)
+[ 435] [Active     ] [            ] [       ] [   80] Tiles - Core Library (2.2.
+2)
+[ 442] [Active     ] [            ] [       ] [   80] Commons Digester (2.1)
+[ 444] [Active     ] [            ] [       ] [   80] Commons BeanUtils (1.8.3)
+[ 445] [Active     ] [            ] [       ] [   80] Tiles - Servlet support (2
+.2.2)
+[ 448] [Active     ] [            ] [       ] [   80] Tiles - EL support (2.2.2)
+
+[ 449] [Active     ] [            ] [       ] [   80] Tiles - JSP support (2.2.2
+)
+[ 450] [Active     ] [            ] [       ] [   80] Tiles - Template Technolog
+ies Support (2.2.2)
+[ 457] [Active     ] [            ] [       ] [   80] Apache Geronimo Tomcat for
+k: Jasper-el (6.0.35.1)
+[ 462] [Active     ] [            ] [       ] [   80] camel-solr (2.14.1)
+[ 467] [Active     ] [            ] [       ] [   80] Apache ServiceMix :: Bundl
+es :: SolrJ (4.10.3.1)
+[ 470] [Active     ] [            ] [       ] [   80] Commons IO (2.4.0)
+[ 474] [Active     ] [            ] [       ] [   80] Apache Apache HttpCore OSG
+i bundle (4.3.3)
+[ 478] [Active     ] [            ] [       ] [   80] Apache Apache HttpClient O
+SGi bundle (4.3.3)
+[ 485] [Active     ] [            ] [       ] [   80] Apache ServiceMix :: Bundl
+es :: noggit (0.5.0.1)
+karaf@root>

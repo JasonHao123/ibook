@@ -1,0 +1,182 @@
+karaf@root> features:list -i
+State         Version            Name                          Repository
+         Description
+[installed  ] [8.1.15.v20140411] pax-jetty                     org.ops4j.pax.web
+-3.1.2   Provide Jetty engine support
+[installed  ] [3.1.2           ] pax-http                      org.ops4j.pax.web
+-3.1.2   Implementation of the OSGI HTTP Service
+[installed  ] [3.1.2           ] pax-http-whiteboard           org.ops4j.pax.web
+-3.1.2   Provide HTTP Whiteboard pattern support
+[installed  ] [3.1.2           ] pax-war                       org.ops4j.pax.web
+-3.1.2   Provide support of a full WebContainer
+[installed  ] [1.1.1           ] transaction                   karaf-enterprise-
+2.4.1    OSGi Transaction Manager
+[installed  ] [2.0.0           ] jpa                           karaf-enterprise-
+2.4.1    OSGi Persistence Container
+[installed  ] [2.3.0           ] openjpa                       karaf-enterprise-
+2.4.1    Apache OpenJPA 2.3.x persistence engine support
+[installed  ] [1.0.0           ] jndi                          karaf-enterprise-
+2.4.1    OSGi Service Registry JNDI access
+[installed  ] [1.0.0           ] application-without-isolation karaf-enterprise-
+2.4.1    Provide EBA archive support
+[installed  ] [5.10.0          ] activemq-broker-noweb         activemq-5.10.0
+         Full ActiveMQ broker with default configuration
+[installed  ] [5.10.0          ] activemq-camel                activemq-5.10.0
+
+[installed  ] [5.4.0           ] activemq-service              servicemix-featur
+es-5.4.0
+[installed  ] [0.5.0           ] pax-jdbc-spec                 org.ops4j.pax.jdb
+c-0.5.0  Provides OSGi JDBC Service spec
+[installed  ] [0.5.0           ] pax-jdbc-config               org.ops4j.pax.jdb
+c-0.5.0  Provides JDBC Config support
+[installed  ] [0.5.0           ] pax-jdbc-mysql                org.ops4j.pax.jdb
+c-0.5.0  Provides JDBC MySQL DataSourceFactory
+[installed  ] [0.5.0           ] pax-jdbc-pool-aries           org.ops4j.pax.jdb
+c-0.5.0  Provides JDBC Pooling DataSourceFactory using Aries Transaction JDBC
+[installed  ] [2.2.0           ] xml-specs-api                 camel-2.14.1
+
+[installed  ] [2.14.1          ] camel                         camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-core                    camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-spring                  camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-blueprint               camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-cxf                     camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-http                    camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-jms                     camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-servlet                 camel-2.14.1
+
+[installed  ] [2.14.1          ] camel-spring-security         camel-2.14.1
+
+[installed  ] [0.0.0           ] jaxrs-api                     servicemix-intern
+al-5.4.0
+[installed  ] [0.0.0           ] joda-time                     servicemix-intern
+al-5.4.0
+[installed  ] [1.2.1           ] spring-dm                     spring-2.4.1
+         Spring DM support
+[installed  ] [1.2.1           ] spring-dm-web                 spring-2.4.1
+         Spring DM Web support
+[installed  ] [3.2.11.RELEASE_1] spring                        spring-2.4.1
+         Spring 3.2.x support
+[installed  ] [3.2.11.RELEASE_1] spring-aspects                spring-2.4.1
+         Spring 3.2.x AOP support
+[installed  ] [3.2.11.RELEASE_1] spring-instrument             spring-2.4.1
+         Spring 3.2.x Instrument support
+[installed  ] [3.2.11.RELEASE_1] spring-jdbc                   spring-2.4.1
+         Spring 3.2.x JDBC support
+[installed  ] [3.2.11.RELEASE_1] spring-jms                    spring-2.4.1
+         Spring 3.2.x JMS support
+[installed  ] [3.2.11.RELEASE_1] spring-tx                     spring-2.4.1
+         Spring 3.2.x Transaction (TX) support
+[installed  ] [3.2.11.RELEASE_1] spring-web                    spring-2.4.1
+         Spring 3.2.x Web support
+[installed  ] [3.1.4.RELEASE   ] spring-security               spring-2.4.1
+         Spring Security 3.1.x support
+[installed  ] [2.4.1           ] service-security              karaf-2.4.1
+         Services Security for Karaf
+[installed  ] [2.4.1           ] karaf-framework               karaf-2.4.1
+         Karaf core feature
+[installed  ] [2.4.1           ] aries-proxy                   karaf-2.4.1
+         Aries Proxy
+[installed  ] [2.4.1           ] aries-blueprint               karaf-2.4.1
+         Aries Blueprint
+[installed  ] [2.4.1           ] features                      karaf-2.4.1
+         Karaf Features support
+[installed  ] [2.4.1           ] admin                         karaf-2.4.1
+         Child instance administration
+[installed  ] [2.4.1           ] diagnostic                    karaf-2.4.1
+         Diagnostic support
+[installed  ] [2.4.1           ] shell                         karaf-2.4.1
+         Karaf Shell
+[installed  ] [2.4.1           ] deployer                      karaf-2.4.1
+         Karaf Deployer
+[installed  ] [2.4.1           ] obr                           karaf-2.4.1
+         Provide OSGi Bundle Repository (OBR) support
+[installed  ] [2.4.1           ] config                        karaf-2.4.1
+         Provide OSGi ConfigAdmin support
+[installed  ] [8.1.10.v20130312] jetty                         karaf-2.4.1
+         Provide Jetty engine support
+[installed  ] [2.4.1           ] http                          karaf-2.4.1
+         Implementation of the OSGi HTTP service
+[installed  ] [2.4.1           ] http-whiteboard               karaf-2.4.1
+         Provide HTTP Whiteboard pattern support
+[installed  ] [2.4.1           ] war                           karaf-2.4.1
+         Turn Karaf as a full WebContainer
+[installed  ] [2.4.1           ] kar                           karaf-2.4.1
+         Provide KAR (KARaf archive) support
+[installed  ] [2.4.1           ] jaas                          karaf-2.4.1
+         Provide JAAS support
+[installed  ] [2.4.1           ] ssh                           karaf-2.4.1
+         Provide a SSHd server on Karaf
+[installed  ] [2.4.1           ] management                    karaf-2.4.1
+         Provide a JMX MBeanServer and a set of MBeans in Karaf
+[installed  ] [2.4.1           ] eventadmin                    karaf-2.4.1
+         OSGi Event Admin service specification for event-based communication
+[installed  ] [3.0.2           ] cxf-specs                     cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-jaxb                      cxf-3.0.2
+
+[installed  ] [2.0.2           ] wss4j                         cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-core                      cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-wsdl                      cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-ws-policy                 cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-ws-addr                   cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-ws-rm                     cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-ws-mex                    cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-ws-security               cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-http                      cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-http-jetty                cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-bindings-soap             cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-jaxws                     cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-jaxrs                     cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-databinding-aegis         cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-databinding-jaxb          cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-databinding-xmlbeans      cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-features-clustering       cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-bindings-corba            cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-bindings-coloc            cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-bindings-object           cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-transports-local          cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-transports-jms            cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-transports-udp            cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-javascript                cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-frontend-javascript       cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf-xjc-runtime               cxf-3.0.2
+
+[installed  ] [3.0.2           ] cxf                           cxf-3.0.2
+
+[installed  ] [5.10.0          ] activemq-client               activemq-core-5.1
+0.0      ActiveMQ client libraries
+[installed  ] [5.10.0          ] activemq                      activemq-core-5.1
+0.0      ActiveMQ broker libraries
+karaf@root>

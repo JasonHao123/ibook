@@ -1,42 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one or more
-    contributor license agreements.  See the NOTICE file distributed with
-    this work for additional information regarding copyright ownership.
-    The ASF licenses this file to You under the Apache License, Version 2.0
-    (the "License"); you may not use this file except in compliance with
-    the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional 
+  information regarding copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the "License"); you may not use this file except 
+  in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to 
+  in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See 
+  the License for the specific language governing permissions and limitations under the License. -->
 <!-- START SNIPPET: example -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:spring-security="http://www.springframework.org/schema/security"
-       xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spring-security="http://www.springframework.org/schema/security"
+  xsi:schemaLocation="
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
          http://camel.apache.org/schema/spring-security http://camel.apache.org/schema/spring-security/camel-spring-security.xsd
          http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-  <bean id="camel:beanPostProcessor"
-        class="org.apache.camel.spring.CamelBeanPostProcessor" />
+  <bean id="camel:beanPostProcessor" class="org.apache.camel.spring.CamelBeanPostProcessor" />
 
   <!-- The Policy for checking the authentication role of ADMIN -->
-  <authorizationPolicy id="admin" access="ROLE_ADMIN"
-                       authenticationManager="authenticationManager"
-                       accessDecisionManager="accessDecisionManager"
-                       xmlns="http://camel.apache.org/schema/spring-security"/>
+  <authorizationPolicy id="admin" access="ROLE_ADMIN" authenticationManager="authenticationManager" accessDecisionManager="accessDecisionManager"
+    xmlns="http://camel.apache.org/schema/spring-security" />
 
   <!-- The Policy for checking the authentication role of USER -->
-  <authorizationPolicy id="user" access="ROLE_USER"
-                       xmlns="http://camel.apache.org/schema/spring-security"/>
+  <authorizationPolicy id="user" access="ROLE_USER" xmlns="http://camel.apache.org/schema/spring-security" />
 
   <camelContext id="myCamelContext" xmlns="http://camel.apache.org/schema/spring">
     <!-- Catch the authorization exception and set the Access Denied message back -->
@@ -51,17 +34,43 @@
     </onException>
 
     <route>
-      <from uri="direct:hello"/>
+      <from uri="direct:hello" />
       <!-- wrap the route in the policy which enforces security check -->
+      <recipientList delimiter="," parallelProcessing="true">
+        <header>recipients</header>
+      </recipientList>
       <policy ref="user">
         <transform>
           <simple>Normal user can access this service</simple>
         </transform>
       </policy>
     </route>
-
     <route>
-      <from uri="servlet:///admin"/>
+      <from uri="direct:b" />
+      <log message="access b" />
+
+      <setHeader headerName="SolrOperation">
+        <constant>INSERT</constant>
+      </setHeader>
+      <setHeader headerName="SolrField.id">
+        <simple>book99</simple>
+      </setHeader>
+      <setHeader headerName="SolrField.cat">
+        <simple>electronics</simple>
+      </setHeader>
+      <setHeader headerName="SolrField.name">
+        <simple>test asdfasdf dsfgdsfg</simple>
+      </setHeader>
+      <to uri="solr://localhost:8984/solr/ibook" />
+    </route>
+    <route>
+      <from uri="direct:c" />
+      <log message="access c" />
+      <to uri="mock:c" />
+    </route>
+    <route>
+      <from uri="direct:admin" />
+      <log message="access admin" />
       <!-- wrap the route in the policy which enforces security check -->
       <policy ref="admin">
         <transform>
@@ -70,7 +79,31 @@
       </policy>
     </route>
 
+    <route>
+      <from uri="direct:insert" />
+      <setHeader headerName="SolrOperation">
+        <constant>INSERT</constant>
+      </setHeader>
+      <setHeader headerName="SolrField.id">
+        <simple>${body}</simple>
+      </setHeader>
+      <to uri="solr://localhost:8983/solr" />
+    </route>
+    <route>
+      <from uri="direct:delete" />
+      <setHeader headerName="SolrOperation">
+        <constant>DELETE_BY_ID</constant>
+      </setHeader>
+      <to uri="solr://localhost:8983/solr" />
+    </route>
+    <route>
+      <from uri="direct:commit" />
+      <setHeader headerName="SolrOperation">
+        <constant>COMMIT</constant>
+      </setHeader>
+      <to uri="solr://localhost:8983/solr" />
+    </route>
   </camelContext>
 
 </beans>
-  <!-- END SNIPPET: example -->
+<!-- END SNIPPET: example -->
