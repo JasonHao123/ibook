@@ -35,10 +35,9 @@
     <feature version="3.2.11.RELEASE_1">spring-tx</feature>
     <feature version="3.2.11.RELEASE_1">spring-web</feature>
     <feature version="3.1.4.RELEASE">spring-security</feature>
-    <feature version="2.2.2">tiles</feature>
     <bundle>mvn:mysql/mysql-connector-java/5.1.35</bundle>
     <bundle>mvn:org.apache.geronimo.ext.tomcat/jasper-el/6.0.35.1</bundle>
-    <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles/1.8.3_2</bundle>
+    <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-beanutils/1.8.3_2</bundle>
     <bundle>mvn:commons-digester/commons-digester/2.1</bundle>
     <bundle>mvn:org.apache.tiles/tiles-api/2.2.2</bundle>
     <bundle>mvn:org.apache.tiles/tiles-core/2.2.2</bundle>
