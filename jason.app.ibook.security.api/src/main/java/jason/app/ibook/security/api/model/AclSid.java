@@ -3,7 +3,12 @@ package jason.app.ibook.security.api.model;
 
 public class AclSid implements IAclSid{
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -261084439425209959L;
+
+	private Long id;
 
     private Boolean principal;
 

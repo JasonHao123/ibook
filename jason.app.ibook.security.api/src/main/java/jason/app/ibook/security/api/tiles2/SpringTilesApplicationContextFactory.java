@@ -24,13 +24,13 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+
 import javax.servlet.ServletContext;
 
 import org.apache.tiles.Initializable;
 import org.apache.tiles.TilesApplicationContext;
 import org.apache.tiles.context.AbstractTilesApplicationContextFactory;
 import org.apache.tiles.servlet.context.ServletTilesApplicationContext;
-
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.web.context.support.ServletContextResourcePatternResolver;
@@ -43,6 +43,7 @@ import org.springframework.web.context.support.ServletContextResourcePatternReso
  * @since 3.0
  * @see TilesConfigurer#setTilesProperties
  */
+@SuppressWarnings("deprecation")
 public class SpringTilesApplicationContextFactory extends AbstractTilesApplicationContextFactory
         implements Initializable {
 
@@ -70,7 +71,8 @@ public class SpringTilesApplicationContextFactory extends AbstractTilesApplicati
         public SpringWildcardServletTilesApplicationContext(ServletContext servletContext, Map<String, String> params) {
             super(servletContext);
             this.mergedInitParams = new LinkedHashMap<String, String>();
-            Enumeration initParamNames = servletContext.getInitParameterNames();
+            @SuppressWarnings("rawtypes")
+			Enumeration initParamNames = servletContext.getInitParameterNames();
             while (initParamNames.hasMoreElements()) {
                 String initParamName = (String) initParamNames.nextElement();
                 this.mergedInitParams.put(initParamName, servletContext.getInitParameter(initParamName));

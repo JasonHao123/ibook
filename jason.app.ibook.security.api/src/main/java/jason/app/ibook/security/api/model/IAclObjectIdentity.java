@@ -1,6 +1,5 @@
 package jason.app.ibook.security.api.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.security.acls.model.ObjectIdentity;

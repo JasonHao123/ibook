@@ -30,22 +30,11 @@ public class SSOAuthenticationEntryPoint implements AuthenticationEntryPoint {
             if(session!=null) {
                 String contextKey = (String) session.getAttribute(SpringSecurityHttpSessionListener.PERSIST_SECURITY_CONTEXT_KEY);
                 if(contextKey!=null) {
-//                    PersistentRememberMeToken token= rememberMeDao.getTokenForSeries(contextKey);
-//                    if(token!=null) {
-//                        // perform auto logon;
-//                        logger.info("perform auto logon for "+token.getUsername());
-//                        RememberMeAuthentication auth = new RememberMeAuthentication();
-//                        auth.setToken(token);
-//                        Authentication auth2 = provider.authenticate(auth );
-//                        SecurityContextHolder.getContext().setAuthentication(auth2);
-//                    }else {
                         String appUrl = request.getRequestURL().toString();
                         if(request.getQueryString()!=null) {
                             appUrl = appUrl+"?"+request.getQueryString();
                         }
-                        response.sendRedirect("http://localhost:8181/security/check.do?token="+contextKey+"&redirect="+URLEncoder.encode(appUrl));
- 
-//                    }
+                        response.sendRedirect("http://localhost:8181/security/check.do?token="+contextKey+"&redirect="+URLEncoder.encode(appUrl,"UTF-8"));
                 }
             }else {
                 logger.warn("No valid session for this request!");
