@@ -1,0 +1,46 @@
+<features name="ibookFeatures"  xmlns="http://karaf.apache.org/xmlns/features/v1.1.0">
+  <feature name="tiles" version="2.2.2_1">
+    <bundle start-level="50" start="true">mvn:org.apache.geronimo.ext.tomcat/jasper-el/6.0.35.1</bundle>
+    <bundle start-level="50" start="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-beanutils/1.8.3_2</bundle>
+    <bundle start-level="50" start="true">mvn:commons-digester/commons-digester/2.1</bundle>
+    <bundle start-level="50" start="true">mvn:org.apache.tiles/tiles-api/2.2.2</bundle>
+    <bundle start-level="50" start="true">mvn:org.apache.tiles/tiles-core/2.2.2</bundle>
+    <bundle start-level="50" start="true">mvn:org.apache.tiles/tiles-servlet/2.2.2</bundle> 
+    <bundle start-level="50" start="true">mvn:org.apache.tiles/tiles-template/2.2.2</bundle>
+    <bundle start-level="50" start="true">mvn:org.apache.tiles/tiles-jsp/2.2.2</bundle>
+    <bundle start-level="50" start="true">mvn:org.apache.tiles/tiles-el/2.2.2</bundle>
+   
+  </feature>
+
+  <feature name="ibook" version="1.0.1">
+    <feature version="1.1.1">transaction</feature>
+    <feature version="2.0.0">jpa</feature>
+    <feature version="2.3.0">openjpa</feature>
+     <feature version="1.0.0">jndi</feature>
+     <!-- aries eba support -->
+     <feature version="1.0.0">application-without-isolation</feature>
+     
+     <!-- feature:repo-add mvn:org.ops4j.pax.jdbc/pax-jdbc-features/0.5.0/xml/features -->
+     <feature version="0.5.0">pax-jdbc-spec</feature>
+     <feature version="0.5.0">pax-jdbc-config</feature>
+     <feature version="0.5.0">pax-jdbc-mysql</feature>
+     <feature version="0.5.0">pax-jdbc-pool-aries</feature>
+     
+     <feature version="2.14.1">camel</feature>
+     <feature version="2.14.1">camel-spring-security</feature>
+	 <feature version="2.14.1">camel-solr</feature>
+
+     <feature version="1.2.1">spring-dm</feature>
+     <feature version="1.2.1">spring-dm-web</feature>
+     <feature version="3.2.11.RELEASE_1">spring</feature> 
+     <feature version="3.2.11.RELEASE_1">spring-aspects</feature>
+     <feature version="3.2.11.RELEASE_1">spring-instrument</feature>
+     <feature version="3.2.11.RELEASE_1">spring-jdbc</feature>
+     <feature version="3.2.11.RELEASE_1">spring-tx</feature>
+     <feature version="3.2.11.RELEASE_1">spring-web</feature>      
+     <feature version="3.1.4.RELEASE">spring-security</feature>
+     <feature version="2.2.2">tiles</feature>
+     <bundle>mvn:mysql/mysql-connector-java/5.1.35</bundle>
+    
+  </feature>
+</features>
