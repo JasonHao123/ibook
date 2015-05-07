@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- - Sample namespace-based configuration - -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+      http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+  <debug />
+
+  <global-method-security pre-post-annotations="enabled" />
+
+  <beans:bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+    <beans:property name="permissionEvaluator" ref="permissionEvaluator" />
+    <beans:property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
+  </beans:bean>
+
+  <http pattern="/resources/**" security="none" />
+  <http pattern="/logout.do" security="none" />
+
+  <http realm="Contacts Realm" use-expressions="true">
+    <intercept-url pattern="/check.do" access="isAuthenticated()" />
+    <intercept-url pattern="/login.do" access="permitAll" />
+    <intercept-url pattern="/signup.do" access="permitAll" />
+    <intercept-url pattern="/**" access="isAuthenticated()" />
+    <form-login login-page="/login.do" default-target-url="/index.jsp" />
+    <logout logout-url="" delete-cookies="JSESSIONID" />
+    <remember-me services-ref="rememberMeService" />
+  </http>
+
+  <authentication-manager alias="authenticationManager">
+    <authentication-provider ref="authenticationProvider" />
+  </authentication-manager>
+
+</beans:beans>
