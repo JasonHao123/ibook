@@ -4,63 +4,56 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page pageEncoding="UTF-8" %>
-<link rel="stylesheet" href="<c:url value="/resources/css/listview-grid.css" />">
-	<div role="main" class="ui-content">
+		<div role="main" class="ui-content jqm-content">
 
-<form>
+        <ul data-role="listview" data-inset="true">
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/apple.png" />" class="ui-li-thumb">
+            	<h2>iOS 6.1</h2>
+                <p>Apple released iOS 6.1</p>
+                <p class="ui-li-aside">iOS</p>
+            </a></li>
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/blackberry_10.png" />" class="ui-li-thumb">
+            	<h2>BlackBerry 10</h2>
+                <p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
+                <p class="ui-li-aside">BlackBerry</p>
+            </a></li>
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/lumia_800.png" />" class="ui-li-thumb">
+            	<h2>WP 7.8</h2>
+                <p>Nokia rolls out WP 7.8 to Lumia 800</p>
+                <p class="ui-li-aside">Windows Phone</p>
+            </a></li>
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/galaxy_express.png" />" class="ui-li-thumb">
+            	<h2>Galaxy</h2>
+                <p>New Samsung Galaxy Express</p>
+                <p class="ui-li-aside">Samsung</p>
+            </a></li>
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/nexus_7.png" />" class="ui-li-thumb">
+            	<h2>Nexus 7</h2>
+                <p>Rumours about new full HD Nexus 7</p>
+                <p class="ui-li-aside">Android</p>
+            </a></li>
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/firefox_os.png" />" class="ui-li-thumb">
+            	<h2>Firefox OS</h2>
+                <p>ZTE to launch Firefox OS smartphone at MWC</p>
+                <p class="ui-li-aside">Firefox</p>
+            </a></li>
+        	<li><a href="#">
+            	<img src="<c:url value="/resources/img/tizen.png" />" class="ui-li-thumb">
+            	<h2>Tizen</h2>
+                <p>First Samsung phones with Tizen can be expected in 2013</p>
+                <p class="ui-li-aside">Tizen</p>
+            </a></li>
+        	<li><a href="#">
+            	<h2>Symbian</h2>
+                <p>Nokia confirms the end of Symbian</p>
+                <p class="ui-li-aside">Symbian</p>
+            </a></li>
+        </ul>
 
-     <input placeholder="Input keywords/position/company" type="search" name="search-1" id="search-1" value="">
-</form>
- <div class="j_myOperating">
-    <div id="newfeed" class="j_boxe">
-        <a href="<c:url value="/company/list.htm" />">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_1.png"/>">
-            <span>企业名录</span>
-        </a>
-        <b class="newNumber"></b>
-    </div>
-    <div class="j_boxe">
-        <a onclick="MyApply_Event();">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_2.png"/>">
-            <span>申请记录</span>
-        </a>
-    </div>
-    <div class="j_boxe">
-        <a onclick="Refresh_resume();">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_3.png"/>">
-            <span>刷新简历</span>
-        </a>
-
-    </div>
-    <div class="j_boxe">
-        <a onclick="MyResume_Event();">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_4.png"/>">
-            <span>我的简历</span>
-        </a>
-    </div>
-    <div class="j_boxe">
-        <a onclick="JobSearch();" href="/searchjob/startsearch?cityCode=521">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_5.png"/>">
-            <span>职位搜索</span>
-        </a>
-    </div>
-    <div class="j_boxe">
-        <a onclick="RecommendedPosts();">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_6.png"/>">
-            <span>职位推荐</span>
-        </a>
-    </div>
-    <div class="j_boxe">
-        <a onclick="MyCollect_Event();">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_7.png"/>">
-            <span>我的收藏</span>
-        </a>
-    </div>
-    <div class="j_boxe">
-        <a onclick="SalaryQueryNum();" href="/salaryquery">
-            <img src="<c:url value="/resources/img/4.2_homeIcon_8.png" />">
-            <span>薪酬查询</span>
-        </a>
-    </div>
-</div>
-        </div>
+    </div><!-- /content -->

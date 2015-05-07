@@ -5,7 +5,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="<c:url value="/resources/css/listview-grid.css" />">
-	<div role="main" class="ui-content">
+	<div role="main" class="ui-content jqm-content">
 
 <form>
 

@@ -4,36 +4,51 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<c:set var="titleKey">
+<c:set var="leftPane" scope="request">
+	<tiles:insertAttribute name="leftPane" ignore="true" />
+</c:set>
+<c:set var="rightPane" scope="request">
+	<tiles:insertAttribute name="rightPane" ignore="true" />
+</c:set>
+<c:set var="navi" scope="request">
+	<tiles:insertAttribute name="navi" ignore="true" />
+</c:set>
+<c:set var="titleKey">
 	<tiles:insertAttribute name="title" ignore="true" />
 </c:set>
 <c:set var="title" scope="request">
 <spring:message code="${titleKey}" text="${titleKey}" />&nbsp;-&nbsp;<spring:message code="site.name" text="Smart Knowledgebase" />
 </c:set>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>${title}</title>
-		<link rel="stylesheet" href="<c:url value="/resources/css/themes/default/jquery.mobile-1.4.5.min.css" />">
+	<link rel="shortcut icon" href="<c:url value="/resources/favicon.ico" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/jquery.mobile-1.4.5.min.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/jqm-demos.css" />">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<script src="<c:url value="/resources/js/jquery.js" />"></script>
+	<script src="<c:url value="/resources/js/index.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery.mobile-1.4.5.min.js" />"></script>
 
-		<link rel="shortcut icon" href="<c:url value="/resources/favicon.ico" />">
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-		<script src="<c:url value="/resources/js/jquery.js" />"></script>
+</head>
+<body>
+<div data-role="page" class="jqm-demos jqm-home">
 
-		<script src="<c:url value="/resources/js/jquery.mobile-1.4.5.min.js" />"></script>
-	</head>
-	<body>
-	<div data-role="page" class="jqm-demos" data-quicklinks="true">
 <tiles:insertAttribute name="header" />
-
 <tiles:insertAttribute name="content" />	
 
 
-<tiles:insertAttribute name="footer" />	
-
+		<c:if test="${leftPane!=''}">
+		<tiles:insertAttribute name="left" />
+		</c:if>
+		<tiles:insertAttribute name="footer" />
+		<c:if test="${rightPane!=''}">
+		<tiles:insertAttribute name="right" />
+		</c:if>
 
 </div><!-- /page -->
 

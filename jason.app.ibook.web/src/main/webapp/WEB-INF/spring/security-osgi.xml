@@ -19,14 +19,7 @@
      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
       http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-   <osgi:reference id="customUserDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
-  <osgi:reference id="encoder" interface="org.springframework.security.crypto.password.PasswordEncoder"/>
-    <osgi:reference id="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
-    <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
-    <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
-     <osgi:reference id="rememberMeDao" interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao" />
-          <osgi:reference id="contextRepo" interface="org.springframework.security.web.context.SecurityContextRepository" />
-<!--   -->    
+   
   
 <beans:bean id="entryPoint" class="jason.app.ibook.security.api.service.SSOAuthenticationEntryPoint" />
 <beans:bean id="logoutHandler" class="jason.app.ibook.security.api.service.SSOLogoutSuccessHandler" />

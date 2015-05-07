@@ -287,11 +287,7 @@ $( document ).on( "pagecreate", ".jqm-demos", function( event ) {
 	}).filterable();
 
 	// Fix links on homepage to point to sub directories
-	if ( $( event.target ).hasClass( "jqm-home") ) {
-		$( this ).find( "a" ).each( function() {
-			$( this ).attr( "href", $( this ).attr( "href" ).replace( "../", "" ) );
-		});
-	}
+
 
 	// Search results page get search query string and enter it into filter then trigger keyup to filter
 	if ( $( event.target ).hasClass( "jqm-demos-search-results") ) {
