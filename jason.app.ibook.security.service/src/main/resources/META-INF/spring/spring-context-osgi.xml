@@ -26,12 +26,18 @@
 			http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
-	<osgi:reference id="dataSource" interface="javax.sql.DataSource" />
-    <osgi:reference id="userDao" interface="jason.app.ibook.api.dao.IUserDao" />
-    <osgi:reference id="aclDao" interface="jason.app.ibook.api.dao.IAclDao" />
+    <osgi:reference id="userDao" interface="jason.app.ibook.security.api.dao.IUserDao" />
+    <osgi:reference id="aclDao" interface="jason.app.ibook.security.api.dao.IAclDao" />
+    <osgi:reference id="rememberMeDao" interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao" />
 	 <osgi:service ref="encoder" interface="org.springframework.security.crypto.password.PasswordEncoder" />
      <osgi:service ref="userDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
-    <osgi:service ref="securityService" interface="jason.app.ibook.api.service.ISecurityService" />
+    <osgi:service ref="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
     <osgi:service ref="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
-   
+    <osgi:service ref="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
+    <osgi:service ref="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
+<!-- 
+       <osgi:service ref="entryPoint" interface="org.springframework.security.web.AuthenticationEntryPoint" />
+-->       <osgi:service ref="rememberMeService" interface="org.springframework.security.web.authentication.RememberMeServices" />
+         <osgi:service ref="contextRepository" interface="org.springframework.security.web.context.SecurityContextRepository" />
+  
 </beans>

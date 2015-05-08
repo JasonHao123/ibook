@@ -2,227 +2,21 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>jason.app.ibook</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
 
-      <groupId>jason.app.ibook</groupId>
   <artifactId>jason.app.ibook.security.service</artifactId>
-  <packaging>war</packaging>
-      <version>0.0.1-SNAPSHOT</version>
-  <name>jason.app.ibook.web Maven Webapp</name>
- 
-  
-      <properties>
-        <bundle.symbolicName>jason.app.ibook.security.service</bundle.symbolicName>
-        <bundle.namespace>org.ops4j.pax.web.samples</bundle.namespace>
-        <spring.version>3.2.11.RELEASE</spring.version>
-        <spring.security.version>3.1.7.RELEASE</spring.security.version>
-        <dependency.bndlib.version>2.3.0</dependency.bndlib.version>
-    </properties>
-    <dependencies>
-                      <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache-core</artifactId>
-      <version>2.5.2</version>
-      <scope>provided</scope>
-    </dependency>
-      <dependency>
-        <groupId>javax.persistence</groupId>
-        <artifactId>persistence-api</artifactId>
-        <version>1.0</version>
-        <scope>provided</scope>
-      </dependency>
-        <!-- Spring core & mvc -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
-        
-                        <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-instrument</artifactId>
-      <version>${spring.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <type>jar</type>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Servlet Spec -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.4</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.springframework.osgi</groupId>
-          <artifactId>spring-osgi-core</artifactId>
-          <version>1.2.1</version>
-          <type>bundle</type>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.osgi</groupId>
-          <artifactId>org.osgi.compendium</artifactId>
-          <version>4.2.0</version>
-          <type>bundle</type>
-        </dependency>
-        <dependency>
-          <groupId>org.osgi</groupId>
-          <artifactId>org.osgi.core</artifactId>
-          <version>4.2.0</version>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.springframework.osgi</groupId>
-          <artifactId>spring-osgi-web</artifactId>
-          <version>1.2.1</version>
-          <scope>provided</scope>
-        </dependency>
-        
-            <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-core</artifactId>
-      <version>${spring.security.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-web</artifactId>
-      <version>${spring.security.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-config</artifactId>
-      <version>${spring.security.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-taglibs</artifactId>
-      <version>${spring.security.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-acl</artifactId>
-      <version>${spring.security.version}</version>
-      <scope>provided</scope>
-    </dependency>
-        <dependency>
-      <groupId>jason.app.ibook</groupId>
-      <artifactId>jason.app.ibook.security.api</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <type>bundle</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.1.2</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>taglibs</groupId>
-      <artifactId>standard</artifactId>
-      <version>1.1.2</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tiles</groupId>
-      <artifactId>tiles-jsp</artifactId>
-      <version>2.2.2</version>
-      <scope>provided</scope>
-    </dependency>
-    </dependencies>
-
-    <build>
-        <finalName>security</finalName>
-        <plugins>
-           <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-            <plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>2.5.3</version>
-					<dependencies>
-						<dependency>
-							<groupId>biz.aQute.bnd</groupId>
-							<artifactId>bndlib</artifactId>
-							<version>${dependency.bndlib.version}</version>
-						</dependency>
-					</dependencies>
-                <extensions>true</extensions>
-                <configuration>
-                    <supportedProjectTypes>
-                        <supportedProjectType>jar</supportedProjectType>
-                        <supportedProjectType>bundle</supportedProjectType>
-                        <supportedProjectType>war</supportedProjectType>
-                    </supportedProjectTypes>
-                    <instructions>
-                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
-                        <Bundle-Version>${project.version}</Bundle-Version>
-                        <Import-Package>
-                        org.springframework.security.access,
-                        org.springframework.transaction.aspectj,
-                      org.springframework.cache.ehcache,
-                        jason.app.ibook.security.api.dao,
-                        jason.app.ibook.security.api.service,
-                        jason.app.ibook.security.api.model,
-                        jason.app.ibook.security.api.util,
-                        jason.app.ibook.security.api.exception,
-                                                org.apache.tiles.evaluator,
-                        org.apache.tiles.jsp.taglib,
-                        org.apache.tiles.jsp.context,
-                        org.apache.tiles.servlet.context,
-                        org.apache.tiles,
-                        jason.app.ibook.security.api.tiles2,
-                        org.springframework.web.servlet.view.tiles2,
-                         org.springframework.security.web.context,
-                        org.springframework.beans,
-                        org.springframework.beans.factory.xml,
-                        org.springframework.web.context,
-                        org.springframework.context.support,
-                         org.springframework.security.access.intercept.aopalliance,
-                        	org.springframework.osgi.web.context.support,
-                            org.springframework.security.web,
+  <name>jason.app.ibook.security.service</name>
+  <packaging>bundle</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>3.2.11.RELEASE</spring.version>      
+         <osgi-import-package>
+         org.springframework.instrument.classloading,
+                                       org.springframework.security.web,
                             org.springframework.security.crypto.bcrypt,
                             org.springframework.security.crypto.password,
                             org.springframework.security.provisioning,
@@ -231,61 +25,114 @@
                                org.springframework.security.taglibs.velocity,
                                org.springframework.security.web.servletapi,
                             org.springframework.security.web.authentication,
-                            org.springframework.security.core.userdetails,
- org.springframework.security.access.expression.method,
- org.springframework.security.access.vote,
-                            org.springframework.security.access.prepost, 
-                            org.springframework.security.access.intercept.aspectj.aspect,   
-                            org.springframework.security.acls,
-                        	org.springframework.web.servlet.view,
-                          org.springframework.security.acls.model,
-                        	org.springframework.web.servlet,
-                          org.springframework.web.filter, 
-                          org.springframework.web.servlet.tags,
+                            org.springframework.security.acls.jdbc,
+                            org.springframework.security.acls.domain,    
+                            org.springframework.jdbc.core,    
                           org.springframework.transaction.jta,
-                          org.springframework.transaction.annotation,
                           org.springframework.aop,        
                           org.springframework.aop.framework,   
-                          org.springframework.instrument.classloading,
+                          org.springframework.transaction.aspectj,
                           org.aopalliance.aop,          
-                          javax.transaction,   
-                            *; resolution:=optional
-                        </Import-Package>
-                        <Export-Package>org.ops4j.pax.web.samples.spring.*,!*</Export-Package>
-                        <Bundle-Classpath>
-                            WEB-INF/classes
-                        </Bundle-Classpath>
-                        <Web-ContextPath>security</Web-ContextPath>
-                        <Embed-Dependency>*; artifactId=!org.osgi.compendium; scope=compile; type=!pom; inline=true</Embed-Dependency>
-                        <Embed-Transitive>true</Embed-Transitive>
-                        <_removeheaders>
-                            Include-Resource,
-                            Private-Package,
-                            Embed-Dependency,
-                            Embed-Transitive,
-                            Ignore-Package
-                        </_removeheaders>
-                    </instructions>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-manifest</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>manifest</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+                          javax.transaction,  
+                          org.springframework.security.access,
+                          org.springframework.security.access.expression.method,                    
+           *
+         </osgi-import-package>
+         
+  </properties>
+  <dependencies>
+                  <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.5.2</version>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+        <groupId>javax.persistence</groupId>
+        <artifactId>persistence-api</artifactId>
+        <version>1.0</version>
+      </dependency>
 
+          <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+              <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+                  <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-instrument</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+  <!-- Spring security -->
+              <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-acl</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jason.app.ibook</groupId>
+      <artifactId>jason.app.ibook.security.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>bundle</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  
+    <build>
+    <pluginManagement>
+      <plugins>
+        <!-- used to generate the MANIFEST-FILE of a bundle -->
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>${maven-bundle-plugin-version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+              <Bundle-SymbolicName>${project.name}</Bundle-SymbolicName>
+              <Import-Package>${osgi-import-package}</Import-Package>
+              <Export-Package>!*</Export-Package>
+            </instructions>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

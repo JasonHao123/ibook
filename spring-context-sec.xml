@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Sample namespace-based configuration
+  -
+  -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:p="http://www.springframework.org/schema/p"   
+        xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+      http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <debug />
+    
+ <beans:bean id="aspect" class="org.springframework.security.access.intercept.aspectj.aspect.AnnotationSecurityAspect" factory-method="aspectOf">
+    <beans:property name="securityInterceptor" ref="securityInterceptor"/>
+</beans:bean> 
+<beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased" >
+ <beans:property name="decisionVoters">
+            <beans:list>
+                <beans:bean class="org.springframework.security.access.vote.RoleVoter">
+                    <beans:property name="rolePrefix" value="ROLE_"/>
+                </beans:bean>
+                <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+            </beans:list>
+        </beans:property>
+</beans:bean>
+
+ <beans:bean id="securityInterceptor" class="org.springframework.security.access.intercept.aspectj.AspectJMethodSecurityInterceptor" >
+    <beans:property name="securityMetadataSource" ref="prePostAnnotationSecurityMetadataSource"/>
+    <beans:property name="authenticationManager" ref="authenticationManager" />
+    <beans:property name="accessDecisionManager" ref="accessDecisionManager" />
+</beans:bean> 
+
+   <beans:bean id="attributeFactory" class="org.springframework.security.access.expression.method.ExpressionBasedAnnotationAttributeFactory" >
+    <beans:constructor-arg ref="expressionHandler" />
+  </beans:bean>
+  <beans:bean id="prePostAnnotationSecurityMetadataSource" class="org.springframework.security.access.prepost.PrePostAnnotationSecurityMetadataSource">
+    <beans:constructor-arg ref="attributeFactory" />
+  </beans:bean>
+      <global-method-security pre-post-annotations="enabled" mode="aspectj" access-decision-manager-ref="accessDecisionManager" metadata-source-ref="prePostAnnotationSecurityMetadataSource"  >
+        <expression-handler ref="expressionHandler"/>
+      </global-method-security>
+      
+  <beans:bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+    <beans:property name="permissionEvaluator" ref="permissionEvaluator" />
+    <beans:property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
+  </beans:bean> 
+
+
+    <authentication-manager alias="authenticationManager">
+       <authentication-provider user-service-ref="userDetailService">
+            <password-encoder ref="encoder"/>    
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

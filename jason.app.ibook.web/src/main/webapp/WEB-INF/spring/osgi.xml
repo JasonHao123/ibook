@@ -15,15 +15,12 @@
     <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
     <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
      <osgi:reference id="rememberMeDao" interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao" />
-          <osgi:reference id="contextRepo" interface="org.springframework.security.web.context.SecurityContextRepository" />
- 
+
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
       <constructor-arg ref="userTransaction"/>
       <constructor-arg ref="transactionManager"/>
   </bean>
   <tx:annotation-driven transaction-manager="jtaTransactionManager" />
-
-   <osgi:reference id="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
 
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />

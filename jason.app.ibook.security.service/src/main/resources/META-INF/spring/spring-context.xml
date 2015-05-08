@@ -3,12 +3,24 @@
   ~ You may obtain a copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by applicable law or agreed to in writing, software 
   ~ distributed under the License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. ~ See the License 
   for the specific language governing permissions and ~ limitations under the License. -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="
+  http://www.springframework.org/schema/context
+                         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       ">
 
+  <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+  <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+    <constructor-arg ref="userTransaction" />
+    <constructor-arg ref="transactionManager" />
+  </bean>
+  <bean class="org.springframework.transaction.aspectj.AnnotationTransactionAspect" factory-method="aspectOf">
+    <property name="transactionManager" ref="jtaTransactionManager" />
+  </bean>
+  <tx:annotation-driven transaction-manager="jtaTransactionManager" mode="aspectj" />
   <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
   <bean id="userDetailService" class="jason.app.ibook.security.service.CustomUserDetailsServiceImpl">
     <property name="userDao" ref="userDao" />
@@ -17,6 +29,8 @@
   <bean id="securityService" class="jason.app.ibook.security.service.SecurityServiceImpl">
     <property name="userDao" ref="userDao" />
     <property name="encoder" ref="encoder" />
+    <property name="rememberMeDao" ref="rememberMeDao" />
+    <property name="authenticationProvider" ref="authenticationProvider" />
   </bean>
 
   <bean id="aclCache" class="jason.app.ibook.security.service.EhCacheBasedAclCache">
@@ -33,7 +47,7 @@
   </bean>
 
   <bean id="lookupStrategy" class="jason.app.ibook.security.service.BasicLookupStrategy">
-    <constructor-arg ref="dataSource" />
+    <constructor-arg ref="aclDao" />
     <constructor-arg ref="aclCache" />
     <constructor-arg>
       <bean class="org.springframework.security.acls.domain.AclAuthorizationStrategyImpl">
@@ -48,10 +62,37 @@
       <bean class="org.springframework.security.acls.domain.ConsoleAuditLogger" />
     </constructor-arg>
   </bean>
-  <bean id="aclService" class="jason.app.ibook.security.service.MutableAclServiceImpl" >
+
+  <bean id="aclService" class="jason.app.ibook.security.service.MutableAclServiceImpl">
     <property name="aclCache" ref="aclCache" />
     <property name="lookupStrategy" ref="lookupStrategy" />
     <property name="aclDao" ref="aclDao" />
   </bean>
+  <!-- <bean id="aclService" class="jason.app.ibook.security.service.MutableAclServiceImpl" /> -->
+  <bean id="permissionEvaluator" class="org.springframework.security.acls.AclPermissionEvaluator">
+    <constructor-arg ref="aclService" />
+  </bean>
+
+      <bean id="permissionCacheOptimizer" class="org.springframework.security.acls.AclPermissionCacheOptimizer">
+        <constructor-arg ref="aclService" />
+      </bean>
+
+
+<bean id="rememberMeService" class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices" >
+  <constructor-arg  value="ibooksecurity" />
+  <constructor-arg  ref="userDetailService" />
+  <constructor-arg  ref="rememberMeDao" />
+</bean>
+
+<bean id="authenticationProvider" class="jason.app.ibook.security.api.service.SSOAuthenticationProvider" >
+  <property name="passwordEncoder" ref="encoder" />
+  <property name="userDetailsService" ref="userDetailService" />  
+</bean>
+
+<bean id="contextRepository" class="jason.app.ibook.security.service.web.AdvancedHttpSessionSecurityContextRepository" >
+  <property name="authDao" ref="rememberMeDao" />
+  <property name="userDetailService" ref="userDetailService" />
+</bean>
+
 <!--  -->
 </beans>
