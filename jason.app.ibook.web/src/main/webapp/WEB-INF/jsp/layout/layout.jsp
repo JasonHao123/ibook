@@ -29,6 +29,7 @@
 	<link rel="shortcut icon" href="<c:url value="/resources/favicon.ico" />">
 	<link rel="stylesheet" href="<c:url value="/resources/css/jquery.mobile-1.4.5.min.css" />">
 	<link rel="stylesheet" href="<c:url value="/resources/css/jqm-demos.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/listview-grid.css" />">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<script src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script src="<c:url value="/resources/js/index.js" />"></script>
@@ -36,7 +37,7 @@
 
 </head>
 <body>
-<div data-role="page" class="jqm-demos jqm-home">
+<div data-role="page" id="myPage" class="jqm-demos jqm-home">
 
 <tiles:insertAttribute name="header" />
 <tiles:insertAttribute name="content" />	
