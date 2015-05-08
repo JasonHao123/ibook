@@ -8,12 +8,12 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-<!--   --> 
+<!--  
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>org.springframework.osgi.web.context.support.OsgiBundleXmlWebApplicationContext</param-value>
 	</context-param>
-
+ --> 
     <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -73,18 +73,18 @@
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!--  -->
+    <!-- 
 		<init-param>
 			<param-name>contextClass</param-name>
 			<param-value>org.springframework.osgi.web.context.support.OsgiBundleXmlWebApplicationContext</param-value>
 		</init-param>
-    
+    --> 
 	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>dispatcher</servlet-name>
-		 <url-pattern>*.htm</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+     <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
   <jsp-config>
   <taglib>
   <taglib-uri>

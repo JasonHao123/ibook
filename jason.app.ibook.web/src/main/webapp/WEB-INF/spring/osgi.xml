@@ -24,5 +24,7 @@
 
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
+  <osgi:reference id="locationService"
+    interface="jason.app.ibook.commons.api.service.ILocationService" />
  
 </beans>

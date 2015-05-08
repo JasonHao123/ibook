@@ -12,12 +12,15 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       ">
   <context:component-scan base-package="jason.app.ibook.commons.service" />
-
+ <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
-    <constructor-arg ref="userTransaction" />
-    <constructor-arg ref="transactionManager" />
+      <constructor-arg ref="userTransaction"/>
+      <constructor-arg ref="transactionManager"/>
   </bean>
-  <tx:annotation-driven transaction-manager="jtaTransactionManager" />
+ <bean class="org.springframework.transaction.aspectj.AnnotationTransactionAspect" factory-method="aspectOf">
+    <property name="transactionManager" ref="jtaTransactionManager"/>
+</bean> 
+<tx:annotation-driven transaction-manager="jtaTransactionManager" mode="aspectj" />
 
   <!-- <bean id="contactService" class="jason.app.ibook.filesystem.service.ContactServiceImpl"> <property name="contactDao" ref="contactDao" /> <property name="mutableAclService" 
     ref="aclService" /> <property name="securityService" ref="securityService" /> </bean> -->

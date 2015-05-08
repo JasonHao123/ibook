@@ -1,4 +1,4 @@
-package jason.app.ibook.commons.service.web.controller;
+package jason.app.ibook.web.controller.rest;
 
 import jason.app.ibook.commons.api.model.ICategory;
 import jason.app.ibook.commons.api.service.ILocationService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/location")
 public class LocationController {
 
-    @Autowired
+    @Autowired(required=false)
     private ILocationService locationService;
     
     @RequestMapping(value="/list",method=RequestMethod.GET)

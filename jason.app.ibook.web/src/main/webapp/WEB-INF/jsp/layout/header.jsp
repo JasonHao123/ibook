@@ -7,10 +7,10 @@
 <p><span class="jqm-version"></span> Demos</p>
 <div data-role="navbar">
 	<ul>
-		<li><a href="<c:url value="/job/index.htm" />" <c:if test="${navi=='' || navi=='job' }">class="ui-btn-active"</c:if> >找工作</a></li>
-		<li><a href="<c:url value="/job/index.htm" />" <c:if test="${navi=='company' }">class="ui-btn-active"</c:if> >找公司</a></li>
-		<li><a href="b.html" <c:if test="${navi=='talent' }">class="ui-btn-active"</c:if> >找人才</a></li>
-		<li><a data-ajax="false" href="<c:url value="/user/index.htm" />" <c:if test="${navi=='user' }">class="ui-btn-active"</c:if> >我的...</a></li>
+		<li><a href="<c:url value="/job/index.do" />" <c:if test="${navi=='' || navi=='job' }">class="ui-btn-active"</c:if> >找工作</a></li>
+		<li><a href="<c:url value="/job/index.do" />" <c:if test="${navi=='company' }">class="ui-btn-active"</c:if> >找公司</a></li>
+		<li><a href="b.dol" <c:if test="${navi=='talent' }">class="ui-btn-active"</c:if> >找人才</a></li>
+		<li><a data-ajax="false" href="<c:url value="/user/index.do" />" <c:if test="${navi=='user' }">class="ui-btn-active"</c:if> >我的...</a></li>
 	</ul>
 </div><!-- /navbar -->
 <c:choose>

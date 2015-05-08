@@ -13,7 +13,7 @@
 </form>
  <div class="j_myOperating">
     <div id="newfeed" class="j_boxe">
-        <a href="<c:url value="/user/company/register.htm" />">
+        <a href="<c:url value="/user/company/register.do" />">
             <img src="<c:url value="/resources/img/4.2_homeIcon_1.png"/>">
             <span>注册公司</span>
         </a>

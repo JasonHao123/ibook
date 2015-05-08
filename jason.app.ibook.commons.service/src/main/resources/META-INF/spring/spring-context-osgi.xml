@@ -26,15 +26,6 @@
 			http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
    <osgi:reference id="userTransaction" interface="javax.transaction.UserTransaction" />
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
-    
-   <osgi:reference id="customUserDetailService" interface="org.springframework.security.core.userdetails.UserDetailsService" />
-  <osgi:reference id="encoder" interface="org.springframework.security.crypto.password.PasswordEncoder"/>
-    <osgi:reference id="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
-    <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
-    <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
-     <osgi:reference id="rememberMeDao" interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao" />
-          <osgi:reference id="contextRepo" interface="org.springframework.security.web.context.SecurityContextRepository" />
-
 
 <osgi:reference id="locationDao"
     interface="jason.app.ibook.commons.api.dao.ICategoryDao" />
