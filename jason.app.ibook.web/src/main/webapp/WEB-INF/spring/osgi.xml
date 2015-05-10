@@ -26,5 +26,7 @@
    <osgi:reference id="transactionManager" interface="javax.transaction.TransactionManager" />
   <osgi:reference id="locationService"
     interface="jason.app.ibook.commons.api.service.ILocationService" />
+  <osgi:reference id="jobService"
+    interface="jason.app.ibook.job.api.service.IJobService" />
  
 </beans>

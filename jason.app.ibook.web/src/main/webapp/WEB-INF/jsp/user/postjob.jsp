@@ -48,7 +48,10 @@
 		}
     </style>
 	<div role="main" class="ui-content  jqm-content">
-	<form action="">	</form>
+  <spring:hasBindErrors name="User">
+ <p>   <b><spring:message code="page.label.fixerror" text="Please fix all errors!" /></b></p>
+  </spring:hasBindErrors>
+  	<form data-ajax="false" method="post">	
 	<h3>Basic Info</h3>
 		<label for="title">Company:<span style="float:right"><a href="#" >Add</a></span></label>
 		<select>
@@ -63,12 +66,12 @@
 			<option>CSDL</option>
 		</select>
 		<label for="title">Title:</label>
-		<input type="text">
+		<input type="text" name="title">
 		
 		<label for="title">Location:</label>
-				<form class="ui-filterable">
+			
 					<input id="autocomplete-input" data-type="search" placeholder="Find a city...">
-				</form>
+		
 				<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all" data-position-to="#autocomplete-input">
 					<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
 				</div>
@@ -93,4 +96,10 @@
         <label for="range-1b">Rangeslider:</label>
         <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80">
     </div>
+
+<div class="ui-grid-a">
+<div class="ui-block-a"><input type="submit" value="Submit" data-theme="a"></div>
+<div class="ui-block-b"><input type="reset" value="Reset" data-theme="b"></div>
+</div>
+</form>
 	</div>

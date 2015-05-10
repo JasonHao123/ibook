@@ -15,12 +15,10 @@
   <bean id="camel:beanPostProcessor" class="org.apache.camel.spring.CamelBeanPostProcessor" />
 
   <!-- The Policy for checking the authentication role of ADMIN -->
-  <authorizationPolicy id="admin" access="ROLE_ADMIN" authenticationManager="authenticationManager" accessDecisionManager="accessDecisionManager"
+<!--    <authorizationPolicy id="admin" access="ROLE_ADMIN" authenticationManager="authenticationManager" accessDecisionManager="accessDecisionManager"
     xmlns="http://camel.apache.org/schema/spring-security" />
-
-  <!-- The Policy for checking the authentication role of USER -->
   <authorizationPolicy id="user" access="ROLE_USER" xmlns="http://camel.apache.org/schema/spring-security" />
-
+-->
   <camelContext id="myCamelContext" xmlns="http://camel.apache.org/schema/spring">
     <!-- Catch the authorization exception and set the Access Denied message back -->
     <onException>
@@ -36,14 +34,11 @@
     <route>
       <from uri="direct:hello" />
       <!-- wrap the route in the policy which enforces security check -->
-      <recipientList delimiter="," parallelProcessing="true">
-        <header>recipients</header>
-      </recipientList>
-      <policy ref="user">
+      <log message="access hello" />
         <transform>
           <simple>Normal user can access this service</simple>
         </transform>
-      </policy>
+
     </route>
     <route>
       <from uri="direct:b" />
@@ -61,7 +56,7 @@
       <setHeader headerName="SolrField.name">
         <simple>test asdfasdf dsfgdsfg</simple>
       </setHeader>
-      <to uri="solr://localhost:8984/solr/ibook" />
+      <to uri="solr://localhost:8983/solr/job" />
     </route>
     <route>
       <from uri="direct:c" />
@@ -72,11 +67,11 @@
       <from uri="direct:admin" />
       <log message="access admin" />
       <!-- wrap the route in the policy which enforces security check -->
-      <policy ref="admin">
+    <!--  <policy ref="admin"> --> 
         <transform>
           <simple>Call the admin operation OK</simple>
         </transform>
-      </policy>
+    <!--   </policy>--> 
     </route>
 
     <route>
