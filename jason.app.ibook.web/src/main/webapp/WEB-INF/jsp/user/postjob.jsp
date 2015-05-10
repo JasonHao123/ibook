@@ -49,7 +49,8 @@
     </style>
 	<div role="main" class="ui-content  jqm-content">
 	<form action="">	</form>
-		<label for="title">Company:</label>
+	<h3>Basic Info</h3>
+		<label for="title">Company:<span style="float:right"><a href="#" >Add</a></span></label>
 		<select>
 			<option></option>
 			<option>IBM</option>
@@ -62,15 +63,9 @@
 			<option>CSDL</option>
 		</select>
 		<label for="title">Title:</label>
-
+		<input type="text">
 		
 		<label for="title">Location:</label>
-		<select>
-			<option></option>
-			<option>天津 空港经济区中心大道55号</option>
-			<option>河北省 石家庄 XX路XX号</option>
-			<option>Shanghai</option>
-		</select>
 				<form class="ui-filterable">
 					<input id="autocomplete-input" data-type="search" placeholder="Find a city...">
 				</form>
@@ -78,4 +73,24 @@
 					<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
 				</div>
 
+<label>Job description</label>
+<textarea rows="5" cols="20"></textarea>
+<label>Features</label>
+<input type="text">
+<h3>Requirement</h3>
+		 <div data-role="rangeslider">
+        <label for="range-1a">Working experience</label>
+        <input type="range" name="range-1a" id="range-1a" min="0" max="35" value="0">
+        <label for="range-1b">Rangeslider:</label>
+        <input type="range" name="range-1b" id="range-1b" min="0" max="35" value="35">
+    </div>
+<label>Skills</label>
+<input>
+<h3>Benefit Info</h3>
+		 <div data-role="rangeslider">
+        <label for="range-1a">Salary:</label>
+        <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40">
+        <label for="range-1b">Rangeslider:</label>
+        <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80">
+    </div>
 	</div>

@@ -12,7 +12,7 @@ public class Company {
     private ICategory industry;
     private ICategory scale;    
     @JsonIgnore
-    private ICompany parent;    
+    private Company parent;    
     private String description;
     public String getDescription() {
         return description;
@@ -56,10 +56,10 @@ public class Company {
     public void setScale(ICategory scale) {
         this.scale = scale;
     }
-    public ICompany getParent() {
+    public Company getParent() {
         return parent;
     }
-    public void setParent(ICompany parent) {
+    public void setParent(Company parent) {
         this.parent = parent;
     }
     

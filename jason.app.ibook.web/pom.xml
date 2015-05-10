@@ -386,7 +386,6 @@
                   org.springframework.security.access.expression.method,
                   org.springframework.security.access.vote,
                   org.springframework.security.access.prepost,
-                  org.springframework.security.access.intercept.aspectj.aspect,
                   org.springframework.security.acls,
                   org.springframework.web.servlet.view,
                   org.springframework.security.acls.model,
