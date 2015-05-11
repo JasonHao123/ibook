@@ -1,8 +1,13 @@
 package jason.app.ibook.job.api.model;
 
+import org.apache.solr.client.solrj.beans.Field;
+
 public class Job {
+    @Field
 	private Long id;
+	 @Field
 	private String title;
+	 
 	private String publisher;
 	private Company company;
 	private Department department;

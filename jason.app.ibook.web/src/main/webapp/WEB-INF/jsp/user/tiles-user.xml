@@ -18,5 +18,10 @@
     <put-attribute name="content" value="/WEB-INF/jsp/user/postjob.jsp" />
     <put-attribute name="navi" value="user" />
   </definition>
+    <definition name="user.company.list" extends="user.base">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/user/companylist.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
 
 </tiles-definitions>

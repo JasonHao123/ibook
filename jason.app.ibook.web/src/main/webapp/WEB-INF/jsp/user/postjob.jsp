@@ -6,40 +6,41 @@
 <%@ page pageEncoding="UTF-8" %>
     <script>
 		$( document ).on( "pagecreate", "#myPage", function() {
-			$( "#autocomplete" ).on( "filterablebeforefilter", function ( e, data ) {
-				var $ul = $( this ),
-					$input = $( data.input ),
-					value = $input.val(),
-					html = "";
-				$ul.html( "" );
-				if ( value && value.length > 2 ) {
-					$ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
-					$ul.listview( "refresh" );
-					$.ajax({
-						url: "http://gd.geobytes.com/AutoCompleteCity",
-						dataType: "jsonp",
-						crossDomain: true,
-						data: {
-							q: $input.val()
-						}
-					})
-					.then( function ( response ) {
-						$.each( response, function ( i, val ) {
-							html += "<li>" + val + "</li>";
-						});
-						$ul.html( html );
-						$ul.listview( "refresh" );
-						$ul.trigger( "updatelayout");
-						$("#popupLogin").popup("open");
-						 $($ul).on('click', 'li', function(event) {
-							 $("#autocomplete-input").val($(this).text());
-							 $ul.empty();
-							 $ul.listview( "refresh" );
-						 });
+	        $('#content3').redactor({
+	    		imageGetJson: '<c:url value="/spring/files/listImages" />',
+	    		imageUpload: '<c:url value="/spring/files/uploadImage" />',
+	    		clipboardUploadUrl: '/webUpload/redactor/clipboardUpload/',
+	    		fileUpload: '<c:url value="/spring/files/fileUpload" />'
+	    	});
+	        
+            $('#locations').tagit({
+        			autocomplete : {
+        				source : function(request, response) {
+        					$.ajax({
+        						url: "http://gd.geobytes.com/AutoCompleteCity",
+        						dataType: "jsonp",
+        						crossDomain: true,
+        						data: {
+        							q: request.term
+        						},
+        						success : function(data) {
+        							response($.map(data, function(item) {
+        								return {
+        									label : item,
+        									value : item
+        								}
+        							}));
+        						}
+        					});
+        				},
+        				delay : 1000,
+        				minLength : 2
+        			},
+        			allowSpaces : true,
+        			fieldName: "location"
+        		});
+            
 
-					});
-				}
-			});
 		});
     </script>
 	<style>
@@ -65,38 +66,88 @@
 			<option>GDC</option>
 			<option>CSDL</option>
 		</select>
+		<label for="title">Category 1:</label>
+		<select>
+			<option></option>
+			<option>IT|互联网|通信</option>
+			<option>GDC</option>
+			<option>CSDL</option>
+		</select>
+		<label for="title">Category 2:</label>
+		<select>
+			<option></option>
+			<option>软件/互联网开发/系统集成</option>
+			<option>硬件开发</option>
+			<option>CSDL</option>
+		</select>
+				<label for="title">工作性质</label>
+		<select>
+			<option></option>
+			<option>全职</option>
+			<option>兼职</option>
+			<option>实习</option>
+		</select>
 		<label for="title">Title:</label>
 		<input type="text" name="title">
-		
-		<label for="title">Location:</label>
-			
-					<input id="autocomplete-input" data-type="search" placeholder="Find a city...">
-		
-				<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all" data-position-to="#autocomplete-input">
-					<ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input="#autocomplete-input"></ul>
-				</div>
 
+
+		<label for="title">招聘人数:</label>
+<input type="number" data-clear-btn="true" name="number-4" pattern="[0-9]*" id="number-4" value="">
+	
+		<label for="locations">Location:</label>
+<ul id="locations" class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"></ul>
 <label>Job description</label>
-<textarea rows="5" cols="20"></textarea>
-<label>Features</label>
+<textarea id="content3" rows="5" cols="20"></textarea>
+<label>Features<span style="float:right"><a href="#" >Popular features</a></span></label>
 <input type="text">
 <h3>Requirement</h3>
+<label>学历</label>
+<select>
+	<option></option>
+	<option>高中</option>
+	<option>大专</option>
+	<option>本科</option>
+	<option>硕士</option>
+	<option>博士</option>
+</select>
 		 <div data-role="rangeslider">
         <label for="range-1a">Working experience</label>
         <input type="range" name="range-1a" id="range-1a" min="0" max="35" value="0">
         <label for="range-1b">Rangeslider:</label>
         <input type="range" name="range-1b" id="range-1b" min="0" max="35" value="35">
     </div>
-<label>Skills</label>
+<label>Required Skills</label>
+<input>
+<label>Desired Skills</label>
 <input>
 <h3>Benefit Info</h3>
-		 <div data-role="rangeslider">
-        <label for="range-1a">Salary:</label>
-        <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40">
+	<div data-role="rangeslider">
+        <label for="range-1a">Salary(K RMB):</label>
+        <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="0">
         <label for="range-1b">Rangeslider:</label>
-        <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80">
+        <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="100">
     </div>
-
+	<label>基本工资</label>
+	<input type="number" data-clear-btn="true" pattern="[0-9]*"  value="12">
+	<div class="ui-field-contain">
+	 <label for="range-1a">奖金</label>
+<input type="checkbox">
+</div>
+ <label for="range-1a">年假天数</label>
+<input type="number" data-clear-btn="true" pattern="[0-9]*"  value="5">
+ <label for="range-1a">基本保险</label>
+<select>
+	<option></option>
+	<option>五险一金</option>
+</select>
+<div class="ui-field-contain">
+ <label for="range-1a">商业保险</label>
+<input type="checkbox">
+</div>
+<div class="ui-field-contain">
+ <label for="range-1a">企业年金</label>
+<input type="checkbox">
+</div>
 <div class="ui-grid-a">
 <div class="ui-block-a"><input type="submit" value="Submit" data-theme="a"></div>
 <div class="ui-block-b"><input type="reset" value="Reset" data-theme="b"></div>

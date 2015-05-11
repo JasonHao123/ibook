@@ -26,15 +26,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>${title}</title>
-	<link rel="shortcut icon" href="<c:url value="/resources/favicon.ico" />">
+	<link rel="shortcut icon" href="<c:url value="/resources/favicon.ico" />">	
 	<link rel="stylesheet" href="<c:url value="/resources/css/jquery.mobile-1.4.5.min.css" />">
 	<link rel="stylesheet" href="<c:url value="/resources/css/jqm-demos.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/jquery-ui.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/jquery.tagit.css" />">
 	<link rel="stylesheet" href="<c:url value="/resources/css/listview-grid.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/redactor.css" />">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<script src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script src="<c:url value="/resources/js/index.js" />"></script>
 	<script src="<c:url value="/resources/js/jquery.mobile-1.4.5.min.js" />"></script>
-
+	<script src="<c:url value="/resources/js/jquery-ui.js" />" type="text/javascript" charset="utf-8"></script>
+	<script src="<c:url value="/resources/js/tag-it.js" />" type="text/javascript" charset="utf-8"></script>
+	<script src="<c:url value="/resources/js/redactor.js" />" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <div data-role="page" id="myPage" class="jqm-demos jqm-home">

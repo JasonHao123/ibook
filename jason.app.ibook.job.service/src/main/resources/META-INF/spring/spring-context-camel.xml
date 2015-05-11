@@ -35,27 +35,17 @@
       <from uri="direct:hello" />
       <!-- wrap the route in the policy which enforces security check -->
       <log message="access hello" />
-        <transform>
-          <simple>Normal user can access this service</simple>
-        </transform>
-
+      <to uri="direct:b" /> 
+      <to uri="direct:commit" />
     </route>
     <route>
       <from uri="direct:b" />
       <log message="access b" />
 
       <setHeader headerName="SolrOperation">
-        <constant>INSERT</constant>
+        <constant>ADD_BEAN</constant>
       </setHeader>
-      <setHeader headerName="SolrField.id">
-        <simple>book99</simple>
-      </setHeader>
-      <setHeader headerName="SolrField.cat">
-        <simple>electronics</simple>
-      </setHeader>
-      <setHeader headerName="SolrField.name">
-        <simple>test asdfasdf dsfgdsfg</simple>
-      </setHeader>
+      
       <to uri="solr://localhost:8983/solr/job" />
     </route>
     <route>
@@ -96,7 +86,7 @@
       <setHeader headerName="SolrOperation">
         <constant>COMMIT</constant>
       </setHeader>
-      <to uri="solr://localhost:8983/solr" />
+      <to uri="solr://localhost:8983/solr/job" />
     </route>
   </camelContext>
 
