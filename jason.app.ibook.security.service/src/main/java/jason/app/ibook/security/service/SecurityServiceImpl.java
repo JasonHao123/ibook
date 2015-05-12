@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.domain.AclImpl;
 import org.springframework.security.acls.domain.PrincipalSid;
 import org.springframework.security.acls.model.Permission;
@@ -20,12 +21,18 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service("securityService")
 public class SecurityServiceImpl implements ISecurityService {
+    @Autowired
     private IUserDao userDao;
+    @Autowired
     private PasswordEncoder encoder;
+    @Autowired
     private IRememberMeTokenDao rememberMeDao;
+    @Autowired
     private AuthenticationProvider authenticationProvider;
     
     public AuthenticationProvider getAuthenticationProvider() {

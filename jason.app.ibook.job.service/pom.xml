@@ -15,6 +15,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.2.11.RELEASE</spring.version>      
          <osgi-import-package>
+         jason.app.ibook.security.api.model,
+         jason.app.ibook.security.api.service,
          jason.app.ibook.job.api.model,
          jason.app.ibook.job.api.dao,
          org.apache.camel,
@@ -25,7 +27,16 @@
                           org.springframework.aop.framework,   
                           org.springframework.transaction.aspectj,
                           org.aopalliance.aop,          
-                          javax.transaction,                      
+                          javax.transaction,     
+                  org.springframework.security.core.userdetails,
+                  org.springframework.security.access,
+                  org.springframework.security.access.intercept.aopalliance,
+                  org.springframework.security.access.intercept.aspectj.aspect,
+                  org.springframework.security.access.expression.method,
+                  org.springframework.security.access.vote,
+                  org.springframework.security.access.prepost,
+                  org.springframework.security.acls,
+                  org.springframework.security.acls.model,              
            *
          </osgi-import-package>
          
@@ -64,7 +75,24 @@
       <version>${spring.version}</version>
     </dependency>
   <!-- Spring security -->
-
+      <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-acl</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-aspects</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
 <dependency>
     <groupId>org.apache.camel</groupId>
     <artifactId>camel-solr</artifactId>
@@ -108,6 +136,13 @@
     <dependency>
       <groupId>jason.app.ibook</groupId>
       <artifactId>jason.app.ibook.job.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>bundle</type>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+      <groupId>jason.app.ibook</groupId>
+      <artifactId>jason.app.ibook.security.api</artifactId>
       <version>0.0.1-SNAPSHOT</version>
       <type>bundle</type>
       <scope>provided</scope>

@@ -7,10 +7,12 @@ import jason.app.ibook.security.api.model.IUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 
@@ -18,8 +20,9 @@ import org.springframework.util.StringUtils;
  * A custom {@link UserDetailsService} where user information
  * is retrieved from a JPA repository
  */
-
+@Service("userDetailService")
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
+    @Autowired
     private IUserDao userDao;
 
     public IUserDao getUserDao() {

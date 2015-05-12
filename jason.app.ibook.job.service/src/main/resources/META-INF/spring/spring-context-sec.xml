@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Sample namespace-based configuration
+  -
+  -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:p="http://www.springframework.org/schema/p"   
+        xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+      http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+<!--     <beans:bean id="jobService" class="jason.app.ibook.job.service.JobServiceImpl" />
+      <beans:bean id="companyService" class="jason.app.ibook.job.service.CompanyServiceImpl" >
+          <beans:property name="companyDao" ref="companyDao" />
+          <beans:property name="securityService" ref="securityService" />
+          <beans:property name="aclService" ref="aclService" />
+      </beans:bean>
+       -->  
+   <beans:bean id="attributeFactory" class="org.springframework.security.access.expression.method.ExpressionBasedAnnotationAttributeFactory" >
+    <beans:constructor-arg ref="expressionHandler" />
+  </beans:bean>
+  <beans:bean id="prePostAnnotationSecurityMetadataSource" class="jason.app.ibook.security.api.service.PrePostAnnotationSecurityMetadataSource">
+    <beans:constructor-arg ref="attributeFactory" />
+  </beans:bean>
+  <beans:bean class="org.springframework.security.access.intercept.aopalliance.MethodSecurityMetadataSourceAdvisor" >
+    <beans:constructor-arg value="asdf" />
+    <beans:constructor-arg ref="prePostAnnotationSecurityMetadataSource" />
+    <beans:constructor-arg value="prePostAnnotationSecurityMetadataSource" />
+  </beans:bean>
+      <global-method-security pre-post-annotations="enabled" metadata-source-ref="prePostAnnotationSecurityMetadataSource" mode="aspectj"  />
+      
+  <beans:bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+    <beans:property name="permissionEvaluator" ref="permissionEvaluator" />
+    <beans:property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
+  </beans:bean> 
+
+
+    <authentication-manager>
+       <authentication-provider user-service-ref="userDetailService">
+            <password-encoder ref="encoder"/>    
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

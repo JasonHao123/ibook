@@ -28,5 +28,7 @@
     interface="jason.app.ibook.commons.api.service.ILocationService" />
   <osgi:reference id="jobService"
     interface="jason.app.ibook.job.api.service.IJobService" />
+   <osgi:reference id="companyService"
+    interface="jason.app.ibook.job.api.service.ICompanyService" />
  
 </beans>

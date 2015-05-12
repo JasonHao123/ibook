@@ -28,6 +28,8 @@
 <!--    <non-jta-data-source>osgi:service/jdbc/ibookdbnojta</non-jta-data-source>
 -->  
     <class>jason.app.ibook.job.jpa.entity.JobImpl</class>
+    <class>jason.app.ibook.job.jpa.entity.CompanyImpl</class>
+    <class>jason.app.ibook.job.jpa.entity.UserCompanyImpl</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     
     

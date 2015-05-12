@@ -7,19 +7,16 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/listview-grid.css" />">
 	<div role="main" class="ui-content jqm-content">
         <ul data-role="listview" data-inset="true">
+        <c:forEach items="${companies}" var="company">
+ 
         	<li><a href="#">
             	<img src="<c:url value="/resources/img/apple.png" />" class="ui-li-thumb">
-            	<h2>iOS 6.1</h2>
+            	<h2>${company.name}</h2>
                 <p>Apple released iOS 6.1</p>
                 <p class="ui-li-aside">iOS</p>
             </a></li>
-        	<li><a href="#">
-            	<img src="<c:url value="/resources/img/blackberry_10.png" />" class="ui-li-thumb">
-            	<h2>BlackBerry 10</h2>
-                <p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
-                <p class="ui-li-aside">BlackBerry</p>
-            </a></li>
- 
+                   </c:forEach>
+
         	<li><a href="<c:url value="/user/company/add.do" />" data-ajax="false">
             	<h2>Add</h2>
                 

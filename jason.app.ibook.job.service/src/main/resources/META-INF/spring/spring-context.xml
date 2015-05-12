@@ -11,7 +11,7 @@
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       ">
-  <context:component-scan base-package="jason.app.ibook.job.service" />
+<!-- -->   <context:component-scan base-package="jason.app.ibook.job.service" /> 
  <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
       <constructor-arg ref="userTransaction"/>

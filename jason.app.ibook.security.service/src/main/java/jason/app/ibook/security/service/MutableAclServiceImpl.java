@@ -35,10 +35,13 @@ import org.springframework.security.acls.model.ObjectIdentity;
 import org.springframework.security.acls.model.Sid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.Assert;
 
+@Service("aclService")
 public class MutableAclServiceImpl implements MutableAclService {
     private boolean foreignKeysInDatabase = true;
     
@@ -122,7 +125,7 @@ public class MutableAclServiceImpl implements MutableAclService {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation=Propagation.MANDATORY)
     public MutableAcl createAcl(ObjectIdentity objectIdentity) throws AlreadyExistsException {
         Assert.notNull(objectIdentity, "Object Identity required");
 
@@ -247,8 +250,8 @@ public class MutableAclServiceImpl implements MutableAclService {
             AclClass clazz = new AclClass();
             clazz.setClazz(type);
             
-            Assert.isTrue(TransactionSynchronizationManager.isSynchronizationActive(),
-                    "Transaction must be running");
+//            Assert.isTrue(TransactionSynchronizationManager.isSynchronizationActive(),
+//                    "Transaction must be running");
             return aclDao.createAclClass(clazz);
         }
 

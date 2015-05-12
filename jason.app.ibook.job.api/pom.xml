@@ -29,11 +29,19 @@
     org.apache.solr.client.solrj.beans,
      org.codehaus.jackson.annotate,
      jason.app.ibook.commons.api.model,
-     jason.app.ibook.commons.api.constant
+     jason.app.ibook.commons.api.constant,
+     org.springframework.security.access.prepost,
+     *
     </aries.osgi.import.pkg>
   </properties>
   
   <dependencies>
+        <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
       <dependency>
       <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-mapper-asl</artifactId>

@@ -11,7 +11,7 @@
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       ">
-
+  <context:component-scan base-package="jason.app.ibook.security.service" />
   <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
     <constructor-arg ref="userTransaction" />
@@ -21,8 +21,8 @@
     <property name="transactionManager" ref="jtaTransactionManager" />
   </bean>
   <tx:annotation-driven transaction-manager="jtaTransactionManager" mode="aspectj" />
-  <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-  <bean id="userDetailService" class="jason.app.ibook.security.service.CustomUserDetailsServiceImpl">
+ <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+<!--   <bean id="userDetailService" class="jason.app.ibook.security.service.CustomUserDetailsServiceImpl">
     <property name="userDao" ref="userDao" />
   </bean>
 
@@ -32,7 +32,7 @@
     <property name="rememberMeDao" ref="rememberMeDao" />
     <property name="authenticationProvider" ref="authenticationProvider" />
   </bean>
-
+ --> 
   <bean id="aclCache" class="jason.app.ibook.security.service.EhCacheBasedAclCache">
     <constructor-arg>
       <bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
@@ -62,12 +62,13 @@
       <bean class="org.springframework.security.acls.domain.ConsoleAuditLogger" />
     </constructor-arg>
   </bean>
-
+<!-- 
   <bean id="aclService" class="jason.app.ibook.security.service.MutableAclServiceImpl">
     <property name="aclCache" ref="aclCache" />
     <property name="lookupStrategy" ref="lookupStrategy" />
     <property name="aclDao" ref="aclDao" />
   </bean>
+   -->
   <!-- <bean id="aclService" class="jason.app.ibook.security.service.MutableAclServiceImpl" /> -->
   <bean id="permissionEvaluator" class="org.springframework.security.acls.AclPermissionEvaluator">
     <constructor-arg ref="aclService" />
@@ -84,15 +85,15 @@
   <constructor-arg  ref="rememberMeDao" />
 </bean>
 
-<bean id="authenticationProvider" class="jason.app.ibook.security.api.service.SSOAuthenticationProvider" >
+<bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider" >
   <property name="passwordEncoder" ref="encoder" />
   <property name="userDetailsService" ref="userDetailService" />  
 </bean>
-
+<!-- 
 <bean id="contextRepository" class="jason.app.ibook.security.service.web.AdvancedHttpSessionSecurityContextRepository" >
   <property name="authDao" ref="rememberMeDao" />
   <property name="userDetailService" ref="userDetailService" />
 </bean>
-
+ -->
 <!--  -->
 </beans>

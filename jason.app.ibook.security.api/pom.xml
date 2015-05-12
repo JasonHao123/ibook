@@ -63,6 +63,7 @@
                          org.apache.tiles.locale.impl,
                         org.springframework.security.access,
                         org.apache.tiles.servlet.context,
+                        org.springframework.core.annotation, org.springframework.security.access.method, org.springframework.security.access.prepost,
       javax.servlet,
       javax.servlet.http, 
       org.slf4j, 
