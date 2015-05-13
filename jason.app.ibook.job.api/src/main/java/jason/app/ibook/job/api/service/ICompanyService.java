@@ -11,7 +11,8 @@ public interface ICompanyService {
     public Department createDepartment(Department department);
     public boolean revokeAccessToCompany(Company company,String user);
     Company createCompany(Company company, String username);
-    boolean grantAccessToCompany(Long companyId, String user);
     @PostFilter("hasPermission(filterObject, read) or hasPermission(filterObject, admin)")
     public List<Company> findUserCompanies(String name);
+    boolean grantAdminAccessToCompany(Long companyId, String user);
+    boolean grantReadAccessToCompany(Long companyId, String user);
 }
