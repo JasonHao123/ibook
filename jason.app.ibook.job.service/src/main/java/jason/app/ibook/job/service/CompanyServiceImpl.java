@@ -1,9 +1,11 @@
 package jason.app.ibook.job.service;
 
 import jason.app.ibook.job.api.dao.ICompanyDao;
+import jason.app.ibook.job.api.dao.IDepartmentDao;
 import jason.app.ibook.job.api.model.Company;
 import jason.app.ibook.job.api.model.Department;
 import jason.app.ibook.job.api.service.ICompanyService;
+import jason.app.ibook.security.api.annotation.ParamName;
 import jason.app.ibook.security.api.service.ISecurityService;
 
 import java.util.List;
@@ -59,6 +61,9 @@ public class CompanyServiceImpl implements ICompanyService {
     @Autowired
     private ICompanyDao companyDao;
 
+    @Autowired
+    private IDepartmentDao departmentDao;
+
     @Override
     @Transactional
     public Company createCompany(Company company, String username) {
@@ -72,7 +77,7 @@ public class CompanyServiceImpl implements ICompanyService {
     @Override
     public Department createDepartment(Department department) {
         // TODO Auto-generated method stub
-        return null;
+        return departmentDao.create(department);
     }
 
     @Override
@@ -107,5 +112,11 @@ public class CompanyServiceImpl implements ICompanyService {
     public boolean revokeAccessToCompany(Company company, String user) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public List<Department> findDepartments(@ParamName("company") Company company) {
+        // TODO Auto-generated method stub
+        return departmentDao.findByCompanyId(company.getId());
     }
 }

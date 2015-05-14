@@ -29,4 +29,15 @@
     <put-attribute name="navi" value="user" />
   </definition>
 
+    <definition name="user.department.list" extends="user.base">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/user/departmentlist.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
+  
+        <definition name="user.department.add" extends="user.base">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/user/departmentadd.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
 </tiles-definitions>

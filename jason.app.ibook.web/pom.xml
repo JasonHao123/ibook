@@ -26,6 +26,11 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <dependencies>
+      <dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-mapper-asl</artifactId>
+    <version>1.9.13</version>
+</dependency>
         <!-- Spring core & mvc -->
         <dependency>
           <groupId>org.springframework</groupId>
@@ -171,6 +176,12 @@
     <profile>
       <id>osgi</id>
       <dependencies>
+      <dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-mapper-asl</artifactId>
+    <version>1.9.13</version>
+    <scope>provided</scope>
+</dependency>
         <!-- Spring core & mvc -->
         <dependency>
           <groupId>org.springframework</groupId>
@@ -364,6 +375,7 @@
                 <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
                 <Bundle-Version>${project.version}</Bundle-Version>
                 <Import-Package>
+                org.codehaus.jackson.map,
                   jason.app.ibook.commons.api.model,
                   jason.app.ibook.commons.api.service,
                                     jason.app.ibook.job.api.model,

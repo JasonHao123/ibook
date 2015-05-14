@@ -38,12 +38,23 @@
     <jpa:context property="entityManager" unitname="ibookJobPU" />
   </bean>
 
+
+        <bean id="departmentDao"
+    class="jason.app.ibook.job.jpa.DepartmentDaoImpl">
+    <tx:transaction method="create*" value="Required" />
+    <tx:transaction method="update*" value="Required" />
+    <tx:transaction method="delete*" value="Required" />
+    <jpa:context property="entityManager" unitname="ibookJobPU" />
+  </bean>
   
       <service ref="jobDao"
     interface="jason.app.ibook.job.api.dao.IJobDao">
     </service>
     <service ref="companyDao"
     interface="jason.app.ibook.job.api.dao.ICompanyDao">
+    </service>
+        <service ref="departmentDao"
+    interface="jason.app.ibook.job.api.dao.IDepartmentDao">
   </service>
 
 </blueprint>

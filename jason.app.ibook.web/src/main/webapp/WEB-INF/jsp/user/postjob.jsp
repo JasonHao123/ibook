@@ -6,6 +6,30 @@
 <%@ page pageEncoding="UTF-8" %>
     <script>
 		$( document ).on( "pagecreate", "#myPage", function() {
+			
+			$("#company").change(function(evt) {
+				var companyId = this.value;
+				$("#department").empty();
+				$("<option value=''></option>").appendTo("#department");
+				if(companyId!="") {
+
+					$.ajax({
+						url: "<c:url value="/rest/department/list.do" />",
+						dataType: "json",
+
+						data: {
+							companyId: companyId
+						},
+						success : function(data) {
+							$(data).each(function(index,item) {
+								$("<option value='"+item.id+"'>"+item.name+"</option>").appendTo("#department");
+							});
+							
+						}
+					});
+				}
+				$('#department').selectmenu('refresh',true);
+			});
 	        $('#content3').redactor({
 	    		imageGetJson: '<c:url value="/spring/files/listImages" />',
 	    		imageUpload: '<c:url value="/spring/files/uploadImage" />',
@@ -40,7 +64,86 @@
         			fieldName: "location"
         		});
             
-
+            $('#features').tagit({
+    			autocomplete : {
+    				source : function(request, response) {
+    					$.ajax({
+    						url: "http://gd.geobytes.com/AutoCompleteCity",
+    						dataType: "jsonp",
+    						crossDomain: true,
+    						data: {
+    							q: request.term
+    						},
+    						success : function(data) {
+    							response($.map(data, function(item) {
+    								return {
+    									label : item,
+    									value : item
+    								}
+    							}));
+    						}
+    					});
+    				},
+    				delay : 1000,
+    				minLength : 2
+    			},
+    			allowSpaces : true,
+    			fieldName: "feature"
+    		});
+            
+            $('#desiredSkills').tagit({
+    			autocomplete : {
+    				source : function(request, response) {
+    					$.ajax({
+    						url: "http://gd.geobytes.com/AutoCompleteCity",
+    						dataType: "jsonp",
+    						crossDomain: true,
+    						data: {
+    							q: request.term
+    						},
+    						success : function(data) {
+    							response($.map(data, function(item) {
+    								return {
+    									label : item,
+    									value : item
+    								}
+    							}));
+    						}
+    					});
+    				},
+    				delay : 1000,
+    				minLength : 2
+    			},
+    			allowSpaces : true,
+    			fieldName: "desiredSkill"
+    		});
+            
+            $('#requiredSkills').tagit({
+    			autocomplete : {
+    				source : function(request, response) {
+    					$.ajax({
+    						url: "http://gd.geobytes.com/AutoCompleteCity",
+    						dataType: "jsonp",
+    						crossDomain: true,
+    						data: {
+    							q: request.term
+    						},
+    						success : function(data) {
+    							response($.map(data, function(item) {
+    								return {
+    									label : item,
+    									value : item
+    								}
+    							}));
+    						}
+    					});
+    				},
+    				delay : 1000,
+    				minLength : 2
+    			},
+    			allowSpaces : true,
+    			fieldName: "requiredSkill"
+    		});
 		});
     </script>
 	<style>
@@ -55,16 +158,14 @@
   	<form data-ajax="false" method="post">	
 	<h3>Basic Info</h3>
 		<label for="title">Company:<span style="float:right"><a href="#" >Add</a></span></label>
-		<select>
+		<select id="company">
 			<option></option>
-			<option>IBM</option>
+			<c:forEach items="${companies}" var="company">
+			<option value="${company.id}">${company.name}</option>
+			</c:forEach>
 		</select>
 		<label for="title">Department/Division:</label>
-		<select>
-			<option></option>
-			<option>GBS</option>
-			<option>GDC</option>
-			<option>CSDL</option>
+		<select id="department">
 		</select>
 		<label for="title">Category 1:</label>
 		<select>
@@ -99,7 +200,7 @@
 <label>Job description</label>
 <textarea id="content3" rows="5" cols="20"></textarea>
 <label>Features<span style="float:right"><a href="#" >Popular features</a></span></label>
-<input type="text">
+<ul id="features" class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"></ul>
 <h3>Requirement</h3>
 <label>学历</label>
 <select>
@@ -117,9 +218,11 @@
         <input type="range" name="range-1b" id="range-1b" min="0" max="35" value="35">
     </div>
 <label>Required Skills</label>
-<input>
+<ul id="requiredSkills" class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"></ul>
+
 <label>Desired Skills</label>
-<input>
+<ul id="desiredSkills" class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset"></ul>
+
 <h3>Benefit Info</h3>
 	<div data-role="rangeslider">
         <label for="range-1a">Salary(K RMB):</label>

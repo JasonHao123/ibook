@@ -31,12 +31,16 @@
     <osgi:reference id="aclService" interface="org.springframework.security.acls.model.MutableAclService" />
     <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
     <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
+    <osgi:reference id="expressionHandler" interface="org.springframework.security.access.expression.method.MethodSecurityExpressionHandler" />
 
 <osgi:reference id="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
 <osgi:reference id="jobDao"
     interface="jason.app.ibook.job.api.dao.IJobDao" />
 <osgi:reference id="companyDao"
-    interface="jason.app.ibook.job.api.dao.ICompanyDao" />    
+    interface="jason.app.ibook.job.api.dao.ICompanyDao" />  
+            <osgi:reference id="departmentDao"
+    interface="jason.app.ibook.job.api.dao.IDepartmentDao" />
+
  <osgi:service ref="jobService"
     interface="jason.app.ibook.job.api.service.IJobService" />
  <osgi:service ref="companyService"

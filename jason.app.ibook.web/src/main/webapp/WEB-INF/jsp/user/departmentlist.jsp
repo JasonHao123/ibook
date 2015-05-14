@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/listview-grid.css" />">
 	<div role="main" class="ui-content jqm-content">
         <ul data-role="listview" data-inset="true">
-        <c:forEach items="${companies}" var="company">
+        <c:forEach items="${departments}" var="company">
  
         	<li><a href="<c:url value="/user/department/list.do" ><c:param name="id" value="${company.id}" /></c:url>">
             	<img src="<c:url value="/resources/img/apple.png" />" class="ui-li-thumb">
@@ -17,7 +17,7 @@
             </a></li>
                    </c:forEach>
 
-        	<li><a href="<c:url value="/user/company/add.do" />" data-ajax="false">
+        	<li><a href="<c:url value="/user/department/add.do" ><c:param name="companyId" value="${companyId}" /></c:url>" data-ajax="false">
             	<h2>Add</h2>
                 
             </a></li>

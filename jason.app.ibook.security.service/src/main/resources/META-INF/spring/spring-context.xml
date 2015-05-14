@@ -96,4 +96,11 @@
 </bean>
  -->
 <!--  -->
+  <bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+    <property name="permissionEvaluator" ref="permissionEvaluator" />
+    <property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
+    <property name="parameterNameDiscoverer">
+      <bean class="jason.app.ibook.security.service.DefaultParameterNameDiscoverer" />
+    </property>
+  </bean> 
 </beans>

@@ -19,6 +19,7 @@
   <properties>
     <!-- Export package versions are maintained in packageinfo files -->
     <aries.osgi.export.pkg>
+      jason.app.ibook.security.api.annotation,
       jason.app.ibook.job.api.dao,
       jason.app.ibook.job.api.model,
       jason.app.ibook.job.api.service,
@@ -51,6 +52,13 @@
       <dependency>
         <groupId>jason.app.ibook</groupId>
         <artifactId>jason.app.ibook.commons.api</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <type>bundle</type>
+        <scope>provided</scope>
+      </dependency>
+            <dependency>
+        <groupId>jason.app.ibook</groupId>
+        <artifactId>jason.app.ibook.security.api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <type>bundle</type>
         <scope>provided</scope>

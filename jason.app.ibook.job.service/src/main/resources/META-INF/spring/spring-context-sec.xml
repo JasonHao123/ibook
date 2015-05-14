@@ -26,6 +26,7 @@
           <beans:property name="aclService" ref="aclService" />
       </beans:bean>
        -->  
+
    <beans:bean id="attributeFactory" class="org.springframework.security.access.expression.method.ExpressionBasedAnnotationAttributeFactory" >
     <beans:constructor-arg ref="expressionHandler" />
   </beans:bean>
@@ -38,12 +39,12 @@
     <beans:constructor-arg value="prePostAnnotationSecurityMetadataSource" />
   </beans:bean>
       <global-method-security pre-post-annotations="enabled" metadata-source-ref="prePostAnnotationSecurityMetadataSource" mode="aspectj"  />
-      
+  <!--    
   <beans:bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
     <beans:property name="permissionEvaluator" ref="permissionEvaluator" />
     <beans:property name="permissionCacheOptimizer" ref="permissionCacheOptimizer" />
   </beans:bean> 
-
+ --> 
 
     <authentication-manager>
        <authentication-provider user-service-ref="userDetailService">

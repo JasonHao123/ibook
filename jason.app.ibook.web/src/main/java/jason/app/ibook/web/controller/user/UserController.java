@@ -1,12 +1,15 @@
 package jason.app.ibook.web.controller.user;
 
 import jason.app.ibook.job.api.model.Company;
+import jason.app.ibook.job.api.model.Department;
 import jason.app.ibook.job.api.model.Job;
 import jason.app.ibook.job.api.service.ICompanyService;
 import jason.app.ibook.job.api.service.IJobService;
 import jason.app.ibook.web.controller.company.model.CompanyForm;
+import jason.app.ibook.web.controller.company.model.DepartmentForm;
 import jason.app.ibook.web.controller.job.model.JobForm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -19,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/user")
@@ -39,6 +43,16 @@ public class UserController {
     public String postJob(Model model) {
         JobForm form =  new JobForm();
         model.addAttribute("job", form);
+        if(companyService!=null) {
+            model.addAttribute("companies",companyService.findUserCompanies(SecurityContextHolder.getContext().getAuthentication().getName()));
+        }else {
+            List<Company> companies = new ArrayList<Company>();
+            Company company = new Company();
+            company.setId(1L);
+            company.setName("test");
+            companies.add(company);
+            model.addAttribute("companies",companies);
+        }
         return "user.post.job";
     }
     
@@ -56,7 +70,16 @@ public class UserController {
     @RequestMapping(value="/company/list",method=RequestMethod.GET)
     @Transactional
     public String listCompany(Model model) {
-        List<Company> companies = companyService.findUserCompanies(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Company> companies = new ArrayList<Company>();
+        if(companyService!=null) {
+            companies = companyService.findUserCompanies(SecurityContextHolder.getContext().getAuthentication().getName());
+        }else {
+            Company company = new Company();
+            company.setId(1L);
+            company.setName("test");
+            companies.add(company);
+        }
+        
         model.addAttribute("companies", companies);
         return "user.company.list";
     }
@@ -78,5 +101,42 @@ public class UserController {
             companyService.createCompany(company,SecurityContextHolder.getContext().getAuthentication().getName());
         }
             return "redirect:/user/company/list.do";
+    }
+    
+    
+    @RequestMapping(value="/department/list",method=RequestMethod.GET)
+    @Transactional
+    public String listDepartment(Model model,@RequestParam("id") Long id) {
+        Company company = new Company();
+        company.setId(id);
+        List<Department> departments = companyService.findDepartments(company);
+        model.addAttribute("departments", departments);
+        model.addAttribute("companyId", id);
+        return "user.department.list";
+    }
+    
+    
+    @RequestMapping(value="/department/add",method=RequestMethod.GET)
+    public String addDepartment(Model model,@RequestParam("companyId") Long companyId) {
+        DepartmentForm form =  new DepartmentForm();
+        form.setCompanyId(companyId);
+        model.addAttribute("form", form);
+        return "user.department.add";
+    }
+    
+    @RequestMapping(value="/department/add",method=RequestMethod.POST)
+    public String postAddDepartment(DepartmentForm form, BindingResult result) {
+        logger.info(form.getName());
+        Department department = new Department();
+        department.setName(form.getName());
+        if(form.getCompanyId()!=null) {
+            Company company = new Company();
+            company.setId(form.getCompanyId());
+            department.setCompany(company);
+        }
+        if(companyService!=null) {
+            companyService.createDepartment(department);
+        }
+            return "redirect:/user/department/list.do?companyId="+form.getCompanyId();
     }
 }
