@@ -34,6 +34,12 @@
     interface="jason.app.ibook.commons.api.service.ILocationService" />
  <osgi:service ref="jobCategoryService"
     interface="jason.app.ibook.commons.api.service.IJobCategoryService" />
+ <osgi:service ref="skillService"
+    interface="jason.app.ibook.commons.api.service.ISkillService" />
+     <osgi:service ref="featureService"
+    interface="jason.app.ibook.commons.api.service.IFeatureService" />
+     <osgi:service ref="categoryService"
+    interface="jason.app.ibook.commons.api.service.ICategoryService" />
     
    
 </beans>

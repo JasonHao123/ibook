@@ -31,6 +31,14 @@
    <osgi:reference id="companyService"
     interface="jason.app.ibook.job.api.service.ICompanyService" />
      <osgi:reference id="expressionHandler" interface="org.springframework.security.access.expression.method.MethodSecurityExpressionHandler" />
-   <osgi:reference id="categoryService"
+   <osgi:reference id="jobCategoryService"
     interface="jason.app.ibook.commons.api.service.IJobCategoryService" />
+    
+     <osgi:reference id="skillService"
+    interface="jason.app.ibook.commons.api.service.ISkillService" />
+     <osgi:reference id="featureService"
+    interface="jason.app.ibook.commons.api.service.IFeatureService" />
+    <osgi:reference id="categoryService"
+    interface="jason.app.ibook.commons.api.service.ICategoryService" />
+    
 </beans>

@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.2.11.RELEASE</spring.version>      
          <osgi-import-package>
-         net.sf.ehcache;version="2.6.11",
+         net.sf.ehcache;version=["2.6","2.7"),
          org.springframework.instrument.classloading,
                                        org.springframework.security.web,
                             org.springframework.security.crypto.bcrypt,

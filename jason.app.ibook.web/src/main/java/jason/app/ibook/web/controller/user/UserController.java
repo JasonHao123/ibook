@@ -3,6 +3,7 @@ package jason.app.ibook.web.controller.user;
 import jason.app.ibook.commons.api.model.Category;
 import jason.app.ibook.commons.api.model.ICategory;
 import jason.app.ibook.commons.api.service.IJobCategoryService;
+import jason.app.ibook.commons.api.service.ICategoryService;
 import jason.app.ibook.job.api.model.Company;
 import jason.app.ibook.job.api.model.Department;
 import jason.app.ibook.job.api.model.Job;
@@ -34,6 +35,8 @@ public class UserController {
 	            .getLogger(UserController.class);
 	   @Autowired(required=false)
 	  private IJobService jobService;
+	   @Autowired(required=false)
+	  private ICategoryService jobTypeService;
 	    @Autowired(required=false)
 	    private IJobCategoryService categoryService;
        @Autowired(required=false)
@@ -47,6 +50,10 @@ public class UserController {
     public String postJob(Model model) {
         JobForm form =  new JobForm();
         model.addAttribute("job", form);
+        if(jobTypeService!=null) {
+            model.addAttribute("jobTypes",jobTypeService.listJobTypes());
+            model.addAttribute("educationLevels",jobTypeService.listEducationLevels());
+        }
         if(companyService!=null) {
             model.addAttribute("companies",companyService.findUserCompanies(SecurityContextHolder.getContext().getAuthentication().getName()));
         }else {
@@ -75,6 +82,7 @@ public class UserController {
         logger.info(form.getTitle());
         Job job = new Job();
         job.setTitle(form.getTitle());
+        
         if(jobService!=null) {
         		jobService.createJob(job);
         }
@@ -151,6 +159,6 @@ public class UserController {
         if(companyService!=null) {
             companyService.createDepartment(department);
         }
-            return "redirect:/user/department/list.do?companyId="+form.getCompanyId();
+            return "redirect:/user/department/list.do?id="+form.getCompanyId();
     }
 }
