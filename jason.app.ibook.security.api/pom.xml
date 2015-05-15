@@ -32,6 +32,7 @@
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
     <aries.osgi.import.pkg>
+    org.aopalliance.intercept, org.springframework.aop.framework, org.springframework.aop.support, org.springframework.context, org.springframework.core, org.springframework.expression, org.springframework.expression.spel.support, org.springframework.security.access.expression, org.springframework.security.access.expression.method, org.springframework.security.access.hierarchicalroles,
     javax.el, javax.servlet.jsp,
      org.apache.commons.logging,
       org.apache.tiles.awareness, 

@@ -19,7 +19,6 @@
   <properties>
     <!-- Export package versions are maintained in packageinfo files -->
     <aries.osgi.export.pkg>
-      jason.app.ibook.security.api.annotation,
       jason.app.ibook.job.api.dao,
       jason.app.ibook.job.api.model,
       jason.app.ibook.job.api.service,
@@ -27,6 +26,7 @@
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
     <aries.osgi.import.pkg >
+          jason.app.ibook.security.api.annotation,
     org.apache.solr.client.solrj.beans,
      org.codehaus.jackson.annotate,
      jason.app.ibook.commons.api.model,
