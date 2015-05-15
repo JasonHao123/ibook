@@ -26,11 +26,9 @@
     </aries.osgi.export.pkg>
     <aries.osgi.private.pkg />
     <aries.osgi.import.pkg >
-          jason.app.ibook.security.api.annotation,
+    jason.app.ibook.security.api.annotation,
     org.apache.solr.client.solrj.beans,
      org.codehaus.jackson.annotate,
-     jason.app.ibook.commons.api.model,
-     jason.app.ibook.commons.api.constant,
      org.springframework.security.access.prepost,
      *
     </aries.osgi.import.pkg>
@@ -49,13 +47,6 @@
       <version>1.9.13</version>
       <scope>provided</scope>
     </dependency>
-      <dependency>
-        <groupId>jason.app.ibook</groupId>
-        <artifactId>jason.app.ibook.commons.api</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <type>bundle</type>
-        <scope>provided</scope>
-      </dependency>
             <dependency>
         <groupId>jason.app.ibook</groupId>
         <artifactId>jason.app.ibook.security.api</artifactId>

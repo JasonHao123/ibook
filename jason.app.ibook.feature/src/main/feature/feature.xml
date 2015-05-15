@@ -45,6 +45,7 @@
     <bundle>mvn:org.apache.tiles/tiles-template/2.2.2</bundle>
     <bundle>mvn:org.apache.tiles/tiles-jsp/2.2.2</bundle>
     <bundle>mvn:org.apache.tiles/tiles-el/2.2.2</bundle>
+    <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ehcache/2.6.11_1</bundle>
   </feature>
 
 </features>

@@ -1,5 +1,8 @@
 package jason.app.ibook.web.controller.user;
 
+import jason.app.ibook.commons.api.model.Category;
+import jason.app.ibook.commons.api.model.ICategory;
+import jason.app.ibook.commons.api.service.IJobCategoryService;
 import jason.app.ibook.job.api.model.Company;
 import jason.app.ibook.job.api.model.Department;
 import jason.app.ibook.job.api.model.Job;
@@ -31,7 +34,8 @@ public class UserController {
 	            .getLogger(UserController.class);
 	   @Autowired(required=false)
 	  private IJobService jobService;
-	   
+	    @Autowired(required=false)
+	    private IJobCategoryService categoryService;
        @Autowired(required=false)
       private ICompanyService companyService;
     @RequestMapping("/index")
@@ -53,6 +57,16 @@ public class UserController {
             companies.add(company);
             model.addAttribute("companies",companies);
         }
+        if(categoryService!=null) {
+            model.addAttribute("categories",categoryService.findByParent(null));
+        }else {
+            List<ICategory> companies = new ArrayList<ICategory>();
+            Category company = new Category();
+            company.setId(1L);
+            company.setName("test");
+            companies.add(company);
+            model.addAttribute("categories",companies);
+        }        
         return "user.post.job";
     }
     

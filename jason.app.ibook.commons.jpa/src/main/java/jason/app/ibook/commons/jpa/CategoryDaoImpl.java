@@ -65,4 +65,20 @@ public class CategoryDaoImpl implements ICategoryDao {
         cate.setSubType(category.getSubType());
         return cate;
     }
+
+    @Override
+    public List<ICategory> findByPattern(CategoryType type, String pattern) {
+
+            // TODO Auto-generated method stub
+            Query query = em.createQuery("select l from CategoryImpl l where l.type = :type and lower(l.name) like :pattern");
+            query.setParameter("type", type);
+            query.setParameter("pattern", pattern+"%".toLowerCase());
+            List<CategoryImpl> locations = query.getResultList();
+            List<ICategory> result = new ArrayList<ICategory>();
+            for(CategoryImpl location:locations) {
+                result.add(createLocation(location));
+            }
+            return result;
+
+    }
 }

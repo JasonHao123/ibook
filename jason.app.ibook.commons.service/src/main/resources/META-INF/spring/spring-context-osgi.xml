@@ -32,6 +32,8 @@
     
  <osgi:service ref="locationService"
     interface="jason.app.ibook.commons.api.service.ILocationService" />
+ <osgi:service ref="jobCategoryService"
+    interface="jason.app.ibook.commons.api.service.IJobCategoryService" />
     
    
 </beans>

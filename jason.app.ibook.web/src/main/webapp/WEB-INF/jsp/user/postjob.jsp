@@ -41,17 +41,17 @@
         			autocomplete : {
         				source : function(request, response) {
         					$.ajax({
-        						url: "http://gd.geobytes.com/AutoCompleteCity",
-        						dataType: "jsonp",
+        						url: "<c:url value="/rest/location/search.do" />",
+        						dataType: "json",
         						crossDomain: true,
         						data: {
-        							q: request.term
+        							prefix: request.term
         						},
         						success : function(data) {
         							response($.map(data, function(item) {
         								return {
-        									label : item,
-        									value : item
+        									label : item.name,
+        									value : item.name
         								}
         							}));
         						}
@@ -170,9 +170,9 @@
 		<label for="title">Category 1:</label>
 		<select>
 			<option></option>
-			<option>IT|互联网|通信</option>
-			<option>GDC</option>
-			<option>CSDL</option>
+			<c:forEach items="${categories}" var="category">
+			<option value="${category.id}">${category.name}</option>
+			</c:forEach>
 		</select>
 		<label for="title">Category 2:</label>
 		<select>

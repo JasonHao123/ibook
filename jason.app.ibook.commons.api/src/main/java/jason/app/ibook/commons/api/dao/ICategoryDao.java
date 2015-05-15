@@ -10,5 +10,6 @@ public interface ICategoryDao {
     List<ICategory> findByParent(CategoryType location, Long parent);
 
     ICategory create(CategoryType type,Integer subType, String name, Long parent);
-
+        
+    List<ICategory> findByPattern(CategoryType location, String pattern);
 }

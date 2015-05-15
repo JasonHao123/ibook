@@ -46,5 +46,9 @@ public class LocationServiceImpl implements ILocationService {
         return locationDao.create(CategoryType.LOCATION,LocationType.DISTRICT.ordinal(),name,parent);
     }
     
-    
+    @Override
+    public List<ICategory> findByPattern(String pattern) {
+        // TODO Auto-generated method stub
+        return locationDao.findByPattern(CategoryType.LOCATION,pattern);
+    }
 }

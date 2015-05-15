@@ -15,6 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.2.11.RELEASE</spring.version>      
          <osgi-import-package>
+         net.sf.ehcache;version="2.6.11",
          org.springframework.instrument.classloading,
                                        org.springframework.security.web,
                             org.springframework.security.crypto.bcrypt,
@@ -113,6 +114,13 @@
       <type>bundle</type>
       <scope>provided</scope>
     </dependency>
+    
+    <dependency>
+    <groupId>org.apache.servicemix.bundles</groupId>
+    <artifactId>org.apache.servicemix.bundles.ehcache</artifactId>
+    <version>2.6.11_1</version>
+     <scope>provided</scope>
+</dependency>
   </dependencies>
   
     <build>

@@ -16,4 +16,6 @@ public interface ILocationService {
 
     ICategory createDistrict(String name, Long parent);
 
+    List<ICategory> findByPattern(String pattern);
+
 }
