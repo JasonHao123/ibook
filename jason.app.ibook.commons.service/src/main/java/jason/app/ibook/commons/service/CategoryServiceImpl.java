@@ -28,4 +28,11 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	}
 
+	@Override
+	public List<ICategory> findFeatureByPattern(String pattern) {
+		// TODO Auto-generated method stub
+        return categoryDao.findByPattern(CategoryType.FEATURE,pattern);
+
+	}
+
 }

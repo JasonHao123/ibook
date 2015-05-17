@@ -20,4 +20,5 @@ public interface ICompanyService {
     @PreAuthorize("hasPermission(#company, read) or hasPermission(#company, admin)")
     @ParamName("company")
     public List<Department> findDepartments( Company company);
+	public Company findCompany(Long company);
 }

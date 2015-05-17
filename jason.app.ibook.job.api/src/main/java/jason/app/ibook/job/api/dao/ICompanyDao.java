@@ -12,4 +12,6 @@ public interface ICompanyDao {
 
     List<Company> findUserCompanies(String name);
 
+	Company findById(Long company);
+
 }

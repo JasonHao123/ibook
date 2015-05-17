@@ -25,14 +25,18 @@
    <field name="publisher" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="description" type="text_general" indexed="true" stored="true" omitNorms="true"/>
    <field name="companyInfo" type="text_general" indexed="true" stored="true" omitNorms="true"/>
-   <field name="location" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="locations" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="features" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="requiredSkills" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="desiredSkills" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="categoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="subCategoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="location" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <field name="publishDate" type="date" indexed="true" stored="true" />
    <field name="headCount" type="int" indexed="true" stored="true" />
    <field name="salary" type="int" indexed="true" stored="true" multiValued="true" />
 
-   <field name="store" type="location" indexed="true" stored="true"/>
 
    <!-- Main body of document extracted by SolrCell.
         NOTE: This field is not indexed by default, since it is also copied to "text"
@@ -78,7 +82,9 @@
    <copyField source="publisher" dest="text"/>
    <copyField source="features" dest="text"/>
    <copyField source="companyInfo" dest="text"/>
-
+   <copyField source="locations" dest="text"/>
+   <copyField source="requiredSkills" dest="text"/>
+    <copyField source="desiredSkills" dest="text"/>
     <!-- The StrField type is not analyzed, but indexed/stored verbatim.
        It supports doc values but in that case the field needs to be
        single-valued and either required or have a default value.

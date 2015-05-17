@@ -55,5 +55,15 @@ public class CompanyDaoImpl implements ICompanyDao{
             companies.add(company);
         }
         return companies;
-    } 
+    }
+
+	@Override
+	public Company findById(Long id) {
+		// TODO Auto-generated method stub
+		CompanyImpl comp = em.find(CompanyImpl.class, id);
+		Company company = new Company();
+		company.setId(id);
+		company.setName(comp.getName());
+		return company;
+	} 
 }

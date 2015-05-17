@@ -81,4 +81,14 @@ public class CategoryDaoImpl implements ICategoryDao {
             return result;
 
     }
+
+	@Override
+	public ICategory findById(Long id) {
+		// TODO Auto-generated method stub
+		CategoryImpl cata = em.find(CategoryImpl.class, id);
+		Category category = new Category();
+		category.setId(cata.getId());
+		category.setName(cata.getName());
+		return category;
+	}
 }

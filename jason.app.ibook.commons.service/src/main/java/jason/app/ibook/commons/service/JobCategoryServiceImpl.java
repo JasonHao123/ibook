@@ -20,4 +20,10 @@ public class JobCategoryServiceImpl implements IJobCategoryService{
         // TODO Auto-generated method stub
         return locationDao.findByParent(CategoryType.JOB_CATEGORY, parent);
     }
+
+	@Override
+	public ICategory findById(Long id) {
+		// TODO Auto-generated method stub
+		return locationDao.findById(id);
+	}
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IJobCategoryService {
     List<ICategory> findByParent(Long parent);
+
+	ICategory findById(Long category1);
 }

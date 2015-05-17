@@ -9,38 +9,80 @@ public class Job {
 	private Long id;
 	 @Field
 	private String title;
-	 
+	@Field
 	private String publisher;
 	private Long companyId;
+
 	private String companyName;
 	
 	private Long departmentId;
 	private String departmentName;
 	
+	@Field
 	private String description;
 
+
+	private Long categoryId;
+	@Field("categoryName")
 	private String categoryName;
 
+
+	private Long subCategoryId;
+	@Field("subCategoryName")
 	private String subCategoryName;
 
+	private Long workTypeId;
 	private String workTypeName;
-	
+	@Field("headCount")
 	private Integer numberOfVacancy;
-
-	private List<String> locations;
-
-    private List<String> features;
+	@Field
+	private String[] locations;
+	@Field
+    private String[] features;
     
+    private Long educationLevelId;
     private String educationLevelName;
     
     private Integer minExperience;
     private Integer maxExperience;
+    @Field
+    private String[] requiredSkills;
+    @Field
+    private String[] desiredSkills;
 
-    private List<String> requiredSkills;
+    public Long getCategoryId() {
+		return categoryId;
+	}
 
-    private List<String> desiredSkills;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
 
-    public Long getId() {
+	public Long getSubCategoryId() {
+		return subCategoryId;
+	}
+
+	public void setSubCategoryId(Long subCategoryId) {
+		this.subCategoryId = subCategoryId;
+	}
+
+	public Long getWorkTypeId() {
+		return workTypeId;
+	}
+
+	public void setWorkTypeId(Long workTypeId) {
+		this.workTypeId = workTypeId;
+	}
+
+	public Long getEducationLevelId() {
+		return educationLevelId;
+	}
+
+	public void setEducationLevelId(Long educationLevelId) {
+		this.educationLevelId = educationLevelId;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -136,21 +178,6 @@ public class Job {
         this.numberOfVacancy = numberOfVacancy;
     }
 
-    public List<String> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<String> locations) {
-        this.locations = locations;
-    }
-
-    public List<String> getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(List<String> features) {
-        this.features = features;
-    }
 
     public String getEducationLevelName() {
         return educationLevelName;
@@ -176,20 +203,38 @@ public class Job {
         this.maxExperience = maxExperience;
     }
 
-    public List<String> getRequiredSkills() {
-        return requiredSkills;
-    }
+	public String[] getLocations() {
+		return locations;
+	}
 
-    public void setRequiredSkills(List<String> requiredSkills) {
-        this.requiredSkills = requiredSkills;
-    }
+	public void setLocations(String[] locations) {
+		this.locations = locations;
+	}
 
-    public List<String> getDesiredSkills() {
-        return desiredSkills;
-    }
+	public String[] getFeatures() {
+		return features;
+	}
 
-    public void setDesiredSkills(List<String> desiredSkills) {
-        this.desiredSkills = desiredSkills;
-    }
+	public void setFeatures(String[] features) {
+		this.features = features;
+	}
+
+	public String[] getRequiredSkills() {
+		return requiredSkills;
+	}
+
+	public void setRequiredSkills(String[] requiredSkills) {
+		this.requiredSkills = requiredSkills;
+	}
+
+	public String[] getDesiredSkills() {
+		return desiredSkills;
+	}
+
+	public void setDesiredSkills(String[] desiredSkills) {
+		this.desiredSkills = desiredSkills;
+	}
+
+
    
 }

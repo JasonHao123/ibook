@@ -12,4 +12,6 @@ public interface ICategoryDao {
     ICategory create(CategoryType type,Integer subType, String name, Long parent);
         
     List<ICategory> findByPattern(CategoryType location, String pattern);
+
+	ICategory findById(Long id);
 }

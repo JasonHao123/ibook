@@ -81,8 +81,19 @@ public class UserController {
     public String postJobSave(JobForm form, BindingResult result) {
         logger.info(form.getTitle());
         Job job = new Job();
+        job.setPublisher(SecurityContextHolder.getContext().getAuthentication().getName());
         job.setTitle(form.getTitle());
-        
+        job.setCompanyId(form.getCompany());
+        job.setCompanyName(companyService.findCompany(form.getCompany()).getName());
+        job.setCategoryId(form.getCategory1());
+        job.setCategoryName(categoryService.findById(form.getCategory1()).getName());
+        job.setSubCategoryId(form.getCategory2());
+        job.setSubCategoryName(categoryService.findById(form.getCategory2()).getName());
+        job.setDescription(form.getDescription());
+        job.setLocations(form.getLocation());
+        job.setFeatures(form.getFeature());
+        job.setRequiredSkills(form.getRequiredSkill());
+        job.setDesiredSkills(form.getDesiredSkill());
         if(jobService!=null) {
         		jobService.createJob(job);
         }

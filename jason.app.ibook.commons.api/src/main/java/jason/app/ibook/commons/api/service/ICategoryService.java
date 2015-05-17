@@ -7,5 +7,5 @@ import java.util.List;
 public interface ICategoryService {
 	public List<ICategory> listJobTypes();
 	public List<ICategory> listEducationLevels();
-	
+	public List<ICategory> findFeatureByPattern(String pattern);
 }

@@ -9,8 +9,8 @@ import jason.app.ibook.security.api.annotation.ParamName;
 import jason.app.ibook.security.api.service.ISecurityService;
 
 import java.util.List;
-import org.springframework.security.access.intercept.aspectj.aspect.AnnotationSecurityAspect;
 
+import org.springframework.security.access.intercept.aspectj.aspect.AnnotationSecurityAspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -119,4 +119,10 @@ public class CompanyServiceImpl implements ICompanyService {
         // TODO Auto-generated method stub
         return departmentDao.findByCompanyId(company.getId());
     }
+
+	@Override
+	public Company findCompany(Long company) {
+		// TODO Auto-generated method stub
+		return companyDao.findById(company);
+	}
 }
