@@ -90,10 +90,10 @@ public class UserController {
         job.setSubCategoryId(form.getCategory2());
         job.setSubCategoryName(categoryService.findById(form.getCategory2()).getName());
         job.setDescription(form.getDescription());
-        job.setLocations(form.getLocation());
-        job.setFeatures(form.getFeature());
-        job.setRequiredSkills(form.getRequiredSkill());
-        job.setDesiredSkills(form.getDesiredSkill());
+        job.setLocation(form.getLocation());
+        job.setFeature(form.getFeature());
+        job.setRequiredSkill(form.getRequiredSkill());
+        job.setDesiredSkill(form.getDesiredSkill());
         if(jobService!=null) {
         		jobService.createJob(job);
         }

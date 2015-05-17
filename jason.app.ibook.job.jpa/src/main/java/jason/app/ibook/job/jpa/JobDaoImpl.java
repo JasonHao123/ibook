@@ -17,6 +17,10 @@ public class JobDaoImpl implements IJobDao{
 		// TODO Auto-generated method stub
 		JobImpl jobImpl = new JobImpl();
 		jobImpl.setTitle(job.getTitle());
+		jobImpl.setCategory(job.getCategoryId());
+		jobImpl.setDescription(job.getDescription());
+		jobImpl.setPublisher(job.getPublisher());
+		jobImpl.setSubCategory(job.getSubCategoryId());
 		em.persist(jobImpl);
 		em.flush();
 		job.setId(jobImpl.getId());

@@ -962,7 +962,7 @@
        <str name="facet.missing">true</str>
        <str name="facet.field">publisher</str>
        <str name="facet.field">location</str>
-       <str name="facet.query">ipod</str>
+       <str name="facet.query">Java</str>
        <str name="facet.range">salary</str>
        <int name="f.salary.facet.range.start">3500</int>
        <int name="f.salary.facet.range.end">50000</int>

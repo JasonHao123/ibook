@@ -25,10 +25,9 @@
    <field name="publisher" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="description" type="text_general" indexed="true" stored="true" omitNorms="true"/>
    <field name="companyInfo" type="text_general" indexed="true" stored="true" omitNorms="true"/>
-   <field name="locations" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="features" type="text_general" indexed="true" stored="true" multiValued="true"/>
-   <field name="requiredSkills" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="desiredSkills" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="feature" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="requiredSkill" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="desiredSkill" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="categoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="subCategoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="location" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -80,11 +79,11 @@
    <copyField source="title" dest="text"/>
    <copyField source="description" dest="text"/>
    <copyField source="publisher" dest="text"/>
-   <copyField source="features" dest="text"/>
+   <copyField source="feature" dest="text"/>
    <copyField source="companyInfo" dest="text"/>
-   <copyField source="locations" dest="text"/>
-   <copyField source="requiredSkills" dest="text"/>
-    <copyField source="desiredSkills" dest="text"/>
+   <copyField source="location" dest="text"/>
+   <copyField source="requiredSkill" dest="text"/>
+    <copyField source="desiredSkill" dest="text"/>
     <!-- The StrField type is not analyzed, but indexed/stored verbatim.
        It supports doc values but in that case the field needs to be
        single-valued and either required or have a default value.

@@ -36,9 +36,9 @@ public class Job {
 	@Field("headCount")
 	private Integer numberOfVacancy;
 	@Field
-	private String[] locations;
+	private String[] location;
 	@Field
-    private String[] features;
+    private String[] feature;
     
     private Long educationLevelId;
     private String educationLevelName;
@@ -46,9 +46,9 @@ public class Job {
     private Integer minExperience;
     private Integer maxExperience;
     @Field
-    private String[] requiredSkills;
+    private String[] requiredSkill;
     @Field
-    private String[] desiredSkills;
+    private String[] desiredSkill;
 
     public Long getCategoryId() {
 		return categoryId;
@@ -203,38 +203,36 @@ public class Job {
         this.maxExperience = maxExperience;
     }
 
-	public String[] getLocations() {
-		return locations;
+	public String[] getLocation() {
+		return location;
 	}
 
-	public void setLocations(String[] locations) {
-		this.locations = locations;
+	public void setLocation(String[] location) {
+		this.location = location;
 	}
 
-	public String[] getFeatures() {
-		return features;
+	public String[] getFeature() {
+		return feature;
 	}
 
-	public void setFeatures(String[] features) {
-		this.features = features;
+	public void setFeature(String[] feature) {
+		this.feature = feature;
 	}
 
-	public String[] getRequiredSkills() {
-		return requiredSkills;
+	public String[] getRequiredSkill() {
+		return requiredSkill;
 	}
 
-	public void setRequiredSkills(String[] requiredSkills) {
-		this.requiredSkills = requiredSkills;
+	public void setRequiredSkill(String[] requiredSkill) {
+		this.requiredSkill = requiredSkill;
 	}
 
-	public String[] getDesiredSkills() {
-		return desiredSkills;
+	public String[] getDesiredSkill() {
+		return desiredSkill;
 	}
 
-	public void setDesiredSkills(String[] desiredSkills) {
-		this.desiredSkills = desiredSkills;
+	public void setDesiredSkill(String[] desiredSkill) {
+		this.desiredSkill = desiredSkill;
 	}
 
-
-   
 }
