@@ -48,6 +48,15 @@
       
       <to uri="solr://localhost:8983/solr/job" />
     </route>
+    
+    <route>
+      <from uri="direct:query" />
+     <recipientList>
+            <simple>http://localhost:8983/solr/job/select/?q=test</simple>
+        </recipientList>
+<convertBodyTo type="java.lang.String"/>
+    </route>    
+    
     <route>
       <from uri="direct:c" />
       <log message="access c" />

@@ -23,17 +23,33 @@
    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
    <field name="title" type="text_general" indexed="true" stored="true"/>
    <field name="publisher" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="companyId" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="companyName" type="text_general" indexed="true" stored="true" omitNorms="true"/>
+   <field name="departmentId" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="departmentName" type="text_general" indexed="true" stored="true" omitNorms="true"/>
    <field name="description" type="text_general" indexed="true" stored="true" omitNorms="true"/>
-   <field name="companyInfo" type="text_general" indexed="true" stored="true" omitNorms="true"/>
+   <field name="categoryId" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="categoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="subCategoryId" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="subCategoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
+   
+   <field name="workTypeId" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="workTypeName" type="string" indexed="true" stored="true" omitNorms="true"/>
+   
+   <field name="numberOfVacancy" type="int" indexed="true" stored="true" />
+   <field name="location" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="feature" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="requiredSkill" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="desiredSkill" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="categoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
-   <field name="subCategoryName" type="string" indexed="true" stored="true" omitNorms="true"/>
-   <field name="location" type="string" indexed="true" stored="true" multiValued="true"/>
 
+   <field name="educationLevelId" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="educationLevelName" type="string" indexed="true" stored="true" omitNorms="true"/>
+    <field name="minExperience" type="int" indexed="false" stored="true"/>
+    <field name="maxExperience" type="int" indexed="false" stored="true"/>
+    <field name="experience" type="int" indexed="true" multiValued="true"/>
+    
    <field name="publishDate" type="date" indexed="true" stored="true" />
-   <field name="headCount" type="int" indexed="true" stored="true" />
+
    <field name="salary" type="int" indexed="true" stored="true" multiValued="true" />
 
 
@@ -75,12 +91,14 @@
   <!-- copyField commands copy one field to another at the time a document
         is added to the index.  It's used either to index the same field differently,
         or to add multiple fields to the same field for easier/faster searching.  -->
+   <copyField source="minExperience" dest="experience"/>
+   <copyField source="maxExperience" dest="experience"/>
 
    <copyField source="title" dest="text"/>
    <copyField source="description" dest="text"/>
    <copyField source="publisher" dest="text"/>
    <copyField source="feature" dest="text"/>
-   <copyField source="companyInfo" dest="text"/>
+   <copyField source="companyName" dest="text"/>
    <copyField source="location" dest="text"/>
    <copyField source="requiredSkill" dest="text"/>
     <copyField source="desiredSkill" dest="text"/>

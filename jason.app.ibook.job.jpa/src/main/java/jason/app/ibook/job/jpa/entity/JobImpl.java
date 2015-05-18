@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +19,9 @@ public class JobImpl {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToOne
+    private CompanyImpl company;
     
     @Column
     private String title;
@@ -28,10 +32,10 @@ public class JobImpl {
 	private String description;
 	
     @Column
-	private Long category;
+	private String category;
 	
 	@Column
-	private Long subCategory;
+	private String subCategory;
 	
 	@Column
 	private String publisher;
@@ -63,19 +67,19 @@ public class JobImpl {
 		this.description = description;
 	}
 
-	public Long getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(Long category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
-	public Long getSubCategory() {
+	public String getSubCategory() {
 		return subCategory;
 	}
 
-	public void setSubCategory(Long subCategory) {
+	public void setSubCategory(String subCategory) {
 		this.subCategory = subCategory;
 	}
 
@@ -94,6 +98,14 @@ public class JobImpl {
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
+
+    public CompanyImpl getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyImpl company) {
+        this.company = company;
+    }
 	
 	
 }

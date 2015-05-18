@@ -1,8 +1,10 @@
 package jason.app.ibook.commons.api.model;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import jason.app.ibook.commons.api.constant.CategoryType;
+
+import java.util.List;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class Category implements ICategory {
     private Long id;
@@ -11,6 +13,21 @@ public class Category implements ICategory {
     private ICategory parent;
     private CategoryType type;
     private Integer subType;
+    private boolean leaf;
+    public boolean isLeaf() {
+        return leaf;
+    }
+    public void setLeaf(boolean leaf) {
+        this.leaf = leaf;
+    }
+    @JsonIgnore
+    private List<ICategory> children;
+    public List<ICategory> getChildren() {
+        return children;
+    }
+    public void setChildren(List<ICategory> children) {
+        this.children = children;
+    }
     public void setId(Long id) {
         this.id = id;
     }

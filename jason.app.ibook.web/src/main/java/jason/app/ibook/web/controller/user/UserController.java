@@ -84,11 +84,17 @@ public class UserController {
         job.setPublisher(SecurityContextHolder.getContext().getAuthentication().getName());
         job.setTitle(form.getTitle());
         job.setCompanyId(form.getCompany());
-        job.setCompanyName(companyService.findCompany(form.getCompany()).getName());
+        if(job.getCompanyId()!=null) {
+            job.setCompanyName(companyService.findCompany(Long.valueOf(form.getCompany())).getName());
+        }
         job.setCategoryId(form.getCategory1());
-        job.setCategoryName(categoryService.findById(form.getCategory1()).getName());
+        if(job.getCategoryId()!=null) {
+        job.setCategoryName(categoryService.findById(Long.valueOf(form.getCategory1())).getName());
+        }
         job.setSubCategoryId(form.getCategory2());
-        job.setSubCategoryName(categoryService.findById(form.getCategory2()).getName());
+        if(job.getSubCategoryId()!=null) {
+        job.setSubCategoryName(categoryService.findById(Long.valueOf(form.getCategory2())).getName());
+        }
         job.setDescription(form.getDescription());
         job.setLocation(form.getLocation());
         job.setFeature(form.getFeature());

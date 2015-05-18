@@ -2,11 +2,11 @@ package jason.app.ibook.web.controller.job.model;
 
 public class JobForm {
 	private String title;
-	private Long company;
-	private Long department;
-	private Long category1;
-	private Long category2;
-	private Long workType;
+	private String company;
+	private String department;
+	private String category1;
+	private String category2;
+	private String workType;
 	private Integer numberOfVacancy;
 	private String[] location;
 	private String description;
@@ -116,43 +116,43 @@ public class JobForm {
 		this.desiredSkill = desiredSkill;
 	}
 
-	public Long getCompany() {
+	public String getCompany() {
 		return company;
 	}
 
-	public void setCompany(Long company) {
+	public void setCompany(String company) {
 		this.company = company;
 	}
 
-	public Long getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Long department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 
-	public Long getCategory1() {
+	public String getCategory1() {
 		return category1;
 	}
 
-	public void setCategory1(Long category1) {
+	public void setCategory1(String category1) {
 		this.category1 = category1;
 	}
 
-	public Long getCategory2() {
+	public String getCategory2() {
 		return category2;
 	}
 
-	public void setCategory2(Long category2) {
+	public void setCategory2(String category2) {
 		this.category2 = category2;
 	}
 
-	public Long getWorkType() {
+	public String getWorkType() {
 		return workType;
 	}
 
-	public void setWorkType(Long workType) {
+	public void setWorkType(String workType) {
 		this.workType = workType;
 	}
 	

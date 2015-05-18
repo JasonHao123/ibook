@@ -8,4 +8,6 @@ public interface IJobCategoryService {
     List<ICategory> findByParent(Long parent);
 
 	ICategory findById(Long category1);
+
+    List<ICategory> getJobCategoryStructure();
 }

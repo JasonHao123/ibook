@@ -1,37 +1,39 @@
 package jason.app.ibook.job.api.model;
 
-import java.util.List;
-
 import org.apache.solr.client.solrj.beans.Field;
 
 public class Job {
     @Field
-	private Long id;
+	private String id;
 	 @Field
 	private String title;
 	@Field
 	private String publisher;
-	private Long companyId;
-
-	private String companyName;
 	
-	private Long departmentId;
+    @Field	
+	private String companyId;
+    @Field
+	private String companyName;
+    @Field	
+	private String departmentId;
+    @Field
 	private String departmentName;
 	
 	@Field
 	private String description;
 
-
-	private Long categoryId;
-	@Field("categoryName")
+    @Field
+	private String categoryId;
+	@Field
 	private String categoryName;
 
-
-	private Long subCategoryId;
-	@Field("subCategoryName")
+	@Field
+	private String subCategoryId;
+	@Field
 	private String subCategoryName;
-
-	private Long workTypeId;
+	@Field
+	private String workTypeId;
+	@Field
 	private String workTypeName;
 	@Field("headCount")
 	private Integer numberOfVacancy;
@@ -39,54 +41,56 @@ public class Job {
 	private String[] location;
 	@Field
     private String[] feature;
-    
-    private Long educationLevelId;
+	@Field
+    private String educationLevelId;
+	@Field
     private String educationLevelName;
-    
+	@Field
     private Integer minExperience;
+	@Field
     private Integer maxExperience;
     @Field
     private String[] requiredSkill;
     @Field
     private String[] desiredSkill;
 
-    public Long getCategoryId() {
+    public String getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(Long categoryId) {
+	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
 
-	public Long getSubCategoryId() {
+	public String getSubCategoryId() {
 		return subCategoryId;
 	}
 
-	public void setSubCategoryId(Long subCategoryId) {
+	public void setSubCategoryId(String subCategoryId) {
 		this.subCategoryId = subCategoryId;
 	}
 
-	public Long getWorkTypeId() {
+	public String getWorkTypeId() {
 		return workTypeId;
 	}
 
-	public void setWorkTypeId(Long workTypeId) {
+	public void setWorkTypeId(String workTypeId) {
 		this.workTypeId = workTypeId;
 	}
 
-	public Long getEducationLevelId() {
+	public String getEducationLevelId() {
 		return educationLevelId;
 	}
 
-	public void setEducationLevelId(Long educationLevelId) {
+	public void setEducationLevelId(String educationLevelId) {
 		this.educationLevelId = educationLevelId;
 	}
 
-	public Long getId() {
+	public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -106,11 +110,11 @@ public class Job {
         this.publisher = publisher;
     }
 
-    public Long getCompanyId() {
+    public String getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Long companyId) {
+    public void setCompanyId(String companyId) {
         this.companyId = companyId;
     }
 
@@ -122,11 +126,11 @@ public class Job {
         this.companyName = companyName;
     }
 
-    public Long getDepartmentId() {
+    public String getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(Long departmentId) {
+    public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
     }
 
