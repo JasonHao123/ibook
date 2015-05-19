@@ -30,5 +30,19 @@ public class JobDaoImpl implements IJobDao{
 		job.setId(Long.toString(jobImpl.getId()));
 		return job;
 	}
+    @Override
+    public Job find(Long id) {
+        // TODO Auto-generated method stub
+        JobImpl impl = em.find(JobImpl.class, id);
+        if(impl!=null) {
+            Job job = new Job();
+            job.setCategoryId(impl.getCategory());
+         //   job.setCompanyId(impl.getCompany().getId());
+            job.setCompanyName(impl.getCompany().getName());
+            job.setDescription(impl.getDescription());
+            job.setTitle(impl.getTitle());
+            return job;
+        }return null;
+    }
 
 }

@@ -99,5 +99,6 @@
 		</ul>
 	</div>
 </li>
+<li data-filtertext="demos homepage" data-icon="home"><a href="<c:url value="/j_spring_security_logout" />">退出</a></li>
 		     </ul>
 		</div><!-- /panel -->

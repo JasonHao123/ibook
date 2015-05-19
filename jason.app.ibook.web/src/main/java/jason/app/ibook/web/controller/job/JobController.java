@@ -70,4 +70,10 @@ public class JobController {
         model.addAttribute("categories",categories);
         return "job.list";
     }
+    
+    @RequestMapping("/detail")
+    public String detail(Model model,@RequestParam("id") Long id) {
+       model.addAttribute("job", jobService.getJobById(id));
+        return "job.detail";
+    }
 }

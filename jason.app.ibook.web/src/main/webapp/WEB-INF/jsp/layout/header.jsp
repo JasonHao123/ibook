@@ -8,8 +8,8 @@
 <div data-role="navbar">
 	<ul>
 		<li><a href="<c:url value="/job/index.do" />" <c:if test="${navi=='' || navi=='job' }">class="ui-btn-active"</c:if> >找工作</a></li>
-		<li><a href="<c:url value="/job/index.do" />" <c:if test="${navi=='company' }">class="ui-btn-active"</c:if> >找公司</a></li>
-		<li><a href="b.dol" <c:if test="${navi=='talent' }">class="ui-btn-active"</c:if> >找人才</a></li>
+		<li><a href="<c:url value="/agent/index.do" />" <c:if test="${navi=='agent' }">class="ui-btn-active"</c:if> >找猎头</a></li>
+		<li><a href="<c:url value="/talent/index.do" />" <c:if test="${navi=='talent' }">class="ui-btn-active"</c:if> >找人才</a></li>
 		<li><a data-ajax="false" href="<c:url value="/user/index.do" />" <c:if test="${navi=='user' }">class="ui-btn-active"</c:if> >我的...</a></li>
 	</ul>
 </div><!-- /navbar -->
@@ -21,7 +21,7 @@
 </a>
 </c:when>
 <c:otherwise>
-<a href="#" class="ui-btn" data-rel="back"><spring:message code="page.button.title.back" text="Back" /></a>
+<a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back" data-rel="back"><spring:message code="page.button.title.back" text="Back" /></a>
 </c:otherwise>
 </c:choose><c:if test="${rightPane!=''}">
    		<a href="#" class="jqm-search-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">

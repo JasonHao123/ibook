@@ -83,7 +83,9 @@ public class JobServiceImpl implements IJobService {
             FacetField facet = rsp.getFacetField("categoryName");
             if (facet != null) {
                 for (Count cnt : facet.getValues()) {
-                    map.put(cnt.getName(), cnt.getName() + "(" + cnt.getCount() + ")");
+                    if(cnt.getCount()>0) {
+                        map.put(cnt.getName(), cnt.getName() + "(" + cnt.getCount() + ")");
+                    }
                 }
             }
             facet = rsp.getFacetField("subCategoryName");
@@ -112,6 +114,12 @@ public class JobServiceImpl implements IJobService {
         }
 
         return beans;
+    }
+
+    @Override
+    public Job getJobById(Long id) {
+        // TODO Auto-generated method stub
+        return jobDao.find(id);
     }
 
 }

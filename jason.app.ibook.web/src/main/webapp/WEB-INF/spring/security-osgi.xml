@@ -38,7 +38,7 @@
           -->
         <intercept-url pattern="/user/**" access="isAuthenticated()" />
         <intercept-url pattern="/**" access="permitAll" />
-        <form-login/>
+        <form-login login-page="/login.do" />
         <logout/>
         <remember-me  token-repository-ref="rememberMeDao"/>
     </http>

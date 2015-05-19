@@ -9,4 +9,6 @@ public interface IJobService {
 	public Job createJob(Job job);
 
     public List<Job> search(String query, List<ICategory> categories);
+
+    public Job getJobById(Long id);
 }

@@ -8,11 +8,11 @@
 	<div role="main" class="ui-content jqm-content">
         <ul data-role="listview" data-inset="true">
         <c:forEach items="${jobs}" var="job">
-        	<li><a href="#">
+        	<li><a href="<c:url value="/job/detail.do"><c:param name="id" value="${job.id}" /></c:url>">
             	<img src="<c:url value="/resources/img/apple.png" />" class="ui-li-thumb">
             	<h2>${job.title}</h2>
-                <p>Apple released iOS 6.1</p>
-                <p class="ui-li-aside">iOS</p>
+                <p>${job.companyName}</p>
+                <p class="ui-li-aside">推</p>
             </a></li>
             </c:forEach>
         	
