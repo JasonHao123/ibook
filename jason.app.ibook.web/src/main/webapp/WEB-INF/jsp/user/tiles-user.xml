@@ -40,4 +40,15 @@
     <put-attribute name="content" value="/WEB-INF/jsp/user/departmentadd.jsp" />
     <put-attribute name="navi" value="user" />
   </definition>
+  
+      <definition name="user.profile" extends="user.base">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/user/profile.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
+        <definition name="user.profile.edit" extends="user.base">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/user/profileedit.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
 </tiles-definitions>

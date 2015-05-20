@@ -4,13 +4,27 @@
        "http://jsp.apache.org/dtds/jsp-config_2_0.dtd">
 <tiles-definitions>
 
-  
+
   <definition name="login" extends="base.definition">
     <put-attribute name="content" value="/WEB-INF/jsp/login/login.jsp" />
+    <put-attribute name="navi" value="user" />
   </definition>
-  
-    <definition name="signup" extends="base.definition">
+
+  <definition name="signup" extends="base.definition">
     <put-attribute name="content" value="/WEB-INF/jsp/login/signup.jsp" />
+    <put-attribute name="navi" value="user" />
   </definition>
-    
+  <definition name="signup.user" extends="base.definition">
+    <put-attribute name="content" value="/WEB-INF/jsp/login/signupuser.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
+    <definition name="signup.agent" extends="base.definition">
+    <put-attribute name="content" value="/WEB-INF/jsp/login/signupagent.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
+    <definition name="signup.company" extends="base.definition">
+    <put-attribute name="content" value="/WEB-INF/jsp/login/signupcompany.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
+
 </tiles-definitions>

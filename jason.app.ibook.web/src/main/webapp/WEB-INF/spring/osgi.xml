@@ -15,7 +15,7 @@
     <osgi:reference id="permissionEvaluator" interface="org.springframework.security.access.PermissionEvaluator" />
     <osgi:reference id="permissionCacheOptimizer" interface="org.springframework.security.access.PermissionCacheOptimizer" />
      <osgi:reference id="rememberMeDao" interface="jason.app.ibook.security.api.dao.IRememberMeTokenDao" />
-
+<osgi:reference id="securityService" interface="jason.app.ibook.security.api.service.ISecurityService" />
   <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
       <constructor-arg ref="userTransaction"/>
       <constructor-arg ref="transactionManager"/>
@@ -40,5 +40,8 @@
     interface="jason.app.ibook.commons.api.service.IFeatureService" />
     <osgi:reference id="categoryService"
     interface="jason.app.ibook.commons.api.service.ICategoryService" />
+    
+    <osgi:reference id="profileService" 
+    interface="jason.app.ibook.user.api.service.IProfileService" />
     
 </beans>

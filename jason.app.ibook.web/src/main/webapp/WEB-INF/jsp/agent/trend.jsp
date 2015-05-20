@@ -7,7 +7,7 @@
 
 	<div role="main" class="ui-content  jqm-content">
 	display search criteria and job market trend here
-	<form action="<c:url value="/job/search.do" />">
+	<form action="<c:url value="/agent/search.do" />">
 		<input type="search" name="q">
 	</form>
 	</div>

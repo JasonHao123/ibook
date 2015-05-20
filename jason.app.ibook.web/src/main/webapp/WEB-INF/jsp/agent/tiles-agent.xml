@@ -16,11 +16,7 @@
   
     <definition name="agent.list" extends="base.definition">
     <put-attribute name="title" value="page.title.login" />
-    <put-attribute name="leftPane" value="page.button.title.tags" />
-    <put-attribute name="rightPane" value="page.button.title.filter" />
-    <put-attribute name="left" value="/WEB-INF/jsp/agent/left2.jsp" />
     <put-attribute name="content" value="/WEB-INF/jsp/agent/joblist.jsp" />
-    <put-attribute name="right" value="/WEB-INF/jsp/layout/right.jsp" />
     <put-attribute name="navi" value="agent" />
   </definition>
   

@@ -127,6 +127,12 @@
           <version>0.0.1-SNAPSHOT</version>
           <scope>compile</scope>
         </dependency>
+                        <dependency>
+          <groupId>jason.app.ibook</groupId>
+          <artifactId>jason.app.ibook.user.api</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+          <scope>compile</scope>
+        </dependency>
         <dependency>
           <groupId>javax.servlet</groupId>
           <artifactId>jstl</artifactId>
@@ -307,6 +313,14 @@
           <type>bundle</type>
           <scope>provided</scope>
         </dependency>
+        
+                <dependency>
+          <groupId>jason.app.ibook</groupId>
+          <artifactId>jason.app.ibook.user.api</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+          <type>bundle</type>
+          <scope>provided</scope>
+        </dependency>
                         <dependency>
           <groupId>jason.app.ibook</groupId>
           <artifactId>jason.app.ibook.job.api</artifactId>
@@ -378,6 +392,8 @@
                 org.codehaus.jackson.map,
                   jason.app.ibook.commons.api.model,
                   jason.app.ibook.commons.api.service,
+                  jason.app.ibook.user.api.model,
+                  jason.app.ibook.user.api.service,
                                     jason.app.ibook.job.api.model,
                   jason.app.ibook.job.api.service,
                   jason.app.ibook.security.api.dao,
