@@ -12,8 +12,35 @@
 <script type="text/javascript">
 <!--
 $( document ).on( "pageinit", function(event) {
+	$("#apply").click(function() {
+		// alert("add to bookmark");
+							$.ajax({
+						url: "<c:url value="/user/job/apply.do" />",
+						dataType: "text",
+
+						data: {
+							id: ${id}
+						},
+						success : function(data) {
+							alert("add to bookmark");							
+						}
+					});
+		
+	});
 	$("#bookmark").click(function() {
-		alert("add to bookmark");
+		// alert("add to bookmark");
+							$.ajax({
+						url: "<c:url value="/user/job/bookmark.do" />",
+						dataType: "text",
+
+						data: {
+							id: ${id}
+						},
+						success : function(data) {
+							alert("add to bookmark");							
+						}
+					});
+		
 	});
 	
 });
@@ -71,7 +98,7 @@ function movePanel(position) {
             </div><!-- /rwd-example -->
 	<div class="ui-grid-b ui-responsive">
 		<div class="ui-block-a">
-			<a href="<c:url value="/job/apply.do"></c:url>"  >Apply</a>
+			<a href="#" id="apply"  >Apply</a>
 		</div>
 		<div class="ui-block-b">
 			<a href="#" id="bookmark"  >Bookmark</a>

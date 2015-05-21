@@ -36,6 +36,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/user")
@@ -56,9 +57,25 @@ public class UserController {
     public String home() {
         return "user.home";
     }
-    
+    @RequestMapping("/job/bookmark")
+    public @ResponseBody String bookmark(@RequestParam("id") String id) {
+        return "user.home";
+    }
+    @RequestMapping("/job/apply")
+    public @ResponseBody String apply(@RequestParam("id") String id) {
+        return "user.home";
+    }
+    @RequestMapping("/job/list")
+    public String listJobs() {
+        return "user.job.list";
+    }
     @RequestMapping("/profile")
     public String profile() {
+        return "user.profile";
+    }
+    
+    @RequestMapping("/follow")
+    public String follow() {
         return "user.profile";
     }
     

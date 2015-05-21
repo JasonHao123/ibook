@@ -26,7 +26,11 @@ public class TalentController {
         model.addAttribute("categories", categoryService.getJobCategoryStructure());
         return "talent.home";
     }
-    
+    @RequestMapping("/profile")
+    public String profile(Model model,@RequestParam(value="id",required=false) String id) {
+        model.addAttribute("id", id);
+        return "talent.profile";
+    }
     @RequestMapping("/search")
     public String search(Model model, @RequestParam(value = "q", required = false) String q){
         List<Profile> jobs = profileService.searchTalent(q);

@@ -8,11 +8,11 @@
 	<div role="main" class="ui-content jqm-content">
         <ul data-role="listview" data-inset="true">
         <c:forEach items="${jobs}" var="job">
-        	<li><a href="<c:url value="/user/profile.do"><c:param name="id" value="${job.id}" /></c:url>">
+        	<li><a href="<c:url value="/agent/profile.do"><c:param name="id" value="${job.id}" /></c:url>">
             	<img src="<c:url value="/resources/img/apple.png" />" class="ui-li-thumb">
             	<h2>${job.realname}</h2>
                 <p>${job.realname}</p>
-                <p class="ui-li-aside">推</p>
+                <p class="ui-li-aside">****</p>
             </a></li>
             </c:forEach>
         	

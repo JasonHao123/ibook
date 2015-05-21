@@ -51,4 +51,10 @@
     <put-attribute name="content" value="/WEB-INF/jsp/user/profileedit.jsp" />
     <put-attribute name="navi" value="user" />
   </definition>
+  
+    <definition name="user.job.list" extends="user.base">
+    <put-attribute name="title" value="page.title.login" />
+    <put-attribute name="content" value="/WEB-INF/jsp/user/joblist.jsp" />
+    <put-attribute name="navi" value="user" />
+  </definition>
 </tiles-definitions>

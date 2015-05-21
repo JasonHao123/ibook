@@ -27,7 +27,11 @@ public class AgentController {
         model.addAttribute("categories", categoryService.getJobCategoryStructure());
         return "agent.home";
     }
-    
+    @RequestMapping("/profile")
+    public String profile(Model model,@RequestParam(value="id",required=false) String id) {
+        model.addAttribute("id", id);
+        return "agent.profile";
+    }
     @RequestMapping("/search")
     public String search(Model model, @RequestParam(value = "q", required = false) String q){
         List<Profile> jobs = profileService.searchAgent(q);

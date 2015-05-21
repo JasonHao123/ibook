@@ -20,9 +20,10 @@
     <put-attribute name="navi" value="agent" />
   </definition>
   
-  <definition name="agent.detail" extends="base.definition">
+  <definition name="agent.profile" extends="base.definition">
     <put-attribute name="title" value="page.title.login" />
-    <put-attribute name="content" value="/WEB-INF/jsp/agent/jobdetail.jsp" />
+    <put-attribute name="content" value="/WEB-INF/jsp/agent/profile.jsp" />
+    <put-attribute name="navi" value="agent" />
   </definition>
 
 

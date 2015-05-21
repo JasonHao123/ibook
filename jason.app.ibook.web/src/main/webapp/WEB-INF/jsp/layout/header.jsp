@@ -8,8 +8,11 @@
 <div data-role="navbar">
 	<ul>
 		<li><a href="<c:url value="/job/index.do" />" <c:if test="${navi=='' || navi=='job' }">class="ui-btn-active"</c:if> >找工作</a></li>
+		<li><a href="<c:url value="/company/index.do" />" <c:if test="${navi=='company' }">class="ui-btn-active"</c:if> >找企业</a></li>
 		<li><a href="<c:url value="/agent/index.do" />" <c:if test="${navi=='agent' }">class="ui-btn-active"</c:if> >找猎头</a></li>
+		 
 		<li><a href="<c:url value="/talent/index.do" />" <c:if test="${navi=='talent' }">class="ui-btn-active"</c:if> >找人才</a></li>
+		<!-- -->
 		<li><a data-ajax="false" href="<c:url value="/user/index.do" />" <c:if test="${navi=='user' }">class="ui-btn-active"</c:if> >我的...</a></li>
 	</ul>
 </div><!-- /navbar -->

@@ -806,6 +806,16 @@
      <lst name="defaults">
        <str name="echoParams">explicit</str>
        <int name="rows">10</int>
+	   
+	          <!-- Query settings -->
+       <str name="defType">edismax</str>
+       <str name="qf">
+          location^2.0 text^0.5 features^1.0 title^1.2 description^1.5 id^10.0 publisher^1.1 subCategoryId^3 
+       </str>
+       <str name="mm">100%</str>
+       <str name="q.alt">*:*</str>
+       <str name="rows">10</str>
+       <str name="fl">*,score</str>
        <!-- Controls the distribution of a query to shards other than itself.
             Consider making 'preferLocalShards' true when:
               1) maxShardsPerNode > 1
@@ -944,7 +954,7 @@
        <!-- Query settings -->
        <str name="defType">edismax</str>
        <str name="qf">
-          location^2.0 text^0.5 features^1.0 title^1.2 description^1.5 id^10.0 publisher^1.1 companyInfo^1.4
+          location^2.0 text^0.5 features^1.0 title^1.2 description^1.5 id^10.0 publisher^1.1 subCategoryId^3 
        </str>
        <str name="mm">100%</str>
        <str name="q.alt">*:*</str>
@@ -952,9 +962,9 @@
        <str name="fl">*,score</str>
 
        <str name="mlt.qf">
-          location^2.0 text^0.5 features^1.0 title^1.2 description^1.5 id^10.0 publisher^1.1 companyInfo^1.4
+          location^2.0 text^0.5 features^1.0 title^1.2 description^1.5 id^10.0 publisher^1.1 subCategoryId^3 
        </str>
-       <str name="mlt.fl">location,text,features,title,description,id,publisher,companyInfo</str>
+       <str name="mlt.fl">location,text,features,title,description,id,publisher,subCategoryId</str>
        <int name="mlt.count">3</int>
 
        <!-- Faceting defaults -->

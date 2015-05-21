@@ -22,9 +22,10 @@
     <put-attribute name="navi" value="talent" />
   </definition>
   
-  <definition name="talent.detail" extends="base.definition">
+  <definition name="talent.profile" extends="base.definition">
     <put-attribute name="title" value="page.title.login" />
-    <put-attribute name="content" value="/WEB-INF/jsp/talent/jobdetail.jsp" />
+    <put-attribute name="content" value="/WEB-INF/jsp/talent/profile.jsp" />
+     <put-attribute name="navi" value="talent" />
   </definition>
 
 

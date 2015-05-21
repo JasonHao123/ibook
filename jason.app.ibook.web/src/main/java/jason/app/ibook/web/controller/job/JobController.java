@@ -38,7 +38,7 @@ public class JobController {
 
         String query = "";
         if(q!=null) {
-           query = q;
+           query = "text:"+q;
         }        
         if (category != null) {
             if(query.indexOf("categoryId")<0) {
@@ -73,6 +73,7 @@ public class JobController {
     
     @RequestMapping("/detail")
     public String detail(Model model,@RequestParam("id") Long id) {
+        model.addAttribute("id", id);
        model.addAttribute("job", jobService.getJobById(id));
         return "job.detail";
     }
