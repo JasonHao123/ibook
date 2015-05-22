@@ -25,59 +25,38 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AclDaoImpl implements IAclDao {
-    public final static String DEFAULT_SELECT_CLAUSE = "select acl_object_identity.object_id_identity, "
-            + "acl_entry.ace_order,  "
-            + "acl_object_identity.id as acl_id, "
-            + "acl_object_identity.parent_object, "
-            + "acl_object_identity.entries_inheriting, "
-            + "acl_entry.id as ace_id, "
-            + "acl_entry.mask,  "
-            + "acl_entry.granting,  "
-            + "acl_entry.audit_success, "
-            + "acl_entry.audit_failure,  "
-            + "acl_sid.principal as ace_principal, "
-            + "acl_sid.sid as ace_sid,  "
-            + "acli_sid.principal as acl_principal, "
-            + "acli_sid.sid as acl_sid, "
-            + "acl_class.class "
-            + "from acl_object_identity"
-            + "left join acl_sid acli_sid on acli_sid.id = acl_object_identity.owner_sid "
-            + "left join acl_class on acl_class.id = acl_object_identity.object_id_class   "
-            + "left join acl_entry on acl_object_identity.id = acl_entry.acl_object_identity "
-            + "left join acl_sid on acl_entry.sid = acl_sid.id  "
-            + "where ( ";
     
-    public final static String DEFAULT_SELECT_CLAUSE_UPPER = "select acl_object_identity.object_id_identity, "
-            + "acl_entry.ace_order,  "
-            + "acl_object_identity.id as acl_id, "
-            + "acl_object_identity.parent_object, "
-            + "acl_object_identity.entries_inheriting, "
-            + "acl_entry.id as ace_id, "
-            + "acl_entry.mask,  "
-            + "acl_entry.granting,  "
-            + "acl_entry.audit_success, "
-            + "acl_entry.audit_failure,  "
-            + "acl_sid.principal as ace_principal, "
-            + "acl_sid.sid as ace_sid,  "
-            + "acli_sid.principal as acl_principal, "
-            + "acli_sid.sid as acl_sid, "
-            + "acl_class.class "
-            + "from ACL_OBJECT_IDENTITY acl_object_identity"
-            + "left join ACL_SID acli_sid on acli_sid.id = acl_object_identity.owner_sid "
-            + "left join ACL_CLASS acl_class on acl_class.id = acl_object_identity.object_id_class   "
-            + "left join ACL_ENTRY acl_entry on acl_object_identity.id = acl_entry.acl_object_identity "
-            + "left join ACL_SID acl_sid on acl_entry.sid = acl_sid.id  "
-            + "where ( ";
+    public final static String DEFAULT_SELECT_CLAUSE = "select aoi.objIdIdentity, "
+            + "ae.aceOrder ace_order,  "
+            + "aoi.id acl_id, "
+            + "parent.id parent_object, "
+            + "aoi.entriesInheriting  entries_inheriting, "
+            + "ae.id  ace_id, "
+            + "ae.mask,  "
+            + "ae.granting,  "
+            + "ae.auditSuccess  audit_success, "
+            + "ae.auditFailure  audit_failure,  "
+            + "as2.principal  ace_principal, "
+            + "as2.sid  ace_sid,  "
+            + "as1.principal  acl_principal, "
+            + "as1.sid  acl_sid, "
+            + "ac.clazz "
+            + "from AclObjectIdentityImpl aoi "
+            + "left join aoi.parentObject parent "
+            + "left join aoi.owner as1 "
+            + "left join aoi.objIdClass ac  "
+            + "left join aoi.aclEntries ae "
+            + "left join ae.sid as2 "
+            + "where  ";
+        private final static String DEFAULT_LOOKUP_KEYS_WHERE_CLAUSE = " ( aoi.id = ? ) ";
 
-        private final static String DEFAULT_LOOKUP_KEYS_WHERE_CLAUSE = "(acl_object_identity.id = ?)";
+        private final static String DEFAULT_LOOKUP_IDENTITIES_WHERE_CLAUSE = " ( aoi.objIdIdentity = ? and ac.clazz = ? ) ";
 
-        private final static String DEFAULT_LOOKUP_IDENTITIES_WHERE_CLAUSE = "(acl_object_identity.object_id_identity = ? and acl_class.class = ?)";
-
-        public final static String DEFAULT_ORDER_BY_CLAUSE = ") order by acl_object_identity.object_id_identity"
-            + " asc, acl_entry.ace_order asc";
+        public final static String DEFAULT_ORDER_BY_CLAUSE = " order by aoi.objIdIdentity"
+                + " asc, ae.aceOrder asc";
         
         // SQL Customization fields
-        private String selectClause = DEFAULT_SELECT_CLAUSE_UPPER;
+        private String selectClause = DEFAULT_SELECT_CLAUSE;
         private String lookupPrimaryKeysWhereClause = DEFAULT_LOOKUP_KEYS_WHERE_CLAUSE;
         private String lookupObjectIdentitiesWhereClause = DEFAULT_LOOKUP_IDENTITIES_WHERE_CLAUSE;
         private String orderByClause = DEFAULT_ORDER_BY_CLAUSE;
@@ -86,18 +65,21 @@ public class AclDaoImpl implements IAclDao {
         private String computeRepeatingSql(String repeatingSql, int requiredRepetitions) {
             assert requiredRepetitions > 0 : "requiredRepetitions must be > 0";
 
-            final String startSql = selectClause;
-
-            final String endSql = orderByClause;
+            final String startSql = selectClause + (requiredRepetitions==1?"":"(");
+            
+            final String endSql = orderByClause+(requiredRepetitions==1?"":")");
 
             StringBuilder sqlStringBldr =
                 new StringBuilder(startSql.length() + endSql.length() + requiredRepetitions * (repeatingSql.length() + 4));
             sqlStringBldr.append(startSql);
 
-            for (int i = 1; i <= requiredRepetitions; i++) {
-                sqlStringBldr.append(repeatingSql);
-
-                if (i != requiredRepetitions) {
+            for (int i = 0; i < requiredRepetitions; i++) {
+            	String sql = repeatingSql.replaceFirst("\\?", ":arg0"+i);
+            	 sql = sql.replaceFirst("\\?", ":arg1"+i);
+            	
+                sqlStringBldr.append(sql);
+            //    sqlStringBldr.append(repeatingSql.replaceFirst("\\?", ":arg1"+i));
+                if (i != requiredRepetitions-1) {
                     sqlStringBldr.append(" or ");
                 }
             }
@@ -221,11 +203,12 @@ public class AclDaoImpl implements IAclDao {
     public List<AclInfo> findParentsToLookup(Set<Long> findNow) {
         // TODO Auto-generated method stub
         String sql = computeRepeatingSql(lookupPrimaryKeysWhereClause, findNow.size());
-        Query query = em.createNativeQuery(sql);
+      //  Query query = em.createNativeQuery(sql);
+        Query query = em.createQuery(sql);
         int i = 0;
         for (Long toFind : findNow) {
             i++;
-            query.setParameter(i, toFind);
+            query.setParameter("arg0"+i, toFind);
         }
         List<Object[]> result = query.getResultList();
         return BeanUtil.toAclInfoList(result);
@@ -234,8 +217,9 @@ public class AclDaoImpl implements IAclDao {
     @Override
     public List<AclInfo> findParentsToLookup(Collection<ObjectIdentity> objectIdentities) {
         String sql = computeRepeatingSql(lookupObjectIdentitiesWhereClause, objectIdentities.size());
-
-        Query query = em.createNativeQuery(sql);
+        
+       // Query query = em.createNativeQuery(sql);
+        Query query = em.createQuery(sql);
         int i = 0;
         for (ObjectIdentity oid : objectIdentities) {
             // Determine prepared statement values for this iteration
@@ -246,8 +230,8 @@ public class AclDaoImpl implements IAclDao {
             long id = (Long.valueOf(identifier)).longValue();
 
             // Inject values
-            query.setParameter((2 * i) + 1, id);
-            query.setParameter((2 * i) + 2, type);
+            query.setParameter("arg0"+i, id);
+            query.setParameter("arg1"+i, type);
             i++;
         }
         List<Object[]> result = query.getResultList();
