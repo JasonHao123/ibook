@@ -37,7 +37,7 @@ public class ProfileDaoImpl implements IProfileDao {
         profileImpl.setUsername(profile.getUsername());
         em.persist(profileImpl);
         em.flush();
-        profile.setId(profileImpl.getId());
+        profile.setId(profileImpl.getId().toString());
         return profile;
     }
 }
