@@ -33,14 +33,18 @@
  
                 <input type="checkbox" id="rememberMe" name="j_spring_security_remember_me" data-dojo-type="dijit/form/CheckBox"/>
           
-	<div class="ui-grid-b ui-responsive">
+	<div class="ui-grid-a ui-responsive">
 		<div class="ui-block-a">
 			<input type="submit" value="Login">
 		</div>
 		<div class="ui-block-b">
-			<a data-role="button" href="<c:url value="/signup.do" />">Signup</a>
+			<a data-role="button" href="<c:url value="/signupuser.do" />"><spring:message
+			code="page.label.login.signup" text="Signup" /></a>
 		</div>
-
+		<div class="ui-block-a">
+	<a href="<c:url value="/resetpassword.do" />"><spring:message
+			code="page.label.login.reset" text="Forgot password?" /></a>
+		</div>
 	</div>
 	</form>
 </div>

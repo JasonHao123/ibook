@@ -28,9 +28,9 @@
       <expression-handler ref="expressionHandler"/>
   </global-method-security>
 
-    <http pattern="/resources/**" security="none"/>
+    <http pattern="/resources/**" security="none" disable-url-rewriting="true"/>
 
-    <http realm="Contacts Realm"  use-expressions="true"  >
+    <http realm="Contacts Realm"  use-expressions="true" disable-url-rewriting="true" >
 
         <!--
              Allow all other requests. In a real application you should

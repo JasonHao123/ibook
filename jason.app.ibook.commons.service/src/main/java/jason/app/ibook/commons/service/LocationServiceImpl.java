@@ -3,6 +3,7 @@ package jason.app.ibook.commons.service;
 import jason.app.ibook.commons.api.constant.CategoryType;
 import jason.app.ibook.commons.api.constant.LocationType;
 import jason.app.ibook.commons.api.dao.ICategoryDao;
+import jason.app.ibook.commons.api.model.Category;
 import jason.app.ibook.commons.api.model.ICategory;
 import jason.app.ibook.commons.api.service.ILocationService;
 
@@ -51,4 +52,19 @@ public class LocationServiceImpl implements ILocationService {
         // TODO Auto-generated method stub
         return locationDao.findByPattern(CategoryType.LOCATION,pattern);
     }
+
+	@Override
+	public List<ICategory> getCityStructure() {
+		// TODO Auto-generated method stub
+		List<ICategory> categories  =findByParent(null);
+		for(ICategory cata:categories) {
+			((Category)cata).setChildren(findByParent(cata.getId()));
+			if(cata.getChildren()!=null && cata.getChildren().size()>0) {
+				((Category)cata).setLeaf(false);
+			}else {
+				((Category)cata).setLeaf(true);
+			}
+		}
+		return categories;
+	}
 }

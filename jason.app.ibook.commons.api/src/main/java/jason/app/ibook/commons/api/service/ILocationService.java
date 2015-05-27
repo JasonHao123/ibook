@@ -18,4 +18,6 @@ public interface ILocationService {
 
     List<ICategory> findByPattern(String pattern);
 
+	List<ICategory> getCityStructure();
+
 }

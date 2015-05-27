@@ -50,7 +50,7 @@
 						<font color="red"><c:out value="${status.errorMessage}"/></font>
 						</spring:bind>
   
-	<div class="ui-grid-b ui-responsive">
+	<div class="ui-grid-a ui-responsive">
 		<div class="ui-block-a">
 			<input type="submit" value="<spring:message
 			code="page.label.signup.submit" />">

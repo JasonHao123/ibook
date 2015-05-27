@@ -38,7 +38,9 @@ public class JobDaoImpl implements IJobDao{
             Job job = new Job();
             job.setCategoryId(impl.getCategory());
          //   job.setCompanyId(impl.getCompany().getId());
+            if(impl.getCompany()!=null) {
             job.setCompanyName(impl.getCompany().getName());
+            }
             job.setDescription(impl.getDescription());
             job.setTitle(impl.getTitle());
             return job;

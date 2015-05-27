@@ -7,8 +7,8 @@
 <div role="main">
 <ul data-role="listview">
 <h1>请选择以下用户类型</h1>
-<li><a href="<c:url value="/signupuser.do" />">求职者</a></li>
-<li><a href="<c:url value="/signupagent.do" />" >猎头</a></li>
+<li><a href="<c:url value="/signupuser.do" />">个人用户</a></li>
+<li><a href="<c:url value="/signupagent.do" />" >人才中介</a></li>
 <li><a  href="<c:url value="/signupcompany.do" />" >企业用户</a></li>
 </ul>
 </div>

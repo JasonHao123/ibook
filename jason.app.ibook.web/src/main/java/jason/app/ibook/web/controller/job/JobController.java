@@ -1,13 +1,12 @@
 package jason.app.ibook.web.controller.job;
 
 import jason.app.ibook.commons.api.model.ICategory;
+import jason.app.ibook.commons.api.service.ICategoryService;
 import jason.app.ibook.commons.api.service.IJobCategoryService;
+import jason.app.ibook.commons.api.service.ILocationService;
 import jason.app.ibook.job.api.model.Job;
 import jason.app.ibook.job.api.service.IJobService;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class JobController {
     @Autowired(required = false)
     private IJobCategoryService categoryService;
-
+	   @Autowired(required=false)
+	  private ICategoryService jobTypeService;
     @Autowired(required = false)
     private IJobService jobService;
+    
+    @Autowired(required = false)
+    private ILocationService locationService;
 
     @RequestMapping("/index")
     public String home(Model model) {
-        model.addAttribute("categories", categoryService.getJobCategoryStructure());
+    	if(categoryService!=null) {
+    		model.addAttribute("categories", categoryService.getJobCategoryStructure());
+    	}
+    	if(jobTypeService!=null) {
+            model.addAttribute("jobTypes",jobTypeService.listJobTypes());
+            model.addAttribute("educationLevels",jobTypeService.listEducationLevels());
+            model.addAttribute("experiences",jobTypeService.listExperiences());
+            model.addAttribute("industries",jobTypeService.getJobIndustryStructure());
+            model.addAttribute("companyTypes",jobTypeService.listCompanyTypes());
+        }
+    	if(locationService!=null) {
+    		model.addAttribute("cities",locationService.getCityStructure());
+    	}
         return "job.home";
     }
 

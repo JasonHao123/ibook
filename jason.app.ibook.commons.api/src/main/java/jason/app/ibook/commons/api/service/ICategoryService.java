@@ -8,4 +8,7 @@ public interface ICategoryService {
 	public List<ICategory> listJobTypes();
 	public List<ICategory> listEducationLevels();
 	public List<ICategory> findFeatureByPattern(String pattern);
+	public List<ICategory> getJobIndustryStructure();
+	public List<ICategory> listExperiences();
+	public List<ICategory> listCompanyTypes();
 }

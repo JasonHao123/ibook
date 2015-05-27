@@ -1,5 +1,7 @@
 package jason.app.ibook.job.api.model;
 
+import java.util.Date;
+
 import org.apache.solr.client.solrj.beans.Field;
 
 public class Job {
@@ -45,14 +47,19 @@ public class Job {
     private String educationLevelId;
 	@Field
     private String educationLevelName;
+	
 	@Field
-    private Integer minExperience;
+    private String experienceId;
 	@Field
-    private Integer maxExperience;
+    private String experienceName;
+
     @Field
     private String[] requiredSkill;
     @Field
     private String[] desiredSkill;
+    
+    @Field
+    private Date publishDate;
 
     public String getCategoryId() {
 		return categoryId;
@@ -191,22 +198,6 @@ public class Job {
         this.educationLevelName = educationLevelName;
     }
 
-    public Integer getMinExperience() {
-        return minExperience;
-    }
-
-    public void setMinExperience(Integer minExperience) {
-        this.minExperience = minExperience;
-    }
-
-    public Integer getMaxExperience() {
-        return maxExperience;
-    }
-
-    public void setMaxExperience(Integer maxExperience) {
-        this.maxExperience = maxExperience;
-    }
-
 	public String[] getLocation() {
 		return location;
 	}
@@ -237,6 +228,30 @@ public class Job {
 
 	public void setDesiredSkill(String[] desiredSkill) {
 		this.desiredSkill = desiredSkill;
+	}
+
+	public String getExperienceId() {
+		return experienceId;
+	}
+
+	public void setExperienceId(String experienceId) {
+		this.experienceId = experienceId;
+	}
+
+	public String getExperienceName() {
+		return experienceName;
+	}
+
+	public void setExperienceName(String experienceName) {
+		this.experienceName = experienceName;
+	}
+
+	public Date getPublishDate() {
+		return publishDate;
+	}
+
+	public void setPublishDate(Date publishDate) {
+		this.publishDate = publishDate;
 	}
 
 }
