@@ -28,7 +28,18 @@ public class CategoryImpl {
     @Column
     private CategoryType type;
     
-    public CategoryType getType() {
+    @Column
+    private String code;
+    
+    public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public CategoryType getType() {
         return type;
     }
 

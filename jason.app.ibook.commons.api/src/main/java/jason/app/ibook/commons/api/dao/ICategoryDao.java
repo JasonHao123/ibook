@@ -14,4 +14,7 @@ public interface ICategoryDao {
     List<ICategory> findByPattern(CategoryType location, String pattern);
 
 	ICategory findById(Long id);
+
+	ICategory create(CategoryType type, Integer subType, String name,
+			String code, Long parent);
 }

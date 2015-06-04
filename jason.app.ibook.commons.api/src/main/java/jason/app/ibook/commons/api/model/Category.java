@@ -13,7 +13,14 @@ public class Category implements ICategory {
     private ICategory parent;
     private CategoryType type;
     private Integer subType;
-    private boolean leaf;
+    private String code;
+    public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	private boolean leaf;
     public boolean isLeaf() {
         return leaf;
     }

@@ -10,6 +10,7 @@ public interface ICategory {
     public ICategory getParent() ;
     public CategoryType getType();
     public Integer getSubType() ;
+    public String getCode();
     public List<ICategory> getChildren();
     public boolean isLeaf();
 }

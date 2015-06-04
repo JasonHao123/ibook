@@ -604,6 +604,7 @@
     <module>jason.app.ibook.user.jpa</module>
     <module>jason.app.ibook.user.service</module>
     <module>jason.app.ibook.feature</module>
+    <module>jason.app.ibook.job.craweller</module>
   </modules>
   <build>
   <pluginManagement>

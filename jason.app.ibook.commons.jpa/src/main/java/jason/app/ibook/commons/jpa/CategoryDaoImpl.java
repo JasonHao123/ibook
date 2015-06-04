@@ -31,12 +31,23 @@ public class CategoryDaoImpl implements ICategoryDao {
         }
          em.persist(category);
          em.flush();
-        Category c = new Category();
-        c.setName(name);
-        c.setId(category.getId());
-        c.setType(type);
-        c.setSubType(subType);
-        return c;
+         return createLocation(category);
+    }
+    
+    @Override
+    public ICategory create(CategoryType type, Integer subType,String name,String code,Long parent) {
+        // TODO Auto-generated method stub
+        CategoryImpl category = new CategoryImpl();
+        category.setName(name);
+        category.setType(type);
+        category.setSubType(subType);
+        category.setCode(code);
+        if(parent!=null) {
+            category.setParent(em.find(CategoryImpl.class, parent));
+        }
+         em.persist(category);
+         em.flush();
+        return createLocation(category);
     }
 
     @Override
@@ -61,6 +72,7 @@ public class CategoryDaoImpl implements ICategoryDao {
         if(category.getParent()!=null) {
             cate.setParent(createLocation(category.getParent()));
         }
+        cate.setCode(category.getCode());
         cate.setType(category.getType());
         cate.setSubType(category.getSubType());
         return cate;
@@ -86,9 +98,12 @@ public class CategoryDaoImpl implements ICategoryDao {
 	public ICategory findById(Long id) {
 		// TODO Auto-generated method stub
 		CategoryImpl cata = em.find(CategoryImpl.class, id);
-		Category category = new Category();
+/*		Category category = new Category();
 		category.setId(cata.getId());
 		category.setName(cata.getName());
+		category.setCode(cata.getCode());
 		return category;
+		*/
+		return createLocation(cata);
 	}
 }

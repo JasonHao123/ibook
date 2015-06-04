@@ -50,7 +50,14 @@ public class LocationServiceImpl implements ILocationService {
     @Override
     public List<ICategory> findByPattern(String pattern) {
         // TODO Auto-generated method stub
-        return locationDao.findByPattern(CategoryType.LOCATION,pattern);
+    	List<ICategory> result =  locationDao.findByPattern(CategoryType.LOCATION,pattern);
+    	for(ICategory cata:result) {
+    		if(cata.getSubType()==LocationType.DISTRICT.ordinal()) {
+    			((Category)cata).setName(cata.getParent().getName()+"-"+cata.getName());
+    		}
+    	}
+    	
+    	return result;
     }
 
 	@Override
@@ -58,9 +65,13 @@ public class LocationServiceImpl implements ILocationService {
 		// TODO Auto-generated method stub
 		List<ICategory> categories  =findByParent(null);
 		for(ICategory cata:categories) {
-			((Category)cata).setChildren(findByParent(cata.getId()));
-			if(cata.getChildren()!=null && cata.getChildren().size()>0) {
-				((Category)cata).setLeaf(false);
+			if(cata.getSubType()!=LocationType.CITY.ordinal()) {
+				((Category)cata).setChildren(findByParent(cata.getId()));
+				if(cata.getChildren()!=null && cata.getChildren().size()>0) {
+					((Category)cata).setLeaf(false);
+				}else {
+					((Category)cata).setLeaf(true);
+				}
 			}else {
 				((Category)cata).setLeaf(true);
 			}

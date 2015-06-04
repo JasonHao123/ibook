@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>jason.app.ibook</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>jason.app.ibook.job.craweller</artifactId>
+  <name>jason.app.ibook.job.craweller</name>
+  <packaging>bundle</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>3.2.11.RELEASE</spring.version>      
+         <osgi-import-package>
+         jason.app.ibook.commons.api.model,
+         jason.app.ibook.commons.api.service,
+         jason.app.ibook.security.api.model,
+         jason.app.ibook.security.api.service,
+         jason.app.ibook.job.api.model,
+         jason.app.ibook.job.api.dao,
+         org.apache.camel,
+         org.jsoup,
+         org.springframework.instrument.classloading,
+                      org.springframework.jdbc.core,    
+                          org.springframework.transaction.jta,
+                          org.springframework.aop,        
+                          org.springframework.aop.framework,   
+                          org.springframework.transaction.aspectj,
+                          org.aopalliance.aop,          
+                          javax.transaction,     
+                  org.springframework.security.core.userdetails,
+                  org.springframework.security.access,
+                  org.springframework.security.access.intercept.aopalliance,
+                  org.springframework.security.access.intercept.aspectj.aspect,
+                  org.springframework.security.access.expression.method,
+                  org.springframework.security.access.vote,
+                  org.springframework.security.access.prepost,
+                  org.springframework.security.acls,
+                  org.springframework.security.acls.model,              
+           *
+         </osgi-import-package>
+         
+  </properties>
+  <dependencies>
+                  <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.5.2</version>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+        <groupId>javax.persistence</groupId>
+        <artifactId>persistence-api</artifactId>
+        <version>1.0</version>
+      </dependency>
+
+          <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+              <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+              <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+                  <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-instrument</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+  <!-- Spring security -->
+      <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-acl</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-aspects</artifactId>
+      <version>${spring.security.version}</version>
+      <scope>provided</scope>
+    </dependency>
+<dependency>
+    <groupId>org.apache.camel</groupId>
+    <artifactId>camel-solr</artifactId>
+    <version>2.14.1</version>
+    <!-- use the same version as your Camel core version -->
+    <exclusions>
+      <exclusion>
+        <artifactId>jaxb-impl</artifactId>
+        <groupId>com.sun.xml.bind</groupId>
+      </exclusion>
+    </exclusions>
+    <scope>provided</scope>
+</dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring</artifactId>
+      <version>2.14.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring-security</artifactId>
+      <version>2.14.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-servlet</artifactId>
+      <version>2.14.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>2.14.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+               <artifactId>solr-solrj</artifactId>
+               <groupId>org.apache.solr</groupId>
+               <version>4.8.0</version>
+               <type>jar</type>
+               <scope>compile</scope>
+        </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jason.app.ibook</groupId>
+      <artifactId>jason.app.ibook.job.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>bundle</type>
+      <scope>provided</scope>
+    </dependency>
+        <dependency>
+      <groupId>jason.app.ibook</groupId>
+      <artifactId>jason.app.ibook.security.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>bundle</type>
+      <scope>provided</scope>
+    </dependency>
+    
+        <dependency>
+      <groupId>jason.app.ibook</groupId>
+      <artifactId>jason.app.ibook.commons.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>bundle</type>
+    </dependency>
+    
+    <dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>1.8.2</version>
+          <scope>provided</scope>
+</dependency>
+
+<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-databind</artifactId>
+<version>2.5.3</version>
+    <scope>provided</scope>
+</dependency>
+  </dependencies>
+  
+    <build>
+    <pluginManagement>
+      <plugins>
+        <!-- used to generate the MANIFEST-FILE of a bundle -->
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>${maven-bundle-plugin-version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+              <Bundle-SymbolicName>${project.name}</Bundle-SymbolicName>
+              <Import-Package>${osgi-import-package}</Import-Package>
+              <Export-Package>!*</Export-Package>
+            </instructions>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
