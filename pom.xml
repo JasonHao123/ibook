@@ -605,6 +605,7 @@
     <module>jason.app.ibook.user.service</module>
     <module>jason.app.ibook.feature</module>
     <module>jason.app.ibook.job.craweller</module>
+    <module>camel-cloudsearch</module>
   </modules>
   <build>
   <pluginManagement>

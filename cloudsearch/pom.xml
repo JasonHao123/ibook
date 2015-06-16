@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>jason.app.ibook</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>jason.app.ibook.cloudsearch</artifactId>
+  <name>jason.app.ibook.cloudsearch</name>
+  <packaging>bundle</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>3.2.11.RELEASE</spring.version>      
+         <osgi-import-package>
+         jason.app.ibook.job.api.model,
+         org.apache.camel,          
+           *
+         </osgi-import-package>
+         
+  </properties>
+  <dependencies>
+
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring</artifactId>
+      <version>2.14.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>2.14.1</version>
+      <scope>provided</scope>
+    </dependency>
+     <dependency>
+      <groupId>jason.app.ibook</groupId>
+      <artifactId>jason.app.ibook.job.api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>bundle</type>
+      <scope>provided</scope>
+    </dependency>
+<dependency>
+<groupId>com.amazonaws</groupId>
+<artifactId>aws-java-sdk-osgi</artifactId>
+<version>1.9.40</version>
+</dependency>
+
+ <dependency>
+<groupId>org.apache.servicemix.bundles</groupId>
+<artifactId>org.apache.servicemix.bundles.jaxp-ri</artifactId>
+<version>1.4.5_1</version>
+</dependency>
+
+  <dependency>
+      <artifactId>solr-solrj</artifactId>
+      <groupId>org.apache.solr</groupId>
+      <version>4.8.0</version>
+  </dependency>
+
+  </dependencies>
+  
+    <build>
+    <pluginManagement>
+      <plugins>
+        <!-- used to generate the MANIFEST-FILE of a bundle -->
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>${maven-bundle-plugin-version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+              <Bundle-SymbolicName>${project.name}</Bundle-SymbolicName>
+              <Import-Package>${osgi-import-package}</Import-Package>
+              <Export-Package>!*</Export-Package>
+              <Private-Package>jason.app.ibook.cloudsearch.*</Private-Package>
+            </instructions>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

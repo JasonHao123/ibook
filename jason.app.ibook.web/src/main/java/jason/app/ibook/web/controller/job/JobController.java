@@ -53,7 +53,7 @@ public class JobController {
 
         String query = "";
         if(q!=null) {
-           query = "text:"+q;
+           query = ""+q;
         }        
         if (category != null) {
             if(query.indexOf("categoryId")<0) {
